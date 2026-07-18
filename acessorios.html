@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Acessórios — Kazolau Services</title>
+<style>
+  :root {
+    --brand:#1a3a6b; --brand-light:#2257a8; --accent:#f5a623; --accent2:#e8410a;
+    --bg:#f4f6fb; --bg2:#eaf0fb; --text:#1a2540; --text2:#4a5568; --border:#d1d9e0;
+    --radius:14px; --radius-sm:8px;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:'Segoe UI', system-ui, sans-serif; background:var(--bg); color:var(--text); }
+  header { background:var(--brand); padding:16px 5%; display:flex; align-items:center; justify-content:space-between; box-shadow:0 2px 16px rgba(0,0,0,0.18); }
+  header a.back { color:#fff; text-decoration:none; font-size:14px; font-weight:600; display:flex; align-items:center; gap:6px; }
+  header a.back:hover { opacity:0.85; }
+  header .brand { color:#fff; font-weight:800; font-size:16px; }
+  main { max-width:1100px; margin:0 auto; padding:32px 5% 60px; }
+  h1 { font-size:clamp(22px,3vw,30px); font-weight:800; color:var(--brand); margin-bottom:6px; }
+  .sub { color:var(--text2); margin-bottom:8px; font-size:14.5px; }
+  .aviso { background:#fff7e8; border:1.5px dashed var(--accent); border-radius:var(--radius-sm); padding:12px 16px; font-size:13.5px; color:var(--text2); margin-bottom:28px; }
+  .grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(260px,1fr)); gap:20px; }
+  .item { background:#fff; border:1.5px solid var(--border); border-radius:var(--radius); overflow:hidden; display:flex; flex-direction:column; transition:transform .2s, box-shadow .2s; }
+  .item:hover { transform:translateY(-3px); box-shadow:0 10px 28px rgba(26,58,107,0.12); }
+  .item img { width:100%; height:230px; object-fit:cover; object-position:top center; display:block; }
+  .item-body { padding:16px 18px 18px; display:flex; flex-direction:column; gap:10px; flex:1; }
+  .item-body h3 { font-size:15.5px; font-weight:700; }
+  .item-body p { font-size:13px; color:var(--text2); }
+  .item-actions { display:flex; gap:8px; margin-top:auto; }
+  .btn-comprar, .btn-negociar { flex:1; border:none; border-radius:var(--radius-sm); padding:10px 8px; font-size:12.5px; font-weight:700; cursor:pointer; text-align:center; text-decoration:none; }
+  .btn-comprar { background:var(--brand); color:#fff; }
+  .btn-comprar:hover { background:var(--brand-light); }
+  .btn-negociar { background:#fff7e8; color:var(--accent2); border:1.5px solid var(--accent); }
+  .btn-negociar:hover { background:var(--accent); color:#fff; }
+  footer { text-align:center; padding:26px 5%; color:var(--text2); font-size:13px; }
+  footer a { color:var(--brand-light); }
+  .whatsapp-float { position:fixed; bottom:28px; right:28px; width:56px; height:56px; background:#25d366; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:26px; text-decoration:none; box-shadow:0 4px 20px rgba(37,211,102,0.4); }
+</style>
+</head>
+<body>
+
+<header>
+  <a class="back" href="../index.html#loja">← Voltar à loja</a>
+  <span class="brand">KZ Kazolau Services</span>
+</header>
+
+<main>
+  <h1>Acessórios</h1>
+  <p class="sub">Bolsas, relógios, óculos e bijuteria</p>
+  <div class="aviso">📸 Fotos ilustrativas do catálogo — confirme cor, tamanho e disponibilidade real antes de finalizar a compra. </div>
+
+  <div class="grid">
+    <div class="item">
+      <img src="../bolsas.jpeg" alt="Bolsas femininas em vários tons" loading="lazy">
+      <div class="item-body">
+        <h3>Bolsas Transversais</h3>
+        <p>Disponíveis em preto, castanho e caramelo. Alça ajustável.</p>
+        <div class="item-actions">
+          <a class="btn-comprar" href="https://wa.me/244957400234?text=Ol%C3%A1%20Kazolau%20Services%21%20Quero%20comprar%3A%20Bolsas%20Transversais%20%28vi%20no%20cat%C3%A1logo%20do%20site%29" target="_blank">Comprar</a>
+          <a class="btn-negociar" href="https://wa.me/244957400234?text=Ol%C3%A1%20Kazolau%20Services%21%20Gostaria%20de%20negociar%20o%20pre%C3%A7o%20de%3A%20Bolsas%20Transversais%20%28vi%20no%20cat%C3%A1logo%20do%20site%29" target="_blank">💬 Negociar</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</main>
+
+<footer>
+  <p>🛵 Entrega em toda Luanda · 💳 Multicaixa Express, transferência e numerário</p>
+  <p>© 2026 <strong>Kazolau Services</strong> · <a href="tel:+244957400234">📞 Ligar</a> · <a href="https://wa.me/244957400234" target="_blank">💬 WhatsApp</a></p>
+</footer>
+
+<a href="https://wa.me/244957400234" class="whatsapp-float" target="_blank" title="Fale connosco no WhatsApp">💬</a>
+
+</body>
+</html>
