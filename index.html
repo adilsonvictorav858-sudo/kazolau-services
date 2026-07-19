@@ -1249,6 +1249,45 @@
 </style>
 </head>
 <body>
+   
+<div id="intro-overlay" style="position:fixed;inset:0;background:#000;z-index:99999;display:flex;align-items:center;justify-content:center;">
+  <video id="intro-video" autoplay muted playsinline style="max-width:100%;max-height:100%;object-fit:contain;">
+    <source src="kazolau-intro.mp4" type="video/mp4">
+  </video>
+  <button id="intro-skip" style="position:absolute;top:20px;right:20px;background:rgba(255,255,255,0.15);color:#fff;border:1px solid rgba(255,255,255,0.5);padding:8px 18px;border-radius:20px;cursor:pointer;font-size:13px;font-family:'Segoe UI',system-ui,sans-serif;backdrop-filter:blur(4px);">Saltar ⏭</button>
+  <button id="intro-unmute" style="position:absolute;bottom:20px;right:20px;background:rgba(255,255,255,0.15);color:#fff;border:1px solid rgba(255,255,255,0.5);width:40px;height:40px;border-radius:50%;cursor:pointer;font-size:16px;backdrop-filter:blur(4px);">🔇</button>
+</div>
+<script>
+(function(){
+  var overlay = document.getElementById('intro-overlay');
+  var video = document.getElementById('intro-video');
+  var skip = document.getElementById('intro-skip');
+  var unmuteBtn = document.getElementById('intro-unmute');
+ 
+  // Só mostra o vídeo uma vez por sessão (não repete cada vez que a pessoa navega de volta à home)
+  if (sessionStorage.getItem('kzl_intro_seen')) {
+    overlay.remove();
+    return;
+  }
+ 
+  function closeIntro(){
+    overlay.style.transition = 'opacity 0.5s';
+    overlay.style.opacity = '0';
+    setTimeout(function(){ if (overlay.parentNode) overlay.remove(); }, 500);
+    sessionStorage.setItem('kzl_intro_seen', '1');
+  }
+ 
+  video.addEventListener('ended', closeIntro);
+  skip.addEventListener('click', closeIntro);
+  unmuteBtn.addEventListener('click', function(){
+    video.muted = !video.muted;
+    unmuteBtn.textContent = video.muted ? '🔇' : '🔊';
+  });
+ 
+  // Segurança: se o vídeo por algum motivo não carregar/tocar, não bloquear o site mais que 8 segundos
+  setTimeout(closeIntro, 8000);
+})();
+</script>
 
 <!-- ===== HEADER ===== -->
 <header>
