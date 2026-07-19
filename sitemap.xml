@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://kazolau.site/</loc><priority>1.0</priority></url>
+
+  <url><loc>https://kazolau.site/loja/roupas.html</loc><priority>0.8</priority></url>
+  <url><loc>https://kazolau.site/loja/acessorios.html</loc><priority>0.8</priority></url>
+  <url><loc>https://kazolau.site/loja/telefones.html</loc><priority>0.8</priority></url>
+  <url><loc>https://kazolau.site/loja/tenis.html</loc><priority>0.8</priority></url>
+  <url><loc>https://kazolau.site/loja/sandalias.html</loc><priority>0.8</priority></url>
+
+  <url><loc>https://kazolau.site/servicos/cv-basico.html</loc><priority>0.7</priority></url>
+  <url><loc>https://kazolau.site/servicos/cv-profissional.html</loc><priority>0.7</priority></url>
+  <url><loc>https://kazolau.site/servicos/consultoria-essencial.html</loc><priority>0.7</priority></url>
+  <url><loc>https://kazolau.site/servicos/consultoria-completa.html</loc><priority>0.7</priority></url>
+  <url><loc>https://kazolau.site/servicos/consultoria-premium.html</loc><priority>0.7</priority></url>
+  <url><loc>https://kazolau.site/servicos/consultoria-vistos.html</loc><priority>0.7</priority></url>
+  <url><loc>https://kazolau.site/servicos/entrega-nacional.html</loc><priority>0.7</priority></url>
+  <url><loc>https://kazolau.site/servicos/entrega-internacional.html</loc><priority>0.7</priority></url>
+  <url><loc>https://kazolau.site/servicos/pdf.html</loc><priority>0.6</priority></url>
+  <url><loc>https://kazolau.site/servicos/traducao.html</loc><priority>0.6</priority></url>
+  <url><loc>https://kazolau.site/servicos/website-basico.html</loc><priority>0.6</priority></url>
+  <url><loc>https://kazolau.site/servicos/website-profissional.html</loc><priority>0.6</priority></url>
+  <url><loc>https://kazolau.site/servicos/agendamento-passaporte.html</loc><priority>0.6</priority></url>
+
+  <url><loc>https://kazolau.site/servicos/vistos/portugal.html</loc><priority>0.6</priority></url>
+  <url><loc>https://kazolau.site/servicos/vistos/espanha.html</loc><priority>0.6</priority></url>
+  <url><loc>https://kazolau.site/servicos/vistos/holanda.html</loc><priority>0.6</priority></url>
+  <url><loc>https://kazolau.site/servicos/vistos/china.html</loc><priority>0.6</priority></url>
+
+  <url><loc>https://kazolau.site/servicos/agendamentos/portugal.html</loc><priority>0.6</priority></url>
+  <url><loc>https://kazolau.site/servicos/agendamentos/franca.html</loc><priority>0.6</priority></url>
+  <url><loc>https://kazolau.site/servicos/agendamentos/belgica.html</loc><priority>0.6</priority></url>
+  <url><loc>https://kazolau.site/servicos/agendamentos/polonia.html</loc><priority>0.6</priority></url>
+  <url><loc>https://kazolau.site/servicos/agendamentos/holanda.html</loc><priority>0.6</priority></url>
+  <url><loc>https://kazolau.site/servicos/agendamentos/brasil.html</loc><priority>0.6</priority></url>
+</urlset>
