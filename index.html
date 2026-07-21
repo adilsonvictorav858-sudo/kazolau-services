@@ -2540,4 +2540,81 @@ document.getElementById('pedidoForm').addEventListener('submit', function(e) {
 </script>
 
 </body>
+  <script>
+const WHATSAPP_NUMBER = '244957400234';
+
+async function popularLoja() {
+  const container = document.getElementById('loja-produtos');
+  if (!container) return;
+
+  const resp = await fetch('loja/produtos.json');
+  const catalogo = await resp.json();
+
+  let html = '<div class="loja-categorias-nav">';
+  catalogo.categorias.forEach(cat => {
+    html += `<button class="cat-btn" data-categoria="${cat.id}">${cat.icone||''} ${cat.nome}</button>`;
+  });
+  html += '</div>';
+
+  catalogo.categorias.forEach(cat => {
+    html += `<div class="categoria-section" id="cat-${cat.id}"><h3>${cat.icone||''} ${cat.nome}</h3><div class="produtos-grid">`;
+    cat.produtos.forEach(p => {
+      const selects = p.atributos.map(a => {
+        const opts = a.opcoes.map(o => `<option value="${o}">${o}</option>`).join('');
+        return `<div class="variante-grupo"><label>${a.rotulo}:</label><select class="sel-${a.nome}" data-id="${p.id}">${opts}</select></div>`;
+      }).join('');
+      html += `<div class="produto-card" data-id="${p.id}">
+        <div class="produto-info"><h4>${p.nome}</h4>${p.marca?`<small>${p.marca}</small>`:''}
+        ${p.garantia?`<small>🛡️ ${p.garantia}</small>`:''}
+        <div class="variantes">${selects}</div>
+        <div class="preco" data-id="${p.id}"><strong>${p.variantes[0].preco}</strong></div>
+        <button class="btn-comprar" data-id="${p.id}">💬 Comprar via WhatsApp</button></div></div>`;
+    });
+    html += '</div></div>';
+  });
+  container.innerHTML = html;
+
+  // Atualizar preço
+  document.querySelectorAll('[class^="sel-"]').forEach(s => {
+    s.addEventListener('change', function() {
+      const id = this.dataset.id;
+      const produto = catalogo.categorias.flatMap(c=>c.produtos).find(p=>p.id===id);
+      if(!produto) return;
+      const cors = document.querySelector(`.sel-cor[data-id="${id}"]`)?.value || '';
+      const arm = document.querySelector(`.sel-armazenamento[data-id="${id}"]`)?.value || '';
+      const tam = document.querySelector(`.sel-tamanho[data-id="${id}"]`)?.value || '';
+      const varEncontrada = produto.variantes.find(v => 
+        (!cors||v.cor===cors) && (!arm||v.armazenamento===arm) && (!tam||v.tamanho===tam)
+      );
+      document.querySelector(`.preco[data-id="${id}"] strong`).textContent = varEncontrada?.preco || '—';
+    });
+  });
+
+  // Botão comprar
+  document.querySelectorAll('.btn-comprar').forEach(btn => {
+    btn.addEventListener('click', function() {
+      const id = this.dataset.id;
+      const produto = catalogo.categorias.flatMap(c=>c.produtos).find(p=>p.id===id);
+      if(!produto) return;
+      const cors = document.querySelector(`.sel-cor[data-id="${id}"]`)?.value || '';
+      const arm = document.querySelector(`.sel-armazenamento[data-id="${id}"]`)?.value || '';
+      const tam = document.querySelector(`.sel-tamanho[data-id="${id}"]`)?.value || '';
+      const v = produto.variantes.find(v => (!cors||v.cor===cors) && (!arm||v.armazenamento===arm) && (!tam||v.tamanho===tam));
+      let msg = `*Produto:* ${produto.nome}`;
+      if(produto.marca) msg += `\n*Marca:* ${produto.marca}`;
+      if(cors) msg += `\n*Cor:* ${cors}`;
+      if(arm) msg += `\n*Armazenamento:* ${arm}`;
+      if(tam) msg += `\n*Tamanho:* ${tam}`;
+      if(v?.preco) msg += `\n*Preço:* ${v.preco}`;
+      if(produto.garantia) msg += `\n*Garantia:* ${produto.garantia}`;
+      msg += '\n\n(Vi no catálogo do site kazolau.site)';
+      window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`, '_blank');
+    });
+  });
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  if(document.getElementById('loja-produtos')) popularLoja();
+});
+</script>
 </html>
