@@ -8,423 +8,1550 @@
         {
           "id": "iphone-x",
           "nome": "iPhone X",
+          "categoria": "telefones",
           "marca": "Apple",
-          "imagens": ["telefone-iphone-graphite.jpeg"],
+          "imagens": [
+            "telefone-iphone-graphite.jpeg"
+          ],
           "garantia": "2 meses",
+          "etiquetas": [],
           "atributos": [
-            { "nome": "cor", "rotulo": "Cor", "opcoes": ["Prateado", "Cinza Espacial"] },
-            { "nome": "armazenamento", "rotulo": "Armazenamento", "opcoes": ["64GB", "256GB"] }
+            {
+              "nome": "cor",
+              "rotulo": "Cor",
+              "opcoes": [
+                "Prateado",
+                "Cinza Espacial"
+              ]
+            },
+            {
+              "nome": "armazenamento",
+              "rotulo": "Armazenamento",
+              "opcoes": [
+                "64GB",
+                "256GB"
+              ]
+            }
           ],
           "variantes": [
-            { "cor": "Prateado", "armazenamento": "64GB", "preco": "135.000 Kz" },
-            { "cor": "Prateado", "armazenamento": "256GB", "preco": "185.000 Kz" },
-            { "cor": "Cinza Espacial", "armazenamento": "64GB", "preco": "135.000 Kz" },
-            { "cor": "Cinza Espacial", "armazenamento": "256GB", "preco": "185.000 Kz" }
-          ]
+            {
+              "cor": "Prateado",
+              "armazenamento": "64GB",
+              "preco": "135.000 Kz"
+            },
+            {
+              "cor": "Prateado",
+              "armazenamento": "256GB",
+              "preco": "185.000 Kz"
+            },
+            {
+              "cor": "Cinza Espacial",
+              "armazenamento": "64GB",
+              "preco": "135.000 Kz"
+            },
+            {
+              "cor": "Cinza Espacial",
+              "armazenamento": "256GB",
+              "preco": "185.000 Kz"
+            }
+          ],
+          "precoDesde": 135000,
+          "precoAte": 185000
         },
         {
           "id": "iphone-xs",
           "nome": "iPhone XS",
+          "categoria": "telefones",
           "marca": "Apple",
-          "imagens": ["telefone-iphone-graphite.jpeg"],
+          "imagens": [
+            "telefone-iphone-graphite.jpeg"
+          ],
           "garantia": "2 meses",
+          "etiquetas": [],
           "atributos": [
-            { "nome": "cor", "rotulo": "Cor", "opcoes": ["Dourado", "Prateado", "Cinza Espacial"] },
-            { "nome": "armazenamento", "rotulo": "Armazenamento", "opcoes": ["64GB", "256GB"] }
+            {
+              "nome": "cor",
+              "rotulo": "Cor",
+              "opcoes": [
+                "Dourado",
+                "Prateado",
+                "Cinza Espacial"
+              ]
+            },
+            {
+              "nome": "armazenamento",
+              "rotulo": "Armazenamento",
+              "opcoes": [
+                "64GB",
+                "256GB"
+              ]
+            }
           ],
           "variantes": [
-            { "cor": "Dourado", "armazenamento": "64GB", "preco": "160.000 Kz" },
-            { "cor": "Dourado", "armazenamento": "256GB", "preco": "210.000 Kz" },
-            { "cor": "Prateado", "armazenamento": "64GB", "preco": "160.000 Kz" },
-            { "cor": "Prateado", "armazenamento": "256GB", "preco": "210.000 Kz" },
-            { "cor": "Cinza Espacial", "armazenamento": "64GB", "preco": "160.000 Kz" },
-            { "cor": "Cinza Espacial", "armazenamento": "256GB", "preco": "210.000 Kz" }
-          ]
+            {
+              "cor": "Dourado",
+              "armazenamento": "64GB",
+              "preco": "160.000 Kz"
+            },
+            {
+              "cor": "Dourado",
+              "armazenamento": "256GB",
+              "preco": "210.000 Kz"
+            },
+            {
+              "cor": "Prateado",
+              "armazenamento": "64GB",
+              "preco": "160.000 Kz"
+            },
+            {
+              "cor": "Prateado",
+              "armazenamento": "256GB",
+              "preco": "210.000 Kz"
+            },
+            {
+              "cor": "Cinza Espacial",
+              "armazenamento": "64GB",
+              "preco": "160.000 Kz"
+            },
+            {
+              "cor": "Cinza Espacial",
+              "armazenamento": "256GB",
+              "preco": "210.000 Kz"
+            }
+          ],
+          "precoDesde": 160000,
+          "precoAte": 210000
         },
         {
           "id": "iphone-xs-max",
           "nome": "iPhone XS Max",
+          "categoria": "telefones",
           "marca": "Apple",
-          "imagens": ["telefone-iphone-graphite.jpeg"],
+          "imagens": [
+            "telefone-iphone-graphite.jpeg"
+          ],
           "garantia": "2 meses",
+          "etiquetas": [],
           "atributos": [
-            { "nome": "cor", "rotulo": "Cor", "opcoes": ["Dourado", "Prateado", "Cinza Espacial"] },
-            { "nome": "armazenamento", "rotulo": "Armazenamento", "opcoes": ["64GB", "256GB"] }
+            {
+              "nome": "cor",
+              "rotulo": "Cor",
+              "opcoes": [
+                "Dourado",
+                "Prateado",
+                "Cinza Espacial"
+              ]
+            },
+            {
+              "nome": "armazenamento",
+              "rotulo": "Armazenamento",
+              "opcoes": [
+                "64GB",
+                "256GB"
+              ]
+            }
           ],
           "variantes": [
-            { "cor": "Dourado", "armazenamento": "64GB", "preco": "190.000 Kz" },
-            { "cor": "Dourado", "armazenamento": "256GB", "preco": "250.000 Kz" },
-            { "cor": "Prateado", "armazenamento": "64GB", "preco": "190.000 Kz" },
-            { "cor": "Prateado", "armazenamento": "256GB", "preco": "250.000 Kz" },
-            { "cor": "Cinza Espacial", "armazenamento": "64GB", "preco": "190.000 Kz" },
-            { "cor": "Cinza Espacial", "armazenamento": "256GB", "preco": "250.000 Kz" }
-          ]
+            {
+              "cor": "Dourado",
+              "armazenamento": "64GB",
+              "preco": "190.000 Kz"
+            },
+            {
+              "cor": "Dourado",
+              "armazenamento": "256GB",
+              "preco": "250.000 Kz"
+            },
+            {
+              "cor": "Prateado",
+              "armazenamento": "64GB",
+              "preco": "190.000 Kz"
+            },
+            {
+              "cor": "Prateado",
+              "armazenamento": "256GB",
+              "preco": "250.000 Kz"
+            },
+            {
+              "cor": "Cinza Espacial",
+              "armazenamento": "64GB",
+              "preco": "190.000 Kz"
+            },
+            {
+              "cor": "Cinza Espacial",
+              "armazenamento": "256GB",
+              "preco": "250.000 Kz"
+            }
+          ],
+          "precoDesde": 190000,
+          "precoAte": 250000
         },
         {
           "id": "iphone-11",
           "nome": "iPhone 11",
+          "categoria": "telefones",
           "marca": "Apple",
-          "imagens": ["telefone-iphone-graphite.jpeg"],
+          "imagens": [
+            "telefone-iphone-graphite.jpeg"
+          ],
           "garantia": "2 meses",
+          "etiquetas": [],
           "atributos": [
-            { "nome": "cor", "rotulo": "Cor", "opcoes": ["Preto", "Branco", "Vermelho", "Amarelo", "Verde", "Roxo"] },
-            { "nome": "armazenamento", "rotulo": "Armazenamento", "opcoes": ["64GB", "128GB"] }
+            {
+              "nome": "cor",
+              "rotulo": "Cor",
+              "opcoes": [
+                "Preto",
+                "Branco",
+                "Vermelho",
+                "Amarelo",
+                "Verde",
+                "Roxo"
+              ]
+            },
+            {
+              "nome": "armazenamento",
+              "rotulo": "Armazenamento",
+              "opcoes": [
+                "64GB",
+                "128GB"
+              ]
+            }
           ],
           "variantes": [
-            { "cor": "Preto", "armazenamento": "64GB", "preco": "200.000 Kz" },
-            { "cor": "Preto", "armazenamento": "128GB", "preco": "250.000 Kz" },
-            { "cor": "Branco", "armazenamento": "64GB", "preco": "200.000 Kz" },
-            { "cor": "Branco", "armazenamento": "128GB", "preco": "250.000 Kz" },
-            { "cor": "Vermelho", "armazenamento": "64GB", "preco": "200.000 Kz" },
-            { "cor": "Vermelho", "armazenamento": "128GB", "preco": "250.000 Kz" },
-            { "cor": "Amarelo", "armazenamento": "64GB", "preco": "200.000 Kz" },
-            { "cor": "Amarelo", "armazenamento": "128GB", "preco": "250.000 Kz" },
-            { "cor": "Verde", "armazenamento": "64GB", "preco": "200.000 Kz" },
-            { "cor": "Verde", "armazenamento": "128GB", "preco": "250.000 Kz" },
-            { "cor": "Roxo", "armazenamento": "64GB", "preco": "200.000 Kz" },
-            { "cor": "Roxo", "armazenamento": "128GB", "preco": "250.000 Kz" }
-          ]
+            {
+              "cor": "Preto",
+              "armazenamento": "64GB",
+              "preco": "200.000 Kz"
+            },
+            {
+              "cor": "Preto",
+              "armazenamento": "128GB",
+              "preco": "250.000 Kz"
+            },
+            {
+              "cor": "Branco",
+              "armazenamento": "64GB",
+              "preco": "200.000 Kz"
+            },
+            {
+              "cor": "Branco",
+              "armazenamento": "128GB",
+              "preco": "250.000 Kz"
+            },
+            {
+              "cor": "Vermelho",
+              "armazenamento": "64GB",
+              "preco": "200.000 Kz"
+            },
+            {
+              "cor": "Vermelho",
+              "armazenamento": "128GB",
+              "preco": "250.000 Kz"
+            },
+            {
+              "cor": "Amarelo",
+              "armazenamento": "64GB",
+              "preco": "200.000 Kz"
+            },
+            {
+              "cor": "Amarelo",
+              "armazenamento": "128GB",
+              "preco": "250.000 Kz"
+            },
+            {
+              "cor": "Verde",
+              "armazenamento": "64GB",
+              "preco": "200.000 Kz"
+            },
+            {
+              "cor": "Verde",
+              "armazenamento": "128GB",
+              "preco": "250.000 Kz"
+            },
+            {
+              "cor": "Roxo",
+              "armazenamento": "64GB",
+              "preco": "200.000 Kz"
+            },
+            {
+              "cor": "Roxo",
+              "armazenamento": "128GB",
+              "preco": "250.000 Kz"
+            }
+          ],
+          "precoDesde": 200000,
+          "precoAte": 250000
         },
         {
           "id": "iphone-11-pro",
           "nome": "iPhone 11 Pro",
+          "categoria": "telefones",
           "marca": "Apple",
-          "imagens": ["telefone-iphone-graphite.jpeg"],
+          "imagens": [
+            "telefone-iphone-graphite.jpeg"
+          ],
           "garantia": "2 meses",
+          "etiquetas": [],
           "atributos": [
-            { "nome": "cor", "rotulo": "Cor", "opcoes": ["Cinza Espacial", "Prateado", "Dourado", "Verde Noturno"] },
-            { "nome": "armazenamento", "rotulo": "Armazenamento", "opcoes": ["64GB", "256GB"] }
+            {
+              "nome": "cor",
+              "rotulo": "Cor",
+              "opcoes": [
+                "Cinza Espacial",
+                "Prateado",
+                "Dourado",
+                "Verde Noturno"
+              ]
+            },
+            {
+              "nome": "armazenamento",
+              "rotulo": "Armazenamento",
+              "opcoes": [
+                "64GB",
+                "256GB"
+              ]
+            }
           ],
           "variantes": [
-            { "cor": "Cinza Espacial", "armazenamento": "64GB", "preco": "280.000 Kz" },
-            { "cor": "Cinza Espacial", "armazenamento": "256GB", "preco": "350.000 Kz" },
-            { "cor": "Prateado", "armazenamento": "64GB", "preco": "280.000 Kz" },
-            { "cor": "Prateado", "armazenamento": "256GB", "preco": "350.000 Kz" },
-            { "cor": "Dourado", "armazenamento": "64GB", "preco": "280.000 Kz" },
-            { "cor": "Dourado", "armazenamento": "256GB", "preco": "350.000 Kz" },
-            { "cor": "Verde Noturno", "armazenamento": "64GB", "preco": "280.000 Kz" },
-            { "cor": "Verde Noturno", "armazenamento": "256GB", "preco": "350.000 Kz" }
-          ]
+            {
+              "cor": "Cinza Espacial",
+              "armazenamento": "64GB",
+              "preco": "280.000 Kz"
+            },
+            {
+              "cor": "Cinza Espacial",
+              "armazenamento": "256GB",
+              "preco": "350.000 Kz"
+            },
+            {
+              "cor": "Prateado",
+              "armazenamento": "64GB",
+              "preco": "280.000 Kz"
+            },
+            {
+              "cor": "Prateado",
+              "armazenamento": "256GB",
+              "preco": "350.000 Kz"
+            },
+            {
+              "cor": "Dourado",
+              "armazenamento": "64GB",
+              "preco": "280.000 Kz"
+            },
+            {
+              "cor": "Dourado",
+              "armazenamento": "256GB",
+              "preco": "350.000 Kz"
+            },
+            {
+              "cor": "Verde Noturno",
+              "armazenamento": "64GB",
+              "preco": "280.000 Kz"
+            },
+            {
+              "cor": "Verde Noturno",
+              "armazenamento": "256GB",
+              "preco": "350.000 Kz"
+            }
+          ],
+          "precoDesde": 280000,
+          "precoAte": 350000
         },
         {
           "id": "iphone-11-pro-max",
           "nome": "iPhone 11 Pro Max",
+          "categoria": "telefones",
           "marca": "Apple",
-          "imagens": ["telefone-iphone-graphite.jpeg"],
+          "imagens": [
+            "telefone-iphone-graphite.jpeg"
+          ],
           "garantia": "2 meses",
+          "etiquetas": [],
           "atributos": [
-            { "nome": "cor", "rotulo": "Cor", "opcoes": ["Cinza Espacial", "Prateado", "Dourado", "Verde Noturno"] },
-            { "nome": "armazenamento", "rotulo": "Armazenamento", "opcoes": ["64GB", "256GB"] }
+            {
+              "nome": "cor",
+              "rotulo": "Cor",
+              "opcoes": [
+                "Cinza Espacial",
+                "Prateado",
+                "Dourado",
+                "Verde Noturno"
+              ]
+            },
+            {
+              "nome": "armazenamento",
+              "rotulo": "Armazenamento",
+              "opcoes": [
+                "64GB",
+                "256GB"
+              ]
+            }
           ],
           "variantes": [
-            { "cor": "Cinza Espacial", "armazenamento": "64GB", "preco": "320.000 Kz" },
-            { "cor": "Cinza Espacial", "armazenamento": "256GB", "preco": "390.000 Kz" },
-            { "cor": "Prateado", "armazenamento": "64GB", "preco": "320.000 Kz" },
-            { "cor": "Prateado", "armazenamento": "256GB", "preco": "390.000 Kz" },
-            { "cor": "Dourado", "armazenamento": "64GB", "preco": "320.000 Kz" },
-            { "cor": "Dourado", "armazenamento": "256GB", "preco": "390.000 Kz" },
-            { "cor": "Verde Noturno", "armazenamento": "64GB", "preco": "320.000 Kz" },
-            { "cor": "Verde Noturno", "armazenamento": "256GB", "preco": "390.000 Kz" }
-          ]
+            {
+              "cor": "Cinza Espacial",
+              "armazenamento": "64GB",
+              "preco": "320.000 Kz"
+            },
+            {
+              "cor": "Cinza Espacial",
+              "armazenamento": "256GB",
+              "preco": "390.000 Kz"
+            },
+            {
+              "cor": "Prateado",
+              "armazenamento": "64GB",
+              "preco": "320.000 Kz"
+            },
+            {
+              "cor": "Prateado",
+              "armazenamento": "256GB",
+              "preco": "390.000 Kz"
+            },
+            {
+              "cor": "Dourado",
+              "armazenamento": "64GB",
+              "preco": "320.000 Kz"
+            },
+            {
+              "cor": "Dourado",
+              "armazenamento": "256GB",
+              "preco": "390.000 Kz"
+            },
+            {
+              "cor": "Verde Noturno",
+              "armazenamento": "64GB",
+              "preco": "320.000 Kz"
+            },
+            {
+              "cor": "Verde Noturno",
+              "armazenamento": "256GB",
+              "preco": "390.000 Kz"
+            }
+          ],
+          "precoDesde": 320000,
+          "precoAte": 390000
         },
         {
           "id": "iphone-12",
           "nome": "iPhone 12",
+          "categoria": "telefones",
           "marca": "Apple",
-          "imagens": ["telefone-iphone-blue.jpeg"],
+          "imagens": [
+            "telefone-iphone-blue.jpeg"
+          ],
           "garantia": "2 meses",
+          "etiquetas": [],
           "atributos": [
-            { "nome": "cor", "rotulo": "Cor", "opcoes": ["Preto", "Branco", "Vermelho", "Verde", "Azul", "Roxo"] },
-            { "nome": "armazenamento", "rotulo": "Armazenamento", "opcoes": ["64GB", "128GB"] }
+            {
+              "nome": "cor",
+              "rotulo": "Cor",
+              "opcoes": [
+                "Preto",
+                "Branco",
+                "Vermelho",
+                "Verde",
+                "Azul",
+                "Roxo"
+              ]
+            },
+            {
+              "nome": "armazenamento",
+              "rotulo": "Armazenamento",
+              "opcoes": [
+                "64GB",
+                "128GB"
+              ]
+            }
           ],
           "variantes": [
-            { "cor": "Preto", "armazenamento": "64GB", "preco": "300.000 Kz" },
-            { "cor": "Preto", "armazenamento": "128GB", "preco": "350.000 Kz" },
-            { "cor": "Branco", "armazenamento": "64GB", "preco": "300.000 Kz" },
-            { "cor": "Branco", "armazenamento": "128GB", "preco": "350.000 Kz" },
-            { "cor": "Vermelho", "armazenamento": "64GB", "preco": "300.000 Kz" },
-            { "cor": "Vermelho", "armazenamento": "128GB", "preco": "350.000 Kz" },
-            { "cor": "Verde", "armazenamento": "64GB", "preco": "300.000 Kz" },
-            { "cor": "Verde", "armazenamento": "128GB", "preco": "350.000 Kz" },
-            { "cor": "Azul", "armazenamento": "64GB", "preco": "300.000 Kz" },
-            { "cor": "Azul", "armazenamento": "128GB", "preco": "350.000 Kz" },
-            { "cor": "Roxo", "armazenamento": "64GB", "preco": "300.000 Kz" },
-            { "cor": "Roxo", "armazenamento": "128GB", "preco": "350.000 Kz" }
-          ]
+            {
+              "cor": "Preto",
+              "armazenamento": "64GB",
+              "preco": "300.000 Kz"
+            },
+            {
+              "cor": "Preto",
+              "armazenamento": "128GB",
+              "preco": "350.000 Kz"
+            },
+            {
+              "cor": "Branco",
+              "armazenamento": "64GB",
+              "preco": "300.000 Kz"
+            },
+            {
+              "cor": "Branco",
+              "armazenamento": "128GB",
+              "preco": "350.000 Kz"
+            },
+            {
+              "cor": "Vermelho",
+              "armazenamento": "64GB",
+              "preco": "300.000 Kz"
+            },
+            {
+              "cor": "Vermelho",
+              "armazenamento": "128GB",
+              "preco": "350.000 Kz"
+            },
+            {
+              "cor": "Verde",
+              "armazenamento": "64GB",
+              "preco": "300.000 Kz"
+            },
+            {
+              "cor": "Verde",
+              "armazenamento": "128GB",
+              "preco": "350.000 Kz"
+            },
+            {
+              "cor": "Azul",
+              "armazenamento": "64GB",
+              "preco": "300.000 Kz"
+            },
+            {
+              "cor": "Azul",
+              "armazenamento": "128GB",
+              "preco": "350.000 Kz"
+            },
+            {
+              "cor": "Roxo",
+              "armazenamento": "64GB",
+              "preco": "300.000 Kz"
+            },
+            {
+              "cor": "Roxo",
+              "armazenamento": "128GB",
+              "preco": "350.000 Kz"
+            }
+          ],
+          "precoDesde": 300000,
+          "precoAte": 350000
         },
         {
           "id": "iphone-12-pro",
           "nome": "iPhone 12 Pro",
+          "categoria": "telefones",
           "marca": "Apple",
-          "imagens": ["telefone-iphone-blue.jpeg"],
+          "imagens": [
+            "telefone-iphone-blue.jpeg"
+          ],
           "garantia": "2 meses",
+          "etiquetas": [],
           "atributos": [
-            { "nome": "cor", "rotulo": "Cor", "opcoes": ["Grafite", "Prateado", "Dourado", "Azul Pacífico"] },
-            { "nome": "armazenamento", "rotulo": "Armazenamento", "opcoes": ["128GB", "256GB"] }
+            {
+              "nome": "cor",
+              "rotulo": "Cor",
+              "opcoes": [
+                "Grafite",
+                "Prateado",
+                "Dourado",
+                "Azul Pacífico"
+              ]
+            },
+            {
+              "nome": "armazenamento",
+              "rotulo": "Armazenamento",
+              "opcoes": [
+                "128GB",
+                "256GB"
+              ]
+            }
           ],
           "variantes": [
-            { "cor": "Grafite", "armazenamento": "128GB", "preco": "400.000 Kz" },
-            { "cor": "Grafite", "armazenamento": "256GB", "preco": "450.000 Kz" },
-            { "cor": "Prateado", "armazenamento": "128GB", "preco": "400.000 Kz" },
-            { "cor": "Prateado", "armazenamento": "256GB", "preco": "450.000 Kz" },
-            { "cor": "Dourado", "armazenamento": "128GB", "preco": "400.000 Kz" },
-            { "cor": "Dourado", "armazenamento": "256GB", "preco": "450.000 Kz" },
-            { "cor": "Azul Pacífico", "armazenamento": "128GB", "preco": "400.000 Kz" },
-            { "cor": "Azul Pacífico", "armazenamento": "256GB", "preco": "450.000 Kz" }
-          ]
+            {
+              "cor": "Grafite",
+              "armazenamento": "128GB",
+              "preco": "400.000 Kz"
+            },
+            {
+              "cor": "Grafite",
+              "armazenamento": "256GB",
+              "preco": "450.000 Kz"
+            },
+            {
+              "cor": "Prateado",
+              "armazenamento": "128GB",
+              "preco": "400.000 Kz"
+            },
+            {
+              "cor": "Prateado",
+              "armazenamento": "256GB",
+              "preco": "450.000 Kz"
+            },
+            {
+              "cor": "Dourado",
+              "armazenamento": "128GB",
+              "preco": "400.000 Kz"
+            },
+            {
+              "cor": "Dourado",
+              "armazenamento": "256GB",
+              "preco": "450.000 Kz"
+            },
+            {
+              "cor": "Azul Pacífico",
+              "armazenamento": "128GB",
+              "preco": "400.000 Kz"
+            },
+            {
+              "cor": "Azul Pacífico",
+              "armazenamento": "256GB",
+              "preco": "450.000 Kz"
+            }
+          ],
+          "precoDesde": 400000,
+          "precoAte": 450000
         },
         {
           "id": "iphone-12-pro-max",
           "nome": "iPhone 12 Pro Max",
+          "categoria": "telefones",
           "marca": "Apple",
-          "imagens": ["telefone-iphone-blue.jpeg"],
+          "imagens": [
+            "telefone-iphone-blue.jpeg"
+          ],
           "garantia": "2 meses",
+          "etiquetas": [],
           "atributos": [
-            { "nome": "cor", "rotulo": "Cor", "opcoes": ["Grafite", "Prateado", "Dourado", "Azul Pacífico"] },
-            { "nome": "armazenamento", "rotulo": "Armazenamento", "opcoes": ["128GB", "256GB"] }
+            {
+              "nome": "cor",
+              "rotulo": "Cor",
+              "opcoes": [
+                "Grafite",
+                "Prateado",
+                "Dourado",
+                "Azul Pacífico"
+              ]
+            },
+            {
+              "nome": "armazenamento",
+              "rotulo": "Armazenamento",
+              "opcoes": [
+                "128GB",
+                "256GB"
+              ]
+            }
           ],
           "variantes": [
-            { "cor": "Grafite", "armazenamento": "128GB", "preco": "450.000 Kz" },
-            { "cor": "Grafite", "armazenamento": "256GB", "preco": "500.000 Kz" },
-            { "cor": "Prateado", "armazenamento": "128GB", "preco": "450.000 Kz" },
-            { "cor": "Prateado", "armazenamento": "256GB", "preco": "500.000 Kz" },
-            { "cor": "Dourado", "armazenamento": "128GB", "preco": "450.000 Kz" },
-            { "cor": "Dourado", "armazenamento": "256GB", "preco": "500.000 Kz" },
-            { "cor": "Azul Pacífico", "armazenamento": "128GB", "preco": "450.000 Kz" },
-            { "cor": "Azul Pacífico", "armazenamento": "256GB", "preco": "500.000 Kz" }
-          ]
+            {
+              "cor": "Grafite",
+              "armazenamento": "128GB",
+              "preco": "450.000 Kz"
+            },
+            {
+              "cor": "Grafite",
+              "armazenamento": "256GB",
+              "preco": "500.000 Kz"
+            },
+            {
+              "cor": "Prateado",
+              "armazenamento": "128GB",
+              "preco": "450.000 Kz"
+            },
+            {
+              "cor": "Prateado",
+              "armazenamento": "256GB",
+              "preco": "500.000 Kz"
+            },
+            {
+              "cor": "Dourado",
+              "armazenamento": "128GB",
+              "preco": "450.000 Kz"
+            },
+            {
+              "cor": "Dourado",
+              "armazenamento": "256GB",
+              "preco": "500.000 Kz"
+            },
+            {
+              "cor": "Azul Pacífico",
+              "armazenamento": "128GB",
+              "preco": "450.000 Kz"
+            },
+            {
+              "cor": "Azul Pacífico",
+              "armazenamento": "256GB",
+              "preco": "500.000 Kz"
+            }
+          ],
+          "precoDesde": 450000,
+          "precoAte": 500000
         },
         {
           "id": "iphone-13",
           "nome": "iPhone 13",
+          "categoria": "telefones",
           "marca": "Apple",
-          "imagens": ["telefone-iphone-blue.jpeg"],
+          "imagens": [
+            "telefone-iphone-blue.jpeg"
+          ],
           "garantia": "2 meses",
+          "etiquetas": [],
           "atributos": [
-            { "nome": "cor", "rotulo": "Cor", "opcoes": ["Meia-Noite", "Estelar", "Vermelho", "Azul", "Rosa", "Verde"] },
-            { "nome": "armazenamento", "rotulo": "Armazenamento", "opcoes": ["128GB", "256GB"] }
+            {
+              "nome": "cor",
+              "rotulo": "Cor",
+              "opcoes": [
+                "Meia-Noite",
+                "Estelar",
+                "Vermelho",
+                "Azul",
+                "Rosa",
+                "Verde"
+              ]
+            },
+            {
+              "nome": "armazenamento",
+              "rotulo": "Armazenamento",
+              "opcoes": [
+                "128GB",
+                "256GB"
+              ]
+            }
           ],
           "variantes": [
-            { "cor": "Meia-Noite", "armazenamento": "128GB", "preco": "420.000 Kz" },
-            { "cor": "Meia-Noite", "armazenamento": "256GB", "preco": "500.000 Kz" },
-            { "cor": "Estelar", "armazenamento": "128GB", "preco": "420.000 Kz" },
-            { "cor": "Estelar", "armazenamento": "256GB", "preco": "500.000 Kz" },
-            { "cor": "Vermelho", "armazenamento": "128GB", "preco": "420.000 Kz" },
-            { "cor": "Vermelho", "armazenamento": "256GB", "preco": "500.000 Kz" },
-            { "cor": "Azul", "armazenamento": "128GB", "preco": "420.000 Kz" },
-            { "cor": "Azul", "armazenamento": "256GB", "preco": "500.000 Kz" },
-            { "cor": "Rosa", "armazenamento": "128GB", "preco": "420.000 Kz" },
-            { "cor": "Rosa", "armazenamento": "256GB", "preco": "500.000 Kz" },
-            { "cor": "Verde", "armazenamento": "128GB", "preco": "420.000 Kz" },
-            { "cor": "Verde", "armazenamento": "256GB", "preco": "500.000 Kz" }
-          ]
+            {
+              "cor": "Meia-Noite",
+              "armazenamento": "128GB",
+              "preco": "420.000 Kz"
+            },
+            {
+              "cor": "Meia-Noite",
+              "armazenamento": "256GB",
+              "preco": "500.000 Kz"
+            },
+            {
+              "cor": "Estelar",
+              "armazenamento": "128GB",
+              "preco": "420.000 Kz"
+            },
+            {
+              "cor": "Estelar",
+              "armazenamento": "256GB",
+              "preco": "500.000 Kz"
+            },
+            {
+              "cor": "Vermelho",
+              "armazenamento": "128GB",
+              "preco": "420.000 Kz"
+            },
+            {
+              "cor": "Vermelho",
+              "armazenamento": "256GB",
+              "preco": "500.000 Kz"
+            },
+            {
+              "cor": "Azul",
+              "armazenamento": "128GB",
+              "preco": "420.000 Kz"
+            },
+            {
+              "cor": "Azul",
+              "armazenamento": "256GB",
+              "preco": "500.000 Kz"
+            },
+            {
+              "cor": "Rosa",
+              "armazenamento": "128GB",
+              "preco": "420.000 Kz"
+            },
+            {
+              "cor": "Rosa",
+              "armazenamento": "256GB",
+              "preco": "500.000 Kz"
+            },
+            {
+              "cor": "Verde",
+              "armazenamento": "128GB",
+              "preco": "420.000 Kz"
+            },
+            {
+              "cor": "Verde",
+              "armazenamento": "256GB",
+              "preco": "500.000 Kz"
+            }
+          ],
+          "precoDesde": 420000,
+          "precoAte": 500000
         },
         {
           "id": "iphone-13-pro",
           "nome": "iPhone 13 Pro",
+          "categoria": "telefones",
           "marca": "Apple",
-          "imagens": ["telefone-iphone-blue.jpeg"],
+          "imagens": [
+            "telefone-iphone-blue.jpeg"
+          ],
           "garantia": "2 meses",
+          "etiquetas": [],
           "atributos": [
-            { "nome": "cor", "rotulo": "Cor", "opcoes": ["Grafite", "Prateado", "Dourado", "Azul-Sierra", "Verde-Alpino"] },
-            { "nome": "armazenamento", "rotulo": "Armazenamento", "opcoes": ["128GB", "256GB"] }
+            {
+              "nome": "cor",
+              "rotulo": "Cor",
+              "opcoes": [
+                "Grafite",
+                "Prateado",
+                "Dourado",
+                "Azul-Sierra",
+                "Verde-Alpino"
+              ]
+            },
+            {
+              "nome": "armazenamento",
+              "rotulo": "Armazenamento",
+              "opcoes": [
+                "128GB",
+                "256GB"
+              ]
+            }
           ],
           "variantes": [
-            { "cor": "Grafite", "armazenamento": "128GB", "preco": "500.000 Kz" },
-            { "cor": "Grafite", "armazenamento": "256GB", "preco": "580.000 Kz" },
-            { "cor": "Prateado", "armazenamento": "128GB", "preco": "500.000 Kz" },
-            { "cor": "Prateado", "armazenamento": "256GB", "preco": "580.000 Kz" },
-            { "cor": "Dourado", "armazenamento": "128GB", "preco": "500.000 Kz" },
-            { "cor": "Dourado", "armazenamento": "256GB", "preco": "580.000 Kz" },
-            { "cor": "Azul-Sierra", "armazenamento": "128GB", "preco": "500.000 Kz" },
-            { "cor": "Azul-Sierra", "armazenamento": "256GB", "preco": "580.000 Kz" },
-            { "cor": "Verde-Alpino", "armazenamento": "128GB", "preco": "500.000 Kz" },
-            { "cor": "Verde-Alpino", "armazenamento": "256GB", "preco": "580.000 Kz" }
-          ]
+            {
+              "cor": "Grafite",
+              "armazenamento": "128GB",
+              "preco": "500.000 Kz"
+            },
+            {
+              "cor": "Grafite",
+              "armazenamento": "256GB",
+              "preco": "580.000 Kz"
+            },
+            {
+              "cor": "Prateado",
+              "armazenamento": "128GB",
+              "preco": "500.000 Kz"
+            },
+            {
+              "cor": "Prateado",
+              "armazenamento": "256GB",
+              "preco": "580.000 Kz"
+            },
+            {
+              "cor": "Dourado",
+              "armazenamento": "128GB",
+              "preco": "500.000 Kz"
+            },
+            {
+              "cor": "Dourado",
+              "armazenamento": "256GB",
+              "preco": "580.000 Kz"
+            },
+            {
+              "cor": "Azul-Sierra",
+              "armazenamento": "128GB",
+              "preco": "500.000 Kz"
+            },
+            {
+              "cor": "Azul-Sierra",
+              "armazenamento": "256GB",
+              "preco": "580.000 Kz"
+            },
+            {
+              "cor": "Verde-Alpino",
+              "armazenamento": "128GB",
+              "preco": "500.000 Kz"
+            },
+            {
+              "cor": "Verde-Alpino",
+              "armazenamento": "256GB",
+              "preco": "580.000 Kz"
+            }
+          ],
+          "precoDesde": 500000,
+          "precoAte": 580000
         },
         {
           "id": "iphone-13-pro-max",
           "nome": "iPhone 13 Pro Max",
+          "categoria": "telefones",
           "marca": "Apple",
-          "imagens": ["telefone-iphone-blue.jpeg"],
+          "imagens": [
+            "telefone-iphone-blue.jpeg"
+          ],
           "garantia": "2 meses",
+          "etiquetas": [],
           "atributos": [
-            { "nome": "cor", "rotulo": "Cor", "opcoes": ["Grafite", "Prateado", "Dourado", "Azul-Sierra", "Verde-Alpino"] },
-            { "nome": "armazenamento", "rotulo": "Armazenamento", "opcoes": ["128GB", "256GB"] }
+            {
+              "nome": "cor",
+              "rotulo": "Cor",
+              "opcoes": [
+                "Grafite",
+                "Prateado",
+                "Dourado",
+                "Azul-Sierra",
+                "Verde-Alpino"
+              ]
+            },
+            {
+              "nome": "armazenamento",
+              "rotulo": "Armazenamento",
+              "opcoes": [
+                "128GB",
+                "256GB"
+              ]
+            }
           ],
           "variantes": [
-            { "cor": "Grafite", "armazenamento": "128GB", "preco": "580.000 Kz" },
-            { "cor": "Grafite", "armazenamento": "256GB", "preco": "650.000 Kz" },
-            { "cor": "Prateado", "armazenamento": "128GB", "preco": "580.000 Kz" },
-            { "cor": "Prateado", "armazenamento": "256GB", "preco": "650.000 Kz" },
-            { "cor": "Dourado", "armazenamento": "128GB", "preco": "580.000 Kz" },
-            { "cor": "Dourado", "armazenamento": "256GB", "preco": "650.000 Kz" },
-            { "cor": "Azul-Sierra", "armazenamento": "128GB", "preco": "580.000 Kz" },
-            { "cor": "Azul-Sierra", "armazenamento": "256GB", "preco": "650.000 Kz" },
-            { "cor": "Verde-Alpino", "armazenamento": "128GB", "preco": "580.000 Kz" },
-            { "cor": "Verde-Alpino", "armazenamento": "256GB", "preco": "650.000 Kz" }
-          ]
+            {
+              "cor": "Grafite",
+              "armazenamento": "128GB",
+              "preco": "580.000 Kz"
+            },
+            {
+              "cor": "Grafite",
+              "armazenamento": "256GB",
+              "preco": "650.000 Kz"
+            },
+            {
+              "cor": "Prateado",
+              "armazenamento": "128GB",
+              "preco": "580.000 Kz"
+            },
+            {
+              "cor": "Prateado",
+              "armazenamento": "256GB",
+              "preco": "650.000 Kz"
+            },
+            {
+              "cor": "Dourado",
+              "armazenamento": "128GB",
+              "preco": "580.000 Kz"
+            },
+            {
+              "cor": "Dourado",
+              "armazenamento": "256GB",
+              "preco": "650.000 Kz"
+            },
+            {
+              "cor": "Azul-Sierra",
+              "armazenamento": "128GB",
+              "preco": "580.000 Kz"
+            },
+            {
+              "cor": "Azul-Sierra",
+              "armazenamento": "256GB",
+              "preco": "650.000 Kz"
+            },
+            {
+              "cor": "Verde-Alpino",
+              "armazenamento": "128GB",
+              "preco": "580.000 Kz"
+            },
+            {
+              "cor": "Verde-Alpino",
+              "armazenamento": "256GB",
+              "preco": "650.000 Kz"
+            }
+          ],
+          "precoDesde": 580000,
+          "precoAte": 650000
         },
         {
           "id": "iphone-14",
           "nome": "iPhone 14",
+          "categoria": "telefones",
           "marca": "Apple",
-          "imagens": ["telefone-iphone-graphite.jpeg"],
+          "imagens": [
+            "telefone-iphone-graphite.jpeg"
+          ],
           "garantia": "2 meses",
+          "etiquetas": [],
           "atributos": [
-            { "nome": "cor", "rotulo": "Cor", "opcoes": ["Meia-Noite", "Estelar", "Vermelho", "Azul", "Roxo", "Amarelo"] },
-            { "nome": "armazenamento", "rotulo": "Armazenamento", "opcoes": ["128GB", "256GB"] }
+            {
+              "nome": "cor",
+              "rotulo": "Cor",
+              "opcoes": [
+                "Meia-Noite",
+                "Estelar",
+                "Vermelho",
+                "Azul",
+                "Roxo",
+                "Amarelo"
+              ]
+            },
+            {
+              "nome": "armazenamento",
+              "rotulo": "Armazenamento",
+              "opcoes": [
+                "128GB",
+                "256GB"
+              ]
+            }
           ],
           "variantes": [
-            { "cor": "Meia-Noite", "armazenamento": "128GB", "preco": "580.000 Kz" },
-            { "cor": "Meia-Noite", "armazenamento": "256GB", "preco": "650.000 Kz" },
-            { "cor": "Estelar", "armazenamento": "128GB", "preco": "580.000 Kz" },
-            { "cor": "Estelar", "armazenamento": "256GB", "preco": "650.000 Kz" },
-            { "cor": "Vermelho", "armazenamento": "128GB", "preco": "580.000 Kz" },
-            { "cor": "Vermelho", "armazenamento": "256GB", "preco": "650.000 Kz" },
-            { "cor": "Azul", "armazenamento": "128GB", "preco": "580.000 Kz" },
-            { "cor": "Azul", "armazenamento": "256GB", "preco": "650.000 Kz" },
-            { "cor": "Roxo", "armazenamento": "128GB", "preco": "580.000 Kz" },
-            { "cor": "Roxo", "armazenamento": "256GB", "preco": "650.000 Kz" },
-            { "cor": "Amarelo", "armazenamento": "128GB", "preco": "580.000 Kz" },
-            { "cor": "Amarelo", "armazenamento": "256GB", "preco": "650.000 Kz" }
-          ]
+            {
+              "cor": "Meia-Noite",
+              "armazenamento": "128GB",
+              "preco": "580.000 Kz"
+            },
+            {
+              "cor": "Meia-Noite",
+              "armazenamento": "256GB",
+              "preco": "650.000 Kz"
+            },
+            {
+              "cor": "Estelar",
+              "armazenamento": "128GB",
+              "preco": "580.000 Kz"
+            },
+            {
+              "cor": "Estelar",
+              "armazenamento": "256GB",
+              "preco": "650.000 Kz"
+            },
+            {
+              "cor": "Vermelho",
+              "armazenamento": "128GB",
+              "preco": "580.000 Kz"
+            },
+            {
+              "cor": "Vermelho",
+              "armazenamento": "256GB",
+              "preco": "650.000 Kz"
+            },
+            {
+              "cor": "Azul",
+              "armazenamento": "128GB",
+              "preco": "580.000 Kz"
+            },
+            {
+              "cor": "Azul",
+              "armazenamento": "256GB",
+              "preco": "650.000 Kz"
+            },
+            {
+              "cor": "Roxo",
+              "armazenamento": "128GB",
+              "preco": "580.000 Kz"
+            },
+            {
+              "cor": "Roxo",
+              "armazenamento": "256GB",
+              "preco": "650.000 Kz"
+            },
+            {
+              "cor": "Amarelo",
+              "armazenamento": "128GB",
+              "preco": "580.000 Kz"
+            },
+            {
+              "cor": "Amarelo",
+              "armazenamento": "256GB",
+              "preco": "650.000 Kz"
+            }
+          ],
+          "precoDesde": 580000,
+          "precoAte": 650000
         },
         {
           "id": "iphone-14-plus",
           "nome": "iPhone 14 Plus",
+          "categoria": "telefones",
           "marca": "Apple",
-          "imagens": ["telefone-iphone-graphite.jpeg"],
+          "imagens": [
+            "telefone-iphone-graphite.jpeg"
+          ],
           "garantia": "2 meses",
+          "etiquetas": [],
           "atributos": [
-            { "nome": "cor", "rotulo": "Cor", "opcoes": ["Meia-Noite", "Estelar", "Vermelho", "Azul", "Roxo", "Amarelo"] },
-            { "nome": "armazenamento", "rotulo": "Armazenamento", "opcoes": ["128GB"] }
+            {
+              "nome": "cor",
+              "rotulo": "Cor",
+              "opcoes": [
+                "Meia-Noite",
+                "Estelar",
+                "Vermelho",
+                "Azul",
+                "Roxo",
+                "Amarelo"
+              ]
+            },
+            {
+              "nome": "armazenamento",
+              "rotulo": "Armazenamento",
+              "opcoes": [
+                "128GB"
+              ]
+            }
           ],
           "variantes": [
-            { "cor": "Meia-Noite", "armazenamento": "128GB", "preco": "620.000 Kz" },
-            { "cor": "Estelar", "armazenamento": "128GB", "preco": "620.000 Kz" },
-            { "cor": "Vermelho", "armazenamento": "128GB", "preco": "620.000 Kz" },
-            { "cor": "Azul", "armazenamento": "128GB", "preco": "620.000 Kz" },
-            { "cor": "Roxo", "armazenamento": "128GB", "preco": "620.000 Kz" },
-            { "cor": "Amarelo", "armazenamento": "128GB", "preco": "620.000 Kz" }
-          ]
+            {
+              "cor": "Meia-Noite",
+              "armazenamento": "128GB",
+              "preco": "620.000 Kz"
+            },
+            {
+              "cor": "Estelar",
+              "armazenamento": "128GB",
+              "preco": "620.000 Kz"
+            },
+            {
+              "cor": "Vermelho",
+              "armazenamento": "128GB",
+              "preco": "620.000 Kz"
+            },
+            {
+              "cor": "Azul",
+              "armazenamento": "128GB",
+              "preco": "620.000 Kz"
+            },
+            {
+              "cor": "Roxo",
+              "armazenamento": "128GB",
+              "preco": "620.000 Kz"
+            },
+            {
+              "cor": "Amarelo",
+              "armazenamento": "128GB",
+              "preco": "620.000 Kz"
+            }
+          ],
+          "precoDesde": 620000,
+          "precoAte": 620000
         },
         {
           "id": "iphone-14-pro",
           "nome": "iPhone 14 Pro",
+          "categoria": "telefones",
           "marca": "Apple",
-          "imagens": ["telefone-iphone-graphite.jpeg"],
+          "imagens": [
+            "telefone-iphone-graphite.jpeg"
+          ],
           "garantia": "2 meses",
+          "etiquetas": [],
           "atributos": [
-            { "nome": "cor", "rotulo": "Cor", "opcoes": ["Preto-Espacial", "Prateado", "Dourado", "Roxo-Profundo"] },
-            { "nome": "armazenamento", "rotulo": "Armazenamento", "opcoes": ["128GB", "256GB"] }
+            {
+              "nome": "cor",
+              "rotulo": "Cor",
+              "opcoes": [
+                "Preto-Espacial",
+                "Prateado",
+                "Dourado",
+                "Roxo-Profundo"
+              ]
+            },
+            {
+              "nome": "armazenamento",
+              "rotulo": "Armazenamento",
+              "opcoes": [
+                "128GB",
+                "256GB"
+              ]
+            }
           ],
           "variantes": [
-            { "cor": "Preto-Espacial", "armazenamento": "128GB", "preco": "700.000 Kz" },
-            { "cor": "Preto-Espacial", "armazenamento": "256GB", "preco": "780.000 Kz" },
-            { "cor": "Prateado", "armazenamento": "128GB", "preco": "700.000 Kz" },
-            { "cor": "Prateado", "armazenamento": "256GB", "preco": "780.000 Kz" },
-            { "cor": "Dourado", "armazenamento": "128GB", "preco": "700.000 Kz" },
-            { "cor": "Dourado", "armazenamento": "256GB", "preco": "780.000 Kz" },
-            { "cor": "Roxo-Profundo", "armazenamento": "128GB", "preco": "700.000 Kz" },
-            { "cor": "Roxo-Profundo", "armazenamento": "256GB", "preco": "780.000 Kz" }
-          ]
+            {
+              "cor": "Preto-Espacial",
+              "armazenamento": "128GB",
+              "preco": "700.000 Kz"
+            },
+            {
+              "cor": "Preto-Espacial",
+              "armazenamento": "256GB",
+              "preco": "780.000 Kz"
+            },
+            {
+              "cor": "Prateado",
+              "armazenamento": "128GB",
+              "preco": "700.000 Kz"
+            },
+            {
+              "cor": "Prateado",
+              "armazenamento": "256GB",
+              "preco": "780.000 Kz"
+            },
+            {
+              "cor": "Dourado",
+              "armazenamento": "128GB",
+              "preco": "700.000 Kz"
+            },
+            {
+              "cor": "Dourado",
+              "armazenamento": "256GB",
+              "preco": "780.000 Kz"
+            },
+            {
+              "cor": "Roxo-Profundo",
+              "armazenamento": "128GB",
+              "preco": "700.000 Kz"
+            },
+            {
+              "cor": "Roxo-Profundo",
+              "armazenamento": "256GB",
+              "preco": "780.000 Kz"
+            }
+          ],
+          "precoDesde": 700000,
+          "precoAte": 780000
         },
         {
           "id": "iphone-14-pro-max",
           "nome": "iPhone 14 Pro Max",
+          "categoria": "telefones",
           "marca": "Apple",
-          "imagens": ["telefone-iphone-graphite.jpeg"],
+          "imagens": [
+            "telefone-iphone-graphite.jpeg"
+          ],
           "garantia": "2 meses",
+          "etiquetas": [],
           "atributos": [
-            { "nome": "cor", "rotulo": "Cor", "opcoes": ["Preto-Espacial", "Prateado", "Dourado", "Roxo-Profundo"] },
-            { "nome": "armazenamento", "rotulo": "Armazenamento", "opcoes": ["128GB", "256GB"] }
+            {
+              "nome": "cor",
+              "rotulo": "Cor",
+              "opcoes": [
+                "Preto-Espacial",
+                "Prateado",
+                "Dourado",
+                "Roxo-Profundo"
+              ]
+            },
+            {
+              "nome": "armazenamento",
+              "rotulo": "Armazenamento",
+              "opcoes": [
+                "128GB",
+                "256GB"
+              ]
+            }
           ],
           "variantes": [
-            { "cor": "Preto-Espacial", "armazenamento": "128GB", "preco": "800.000 Kz" },
-            { "cor": "Preto-Espacial", "armazenamento": "256GB", "preco": "880.000 Kz" },
-            { "cor": "Prateado", "armazenamento": "128GB", "preco": "800.000 Kz" },
-            { "cor": "Prateado", "armazenamento": "256GB", "preco": "880.000 Kz" },
-            { "cor": "Dourado", "armazenamento": "128GB", "preco": "800.000 Kz" },
-            { "cor": "Dourado", "armazenamento": "256GB", "preco": "880.000 Kz" },
-            { "cor": "Roxo-Profundo", "armazenamento": "128GB", "preco": "800.000 Kz" },
-            { "cor": "Roxo-Profundo", "armazenamento": "256GB", "preco": "880.000 Kz" }
-          ]
+            {
+              "cor": "Preto-Espacial",
+              "armazenamento": "128GB",
+              "preco": "800.000 Kz"
+            },
+            {
+              "cor": "Preto-Espacial",
+              "armazenamento": "256GB",
+              "preco": "880.000 Kz"
+            },
+            {
+              "cor": "Prateado",
+              "armazenamento": "128GB",
+              "preco": "800.000 Kz"
+            },
+            {
+              "cor": "Prateado",
+              "armazenamento": "256GB",
+              "preco": "880.000 Kz"
+            },
+            {
+              "cor": "Dourado",
+              "armazenamento": "128GB",
+              "preco": "800.000 Kz"
+            },
+            {
+              "cor": "Dourado",
+              "armazenamento": "256GB",
+              "preco": "880.000 Kz"
+            },
+            {
+              "cor": "Roxo-Profundo",
+              "armazenamento": "128GB",
+              "preco": "800.000 Kz"
+            },
+            {
+              "cor": "Roxo-Profundo",
+              "armazenamento": "256GB",
+              "preco": "880.000 Kz"
+            }
+          ],
+          "precoDesde": 800000,
+          "precoAte": 880000
         },
         {
           "id": "samsung-s21-ultra",
           "nome": "Samsung Galaxy S21 Ultra",
+          "categoria": "telefones",
           "marca": "Samsung",
-          "imagens": ["telefone-samsung-stack.jpeg"],
+          "imagens": [
+            "telefone-samsung-stack.jpeg"
+          ],
           "garantia": "2 meses",
+          "etiquetas": [],
           "atributos": [
-            { "nome": "cor", "rotulo": "Cor", "opcoes": ["Preto Fantasma", "Prateado Fantasma", "Marrom", "Azul", "Cinza"] },
-            { "nome": "armazenamento", "rotulo": "Armazenamento", "opcoes": ["128GB", "256GB"] }
+            {
+              "nome": "cor",
+              "rotulo": "Cor",
+              "opcoes": [
+                "Preto Fantasma",
+                "Prateado Fantasma",
+                "Marrom",
+                "Azul",
+                "Cinza"
+              ]
+            },
+            {
+              "nome": "armazenamento",
+              "rotulo": "Armazenamento",
+              "opcoes": [
+                "128GB",
+                "256GB"
+              ]
+            }
           ],
           "variantes": [
-            { "cor": "Preto Fantasma", "armazenamento": "128GB", "preco": "280.000 Kz" },
-            { "cor": "Preto Fantasma", "armazenamento": "256GB", "preco": "320.000 Kz" },
-            { "cor": "Prateado Fantasma", "armazenamento": "128GB", "preco": "280.000 Kz" },
-            { "cor": "Prateado Fantasma", "armazenamento": "256GB", "preco": "320.000 Kz" },
-            { "cor": "Marrom", "armazenamento": "128GB", "preco": "280.000 Kz" },
-            { "cor": "Marrom", "armazenamento": "256GB", "preco": "320.000 Kz" },
-            { "cor": "Azul", "armazenamento": "128GB", "preco": "280.000 Kz" },
-            { "cor": "Azul", "armazenamento": "256GB", "preco": "320.000 Kz" },
-            { "cor": "Cinza", "armazenamento": "128GB", "preco": "280.000 Kz" },
-            { "cor": "Cinza", "armazenamento": "256GB", "preco": "320.000 Kz" }
-          ]
+            {
+              "cor": "Preto Fantasma",
+              "armazenamento": "128GB",
+              "preco": "280.000 Kz"
+            },
+            {
+              "cor": "Preto Fantasma",
+              "armazenamento": "256GB",
+              "preco": "320.000 Kz"
+            },
+            {
+              "cor": "Prateado Fantasma",
+              "armazenamento": "128GB",
+              "preco": "280.000 Kz"
+            },
+            {
+              "cor": "Prateado Fantasma",
+              "armazenamento": "256GB",
+              "preco": "320.000 Kz"
+            },
+            {
+              "cor": "Marrom",
+              "armazenamento": "128GB",
+              "preco": "280.000 Kz"
+            },
+            {
+              "cor": "Marrom",
+              "armazenamento": "256GB",
+              "preco": "320.000 Kz"
+            },
+            {
+              "cor": "Azul",
+              "armazenamento": "128GB",
+              "preco": "280.000 Kz"
+            },
+            {
+              "cor": "Azul",
+              "armazenamento": "256GB",
+              "preco": "320.000 Kz"
+            },
+            {
+              "cor": "Cinza",
+              "armazenamento": "128GB",
+              "preco": "280.000 Kz"
+            },
+            {
+              "cor": "Cinza",
+              "armazenamento": "256GB",
+              "preco": "320.000 Kz"
+            }
+          ],
+          "precoDesde": 280000,
+          "precoAte": 320000
         },
         {
           "id": "samsung-s22-ultra",
           "nome": "Samsung Galaxy S22 Ultra",
+          "categoria": "telefones",
           "marca": "Samsung",
-          "imagens": ["telefone-samsung-stack.jpeg"],
+          "imagens": [
+            "telefone-samsung-stack.jpeg"
+          ],
           "garantia": "2 meses",
+          "etiquetas": [],
           "atributos": [
-            { "nome": "cor", "rotulo": "Cor", "opcoes": ["Preto Fantasma", "Branco Fantasma", "Verde", "Borgonha", "Grafite", "Azul", "Vermelho"] },
-            { "nome": "armazenamento", "rotulo": "Armazenamento", "opcoes": ["128GB", "256GB"] }
+            {
+              "nome": "cor",
+              "rotulo": "Cor",
+              "opcoes": [
+                "Preto Fantasma",
+                "Branco Fantasma",
+                "Verde",
+                "Borgonha",
+                "Grafite",
+                "Azul",
+                "Vermelho"
+              ]
+            },
+            {
+              "nome": "armazenamento",
+              "rotulo": "Armazenamento",
+              "opcoes": [
+                "128GB",
+                "256GB"
+              ]
+            }
           ],
           "variantes": [
-            { "cor": "Preto Fantasma", "armazenamento": "128GB", "preco": "420.000 Kz" },
-            { "cor": "Preto Fantasma", "armazenamento": "256GB", "preco": "480.000 Kz" },
-            { "cor": "Branco Fantasma", "armazenamento": "128GB", "preco": "420.000 Kz" },
-            { "cor": "Branco Fantasma", "armazenamento": "256GB", "preco": "480.000 Kz" },
-            { "cor": "Verde", "armazenamento": "128GB", "preco": "420.000 Kz" },
-            { "cor": "Verde", "armazenamento": "256GB", "preco": "480.000 Kz" },
-            { "cor": "Borgonha", "armazenamento": "128GB", "preco": "420.000 Kz" },
-            { "cor": "Borgonha", "armazenamento": "256GB", "preco": "480.000 Kz" },
-            { "cor": "Grafite", "armazenamento": "128GB", "preco": "420.000 Kz" },
-            { "cor": "Grafite", "armazenamento": "256GB", "preco": "480.000 Kz" },
-            { "cor": "Azul", "armazenamento": "128GB", "preco": "420.000 Kz" },
-            { "cor": "Azul", "armazenamento": "256GB", "preco": "480.000 Kz" },
-            { "cor": "Vermelho", "armazenamento": "128GB", "preco": "420.000 Kz" },
-            { "cor": "Vermelho", "armazenamento": "256GB", "preco": "480.000 Kz" }
-          ]
+            {
+              "cor": "Preto Fantasma",
+              "armazenamento": "128GB",
+              "preco": "420.000 Kz"
+            },
+            {
+              "cor": "Preto Fantasma",
+              "armazenamento": "256GB",
+              "preco": "480.000 Kz"
+            },
+            {
+              "cor": "Branco Fantasma",
+              "armazenamento": "128GB",
+              "preco": "420.000 Kz"
+            },
+            {
+              "cor": "Branco Fantasma",
+              "armazenamento": "256GB",
+              "preco": "480.000 Kz"
+            },
+            {
+              "cor": "Verde",
+              "armazenamento": "128GB",
+              "preco": "420.000 Kz"
+            },
+            {
+              "cor": "Verde",
+              "armazenamento": "256GB",
+              "preco": "480.000 Kz"
+            },
+            {
+              "cor": "Borgonha",
+              "armazenamento": "128GB",
+              "preco": "420.000 Kz"
+            },
+            {
+              "cor": "Borgonha",
+              "armazenamento": "256GB",
+              "preco": "480.000 Kz"
+            },
+            {
+              "cor": "Grafite",
+              "armazenamento": "128GB",
+              "preco": "420.000 Kz"
+            },
+            {
+              "cor": "Grafite",
+              "armazenamento": "256GB",
+              "preco": "480.000 Kz"
+            },
+            {
+              "cor": "Azul",
+              "armazenamento": "128GB",
+              "preco": "420.000 Kz"
+            },
+            {
+              "cor": "Azul",
+              "armazenamento": "256GB",
+              "preco": "480.000 Kz"
+            },
+            {
+              "cor": "Vermelho",
+              "armazenamento": "128GB",
+              "preco": "420.000 Kz"
+            },
+            {
+              "cor": "Vermelho",
+              "armazenamento": "256GB",
+              "preco": "480.000 Kz"
+            }
+          ],
+          "precoDesde": 420000,
+          "precoAte": 480000
         },
         {
           "id": "samsung-s23-ultra",
           "nome": "Samsung Galaxy S23 Ultra",
+          "categoria": "telefones",
           "marca": "Samsung",
-          "imagens": ["telefone-samsung-stack.jpeg"],
+          "imagens": [
+            "telefone-samsung-stack.jpeg"
+          ],
           "garantia": "2 meses",
+          "etiquetas": [],
           "atributos": [
-            { "nome": "cor", "rotulo": "Cor", "opcoes": ["Preto Fantasma", "Creme", "Verde", "Lavanda", "Grafite", "Lima"] },
-            { "nome": "armazenamento", "rotulo": "Armazenamento", "opcoes": ["256GB", "512GB"] }
+            {
+              "nome": "cor",
+              "rotulo": "Cor",
+              "opcoes": [
+                "Preto Fantasma",
+                "Creme",
+                "Verde",
+                "Lavanda",
+                "Grafite",
+                "Lima"
+              ]
+            },
+            {
+              "nome": "armazenamento",
+              "rotulo": "Armazenamento",
+              "opcoes": [
+                "256GB",
+                "512GB"
+              ]
+            }
           ],
           "variantes": [
-            { "cor": "Preto Fantasma", "armazenamento": "256GB", "preco": "550.000 Kz" },
-            { "cor": "Preto Fantasma", "armazenamento": "512GB", "preco": "630.000 Kz" },
-            { "cor": "Creme", "armazenamento": "256GB", "preco": "550.000 Kz" },
-            { "cor": "Creme", "armazenamento": "512GB", "preco": "630.000 Kz" },
-            { "cor": "Verde", "armazenamento": "256GB", "preco": "550.000 Kz" },
-            { "cor": "Verde", "armazenamento": "512GB", "preco": "630.000 Kz" },
-            { "cor": "Lavanda", "armazenamento": "256GB", "preco": "550.000 Kz" },
-            { "cor": "Lavanda", "armazenamento": "512GB", "preco": "630.000 Kz" },
-            { "cor": "Grafite", "armazenamento": "256GB", "preco": "550.000 Kz" },
-            { "cor": "Grafite", "armazenamento": "512GB", "preco": "630.000 Kz" },
-            { "cor": "Lima", "armazenamento": "256GB", "preco": "550.000 Kz" },
-            { "cor": "Lima", "armazenamento": "512GB", "preco": "630.000 Kz" }
-          ]
+            {
+              "cor": "Preto Fantasma",
+              "armazenamento": "256GB",
+              "preco": "550.000 Kz"
+            },
+            {
+              "cor": "Preto Fantasma",
+              "armazenamento": "512GB",
+              "preco": "630.000 Kz"
+            },
+            {
+              "cor": "Creme",
+              "armazenamento": "256GB",
+              "preco": "550.000 Kz"
+            },
+            {
+              "cor": "Creme",
+              "armazenamento": "512GB",
+              "preco": "630.000 Kz"
+            },
+            {
+              "cor": "Verde",
+              "armazenamento": "256GB",
+              "preco": "550.000 Kz"
+            },
+            {
+              "cor": "Verde",
+              "armazenamento": "512GB",
+              "preco": "630.000 Kz"
+            },
+            {
+              "cor": "Lavanda",
+              "armazenamento": "256GB",
+              "preco": "550.000 Kz"
+            },
+            {
+              "cor": "Lavanda",
+              "armazenamento": "512GB",
+              "preco": "630.000 Kz"
+            },
+            {
+              "cor": "Grafite",
+              "armazenamento": "256GB",
+              "preco": "550.000 Kz"
+            },
+            {
+              "cor": "Grafite",
+              "armazenamento": "512GB",
+              "preco": "630.000 Kz"
+            },
+            {
+              "cor": "Lima",
+              "armazenamento": "256GB",
+              "preco": "550.000 Kz"
+            },
+            {
+              "cor": "Lima",
+              "armazenamento": "512GB",
+              "preco": "630.000 Kz"
+            }
+          ],
+          "precoDesde": 550000,
+          "precoAte": 630000
         }
       ]
     },
@@ -436,22 +1563,83 @@
         {
           "id": "conjunto-feminino-top-calca",
           "nome": "Conjunto Feminino (Top + Calça)",
-          "imagens": ["ves.jpeg", "v2.jpeg"],
+          "categoria": "roupas",
+          "marca": "",
+          "imagens": [
+            "ves.jpeg",
+            "v2.jpeg"
+          ],
+          "garantia": null,
+          "etiquetas": [],
           "atributos": [
-            { "nome": "cor", "rotulo": "Cor", "opcoes": ["Preto", "Branco", "Amarelo"] },
-            { "nome": "tamanho", "rotulo": "Tamanho", "opcoes": ["M", "L", "XL"] }
+            {
+              "nome": "cor",
+              "rotulo": "Cor",
+              "opcoes": [
+                "Preto",
+                "Branco",
+                "Amarelo"
+              ]
+            },
+            {
+              "nome": "tamanho",
+              "rotulo": "Tamanho",
+              "opcoes": [
+                "M",
+                "L",
+                "XL"
+              ]
+            }
           ],
           "variantes": [
-            { "cor": "Preto", "tamanho": "M", "preco": "15.000 Kz" },
-            { "cor": "Preto", "tamanho": "L", "preco": "15.000 Kz" },
-            { "cor": "Preto", "tamanho": "XL", "preco": "15.000 Kz" },
-            { "cor": "Branco", "tamanho": "M", "preco": "15.000 Kz" },
-            { "cor": "Branco", "tamanho": "L", "preco": "15.000 Kz" },
-            { "cor": "Branco", "tamanho": "XL", "preco": "15.000 Kz" },
-            { "cor": "Amarelo", "tamanho": "M", "preco": "15.000 Kz" },
-            { "cor": "Amarelo", "tamanho": "L", "preco": "15.000 Kz" },
-            { "cor": "Amarelo", "tamanho": "XL", "preco": "15.000 Kz" }
-          ]
+            {
+              "cor": "Preto",
+              "tamanho": "M",
+              "preco": "15.000 Kz"
+            },
+            {
+              "cor": "Preto",
+              "tamanho": "L",
+              "preco": "15.000 Kz"
+            },
+            {
+              "cor": "Preto",
+              "tamanho": "XL",
+              "preco": "15.000 Kz"
+            },
+            {
+              "cor": "Branco",
+              "tamanho": "M",
+              "preco": "15.000 Kz"
+            },
+            {
+              "cor": "Branco",
+              "tamanho": "L",
+              "preco": "15.000 Kz"
+            },
+            {
+              "cor": "Branco",
+              "tamanho": "XL",
+              "preco": "15.000 Kz"
+            },
+            {
+              "cor": "Amarelo",
+              "tamanho": "M",
+              "preco": "15.000 Kz"
+            },
+            {
+              "cor": "Amarelo",
+              "tamanho": "L",
+              "preco": "15.000 Kz"
+            },
+            {
+              "cor": "Amarelo",
+              "tamanho": "XL",
+              "preco": "15.000 Kz"
+            }
+          ],
+          "precoDesde": 15000,
+          "precoAte": 15000
         }
       ]
     },
@@ -463,15 +1651,40 @@
         {
           "id": "pasta-bolsa-feminina",
           "nome": "Pasta / Bolsa Feminina",
-          "imagens": ["bolsas.jpeg"],
+          "categoria": "acessorios",
+          "marca": "",
+          "imagens": [
+            "bolsas.jpeg"
+          ],
+          "garantia": null,
+          "etiquetas": [],
           "atributos": [
-            { "nome": "cor", "rotulo": "Cor", "opcoes": ["Preto", "Castanho", "Bege"] }
+            {
+              "nome": "cor",
+              "rotulo": "Cor",
+              "opcoes": [
+                "Preto",
+                "Castanho",
+                "Bege"
+              ]
+            }
           ],
           "variantes": [
-            { "cor": "Preto", "preco": "25.000 Kz" },
-            { "cor": "Castanho", "preco": "25.000 Kz" },
-            { "cor": "Bege", "preco": "27.000 Kz" }
-          ]
+            {
+              "cor": "Preto",
+              "preco": "25.000 Kz"
+            },
+            {
+              "cor": "Castanho",
+              "preco": "25.000 Kz"
+            },
+            {
+              "cor": "Bege",
+              "preco": "27.000 Kz"
+            }
+          ],
+          "precoDesde": 25000,
+          "precoAte": 27000
         }
       ]
     },
@@ -483,48 +1696,190 @@
         {
           "id": "sandalia-feminina",
           "nome": "Sandália Feminina",
-          "imagens": ["sandalhas.jpeg"],
+          "categoria": "sandalias",
+          "marca": "",
+          "imagens": [
+            "sandalhas.jpeg"
+          ],
+          "garantia": null,
+          "etiquetas": [],
           "atributos": [
-            { "nome": "cor", "rotulo": "Cor", "opcoes": ["Preto", "Bege", "Castanho"] },
-            { "nome": "tamanho", "rotulo": "Tamanho", "opcoes": ["36", "37", "38", "39", "40", "41"] }
+            {
+              "nome": "cor",
+              "rotulo": "Cor",
+              "opcoes": [
+                "Preto",
+                "Bege",
+                "Castanho"
+              ]
+            },
+            {
+              "nome": "tamanho",
+              "rotulo": "Tamanho",
+              "opcoes": [
+                "36",
+                "37",
+                "38",
+                "39",
+                "40",
+                "41"
+              ]
+            }
           ],
           "variantes": [
-            { "cor": "Preto", "tamanho": "36", "preco": "18.000 Kz" },
-            { "cor": "Preto", "tamanho": "37", "preco": "18.000 Kz" },
-            { "cor": "Preto", "tamanho": "38", "preco": "18.000 Kz" },
-            { "cor": "Preto", "tamanho": "39", "preco": "18.000 Kz" },
-            { "cor": "Preto", "tamanho": "40", "preco": "18.000 Kz" },
-            { "cor": "Preto", "tamanho": "41", "preco": "18.000 Kz" },
-            { "cor": "Bege", "tamanho": "36", "preco": "18.000 Kz" },
-            { "cor": "Bege", "tamanho": "37", "preco": "18.000 Kz" },
-            { "cor": "Bege", "tamanho": "38", "preco": "18.000 Kz" },
-            { "cor": "Bege", "tamanho": "39", "preco": "18.000 Kz" },
-            { "cor": "Bege", "tamanho": "40", "preco": "18.000 Kz" },
-            { "cor": "Bege", "tamanho": "41", "preco": "18.000 Kz" },
-            { "cor": "Castanho", "tamanho": "36", "preco": "20.000 Kz" },
-            { "cor": "Castanho", "tamanho": "37", "preco": "20.000 Kz" },
-            { "cor": "Castanho", "tamanho": "38", "preco": "20.000 Kz" },
-            { "cor": "Castanho", "tamanho": "39", "preco": "20.000 Kz" },
-            { "cor": "Castanho", "tamanho": "40", "preco": "20.000 Kz" },
-            { "cor": "Castanho", "tamanho": "41", "preco": "20.000 Kz" }
-          ]
+            {
+              "cor": "Preto",
+              "tamanho": "36",
+              "preco": "18.000 Kz"
+            },
+            {
+              "cor": "Preto",
+              "tamanho": "37",
+              "preco": "18.000 Kz"
+            },
+            {
+              "cor": "Preto",
+              "tamanho": "38",
+              "preco": "18.000 Kz"
+            },
+            {
+              "cor": "Preto",
+              "tamanho": "39",
+              "preco": "18.000 Kz"
+            },
+            {
+              "cor": "Preto",
+              "tamanho": "40",
+              "preco": "18.000 Kz"
+            },
+            {
+              "cor": "Preto",
+              "tamanho": "41",
+              "preco": "18.000 Kz"
+            },
+            {
+              "cor": "Bege",
+              "tamanho": "36",
+              "preco": "18.000 Kz"
+            },
+            {
+              "cor": "Bege",
+              "tamanho": "37",
+              "preco": "18.000 Kz"
+            },
+            {
+              "cor": "Bege",
+              "tamanho": "38",
+              "preco": "18.000 Kz"
+            },
+            {
+              "cor": "Bege",
+              "tamanho": "39",
+              "preco": "18.000 Kz"
+            },
+            {
+              "cor": "Bege",
+              "tamanho": "40",
+              "preco": "18.000 Kz"
+            },
+            {
+              "cor": "Bege",
+              "tamanho": "41",
+              "preco": "18.000 Kz"
+            },
+            {
+              "cor": "Castanho",
+              "tamanho": "36",
+              "preco": "20.000 Kz"
+            },
+            {
+              "cor": "Castanho",
+              "tamanho": "37",
+              "preco": "20.000 Kz"
+            },
+            {
+              "cor": "Castanho",
+              "tamanho": "38",
+              "preco": "20.000 Kz"
+            },
+            {
+              "cor": "Castanho",
+              "tamanho": "39",
+              "preco": "20.000 Kz"
+            },
+            {
+              "cor": "Castanho",
+              "tamanho": "40",
+              "preco": "20.000 Kz"
+            },
+            {
+              "cor": "Castanho",
+              "tamanho": "41",
+              "preco": "20.000 Kz"
+            }
+          ],
+          "precoDesde": 18000,
+          "precoAte": 20000
         },
         {
           "id": "chinelo-adidas-slide",
           "nome": "Chinelo Adidas Slide",
+          "categoria": "sandalias",
           "marca": "Adidas",
-          "imagens": ["sandalia-slide-adidas.jpeg"],
+          "imagens": [
+            "sandalia-slide-adidas.jpeg"
+          ],
+          "garantia": null,
+          "etiquetas": [],
           "atributos": [
-            { "nome": "cor", "rotulo": "Cor", "opcoes": ["Preto/Branco"] },
-            { "nome": "tamanho", "rotulo": "Tamanho", "opcoes": ["38", "39", "40", "41", "42"] }
+            {
+              "nome": "cor",
+              "rotulo": "Cor",
+              "opcoes": [
+                "Preto/Branco"
+              ]
+            },
+            {
+              "nome": "tamanho",
+              "rotulo": "Tamanho",
+              "opcoes": [
+                "38",
+                "39",
+                "40",
+                "41",
+                "42"
+              ]
+            }
           ],
           "variantes": [
-            { "cor": "Preto/Branco", "tamanho": "38", "preco": "22.000 Kz" },
-            { "cor": "Preto/Branco", "tamanho": "39", "preco": "22.000 Kz" },
-            { "cor": "Preto/Branco", "tamanho": "40", "preco": "22.000 Kz" },
-            { "cor": "Preto/Branco", "tamanho": "41", "preco": "22.000 Kz" },
-            { "cor": "Preto/Branco", "tamanho": "42", "preco": "22.000 Kz" }
-          ]
+            {
+              "cor": "Preto/Branco",
+              "tamanho": "38",
+              "preco": "22.000 Kz"
+            },
+            {
+              "cor": "Preto/Branco",
+              "tamanho": "39",
+              "preco": "22.000 Kz"
+            },
+            {
+              "cor": "Preto/Branco",
+              "tamanho": "40",
+              "preco": "22.000 Kz"
+            },
+            {
+              "cor": "Preto/Branco",
+              "tamanho": "41",
+              "preco": "22.000 Kz"
+            },
+            {
+              "cor": "Preto/Branco",
+              "tamanho": "42",
+              "preco": "22.000 Kz"
+            }
+          ],
+          "precoDesde": 22000,
+          "precoAte": 22000
         }
       ]
     },
@@ -536,39 +1891,138 @@
         {
           "id": "adidas-runfalcon",
           "nome": "Adidas Runfalcon",
+          "categoria": "tenis",
           "marca": "Adidas",
-          "imagens": ["tenis-adidas.jpeg"],
+          "imagens": [
+            "tenis-adidas.jpeg"
+          ],
+          "garantia": null,
+          "etiquetas": [],
           "atributos": [
-            { "nome": "cor", "rotulo": "Cor", "opcoes": ["Cinza/Rosa", "Preto/Branco"] },
-            { "nome": "tamanho", "rotulo": "Tamanho", "opcoes": ["38", "39", "40", "41", "42"] }
+            {
+              "nome": "cor",
+              "rotulo": "Cor",
+              "opcoes": [
+                "Cinza/Rosa",
+                "Preto/Branco"
+              ]
+            },
+            {
+              "nome": "tamanho",
+              "rotulo": "Tamanho",
+              "opcoes": [
+                "38",
+                "39",
+                "40",
+                "41",
+                "42"
+              ]
+            }
           ],
           "variantes": [
-            { "cor": "Cinza/Rosa", "tamanho": "38", "preco": "65.000 Kz" },
-            { "cor": "Cinza/Rosa", "tamanho": "39", "preco": "65.000 Kz" },
-            { "cor": "Cinza/Rosa", "tamanho": "40", "preco": "65.000 Kz" },
-            { "cor": "Cinza/Rosa", "tamanho": "41", "preco": "65.000 Kz" },
-            { "cor": "Preto/Branco", "tamanho": "39", "preco": "60.000 Kz" },
-            { "cor": "Preto/Branco", "tamanho": "40", "preco": "60.000 Kz" },
-            { "cor": "Preto/Branco", "tamanho": "41", "preco": "60.000 Kz" },
-            { "cor": "Preto/Branco", "tamanho": "42", "preco": "60.000 Kz" }
-          ]
+            {
+              "cor": "Cinza/Rosa",
+              "tamanho": "38",
+              "preco": "65.000 Kz"
+            },
+            {
+              "cor": "Cinza/Rosa",
+              "tamanho": "39",
+              "preco": "65.000 Kz"
+            },
+            {
+              "cor": "Cinza/Rosa",
+              "tamanho": "40",
+              "preco": "65.000 Kz"
+            },
+            {
+              "cor": "Cinza/Rosa",
+              "tamanho": "41",
+              "preco": "65.000 Kz"
+            },
+            {
+              "cor": "Preto/Branco",
+              "tamanho": "39",
+              "preco": "60.000 Kz"
+            },
+            {
+              "cor": "Preto/Branco",
+              "tamanho": "40",
+              "preco": "60.000 Kz"
+            },
+            {
+              "cor": "Preto/Branco",
+              "tamanho": "41",
+              "preco": "60.000 Kz"
+            },
+            {
+              "cor": "Preto/Branco",
+              "tamanho": "42",
+              "preco": "60.000 Kz"
+            }
+          ],
+          "precoDesde": 60000,
+          "precoAte": 65000
         },
         {
           "id": "vans-classic",
           "nome": "Vans Classic",
+          "categoria": "tenis",
           "marca": "Vans",
-          "imagens": ["tenis-vans.jpeg"],
+          "imagens": [
+            "tenis-vans.jpeg"
+          ],
+          "garantia": null,
+          "etiquetas": [],
           "atributos": [
-            { "nome": "cor", "rotulo": "Cor", "opcoes": ["Preto/Branco"] },
-            { "nome": "tamanho", "rotulo": "Tamanho", "opcoes": ["38", "39", "40", "41", "42"] }
+            {
+              "nome": "cor",
+              "rotulo": "Cor",
+              "opcoes": [
+                "Preto/Branco"
+              ]
+            },
+            {
+              "nome": "tamanho",
+              "rotulo": "Tamanho",
+              "opcoes": [
+                "38",
+                "39",
+                "40",
+                "41",
+                "42"
+              ]
+            }
           ],
           "variantes": [
-            { "cor": "Preto/Branco", "tamanho": "38", "preco": "18.000 Kz" },
-            { "cor": "Preto/Branco", "tamanho": "39", "preco": "20.000 Kz" },
-            { "cor": "Preto/Branco", "tamanho": "40", "preco": "23.000 Kz" },
-            { "cor": "Preto/Branco", "tamanho": "41", "preco": "25.000 Kz" },
-            { "cor": "Preto/Branco", "tamanho": "42", "preco": "28.000 Kz" }
-          ]
+            {
+              "cor": "Preto/Branco",
+              "tamanho": "38",
+              "preco": "18.000 Kz"
+            },
+            {
+              "cor": "Preto/Branco",
+              "tamanho": "39",
+              "preco": "20.000 Kz"
+            },
+            {
+              "cor": "Preto/Branco",
+              "tamanho": "40",
+              "preco": "23.000 Kz"
+            },
+            {
+              "cor": "Preto/Branco",
+              "tamanho": "41",
+              "preco": "25.000 Kz"
+            },
+            {
+              "cor": "Preto/Branco",
+              "tamanho": "42",
+              "preco": "28.000 Kz"
+            }
+          ],
+          "precoDesde": 18000,
+          "precoAte": 28000
         }
       ]
     }
