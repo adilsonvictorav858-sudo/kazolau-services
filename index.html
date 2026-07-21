@@ -2476,7 +2476,8 @@ async function popularLoja() {
         ${p.garantia?`<small>🛡️ ${p.garantia}</small>`:''}
         <div class="variantes">${selects}</div>
         <div class="preco" data-id="${p.id}"><strong>${p.variantes[0].preco}</strong></div>
-        <button class="btn-comprar" data-id="${p.id}">💬 Comprar via WhatsApp</button></div></div>`;
+       <a href="produto.html?id=${p.id}" class="btn-negociar" style="display:block;text-align:center;margin-bottom:8px;">👁️ Ver Produto</a>
+<button class="btn-comprar" data-id="${p.id}">💬 Comprar via WhatsApp</button></div></div>`;
     });
     html += '</div></div>';
   });
