@@ -1,0 +1,34 @@
+[
+  { "id": "cv-basico", "categoria": "digitais", "icone": "📄", "nome": "CV Básico", "descricao": "Currículo simples e profissional.", "preco": 3500, "precoTexto": "3.500 Kz", "link": "servicos/cv-basico.html", "negociavel": true },
+  { "id": "cv-profissional", "categoria": "digitais", "icone": "📄", "nome": "CV Profissional", "descricao": "Currículo moderno e completo.", "preco": 7500, "precoTexto": "7.500 Kz", "link": "servicos/cv-profissional.html", "negociavel": true, "destaque": true },
+  { "id": "traducao", "categoria": "digitais", "icone": "🌍", "nome": "Traduções", "descricao": "Documentos e textos.", "preco": null, "precoTexto": "Sob consulta", "link": "servicos/traducao.html", "negociavel": true },
+  { "id": "pdf", "categoria": "digitais", "icone": "📑", "nome": "Digitalização PDF", "descricao": "Conversão e edição.", "preco": null, "precoTexto": "Sob consulta", "link": "servicos/pdf.html", "negociavel": true },
+
+  { "id": "website-basico", "categoria": "websites", "icone": "💻", "nome": "Website Básico", "descricao": "Landing page profissional.", "preco": 45000, "precoTexto": "45.000 Kz", "link": "servicos/website-basico.html", "negociavel": true, "destaque": true },
+  { "id": "website-profissional", "categoria": "websites", "icone": "🚀", "nome": "Website Profissional", "descricao": "Sistema completo para empresas.", "preco": 120000, "precoTexto": "120.000 Kz", "link": "servicos/website-profissional.html", "negociavel": true },
+
+  { "id": "flyer-digital", "categoria": "design", "icone": "🎨", "nome": "Flyer Digital", "descricao": "Para redes sociais e WhatsApp.", "preco": 5000, "precoTexto": "5.000 Kz", "link": "#agendamentos", "negociavel": true },
+  { "id": "flyer-eventos", "categoria": "design", "icone": "🎉", "nome": "Flyer de Eventos", "descricao": "Design para festas e convites.", "preco": 7500, "precoTexto": "7.500 Kz", "link": "#agendamentos", "negociavel": true },
+  { "id": "kit-empresarial", "categoria": "design", "icone": "🏢", "nome": "Kit Empresarial", "descricao": "Logo, cartão e papelaria digital.", "preco": null, "precoTexto": "Sob consulta", "link": "#agendamentos", "negociavel": true, "novo": true },
+
+  { "id": "visto-portugal-turismo", "categoria": "vistos", "icone": "🇵🇹", "nome": "Portugal - Turismo", "descricao": "Visto de Estada Temporária.", "preco": 450000, "precoTexto": "450.000 Kz", "link": "servicos/vistos/portugal.html", "negociavel": true },
+  { "id": "visto-espanha-turismo", "categoria": "vistos", "icone": "🇪🇸", "nome": "Espanha - Turismo", "descricao": "Visto de Turismo.", "preco": 450000, "precoTexto": "450.000 Kz", "link": "servicos/vistos/espanha.html", "negociavel": true, "novo": true },
+  { "id": "visto-holanda-turismo", "categoria": "vistos", "icone": "🇳🇱", "nome": "Holanda - Turismo", "descricao": "Visto de Turismo.", "preco": 450000, "precoTexto": "450.000 Kz", "link": "servicos/vistos/holanda.html", "negociavel": true },
+  { "id": "visto-china-turismo", "categoria": "vistos", "icone": "🇨🇳", "nome": "China - Turismo", "descricao": "Visto de Turismo.", "preco": 350000, "precoTexto": "350.000 Kz", "link": "servicos/vistos/china.html", "negociavel": true, "novo": true },
+
+  { "id": "agendamento-portugal-schengen", "categoria": "agendamentos", "icone": "🇵🇹", "nome": "Portugal - Schengen", "descricao": "Marcação e acompanhamento.", "preco": 150000, "precoTexto": "150.000 Kz", "link": "servicos/agendamentos/portugal.html", "negociavel": true },
+  { "id": "agendamento-franca", "categoria": "agendamentos", "icone": "🇫🇷", "nome": "França", "descricao": "Turismo, Estudante e Trabalho.", "preco": null, "precoTexto": "Sob consulta", "link": "servicos/agendamentos/franca.html", "negociavel": true },
+  { "id": "agendamento-belgica", "categoria": "agendamentos", "icone": "🇧🇪", "nome": "Bélgica", "descricao": "Turismo, Estudante e Trabalho.", "preco": null, "precoTexto": "Sob consulta", "link": "servicos/agendamentos/belgica.html", "negociavel": true },
+  { "id": "agendamento-polonia", "categoria": "agendamentos", "icone": "🇵🇱", "nome": "Polónia", "descricao": "Turismo, Estudante e Trabalho.", "preco": null, "precoTexto": "Sob consulta", "link": "servicos/agendamentos/polonia.html", "negociavel": true },
+  { "id": "agendamento-holanda", "categoria": "agendamentos", "icone": "🇳🇱", "nome": "Holanda", "descricao": "Turismo, Estudante e Trabalho.", "preco": null, "precoTexto": "Sob consulta", "link": "servicos/agendamentos/holanda.html", "negociavel": true },
+  { "id": "agendamento-brasil", "categoria": "agendamentos", "icone": "🇧🇷", "nome": "Brasil", "descricao": "Turismo, Estudante e Trabalho.", "preco": null, "precoTexto": "Sob consulta", "link": "servicos/agendamentos/brasil.html", "negociavel": true },
+
+  { "id": "consultoria-essencial", "categoria": "consultoria", "icone": "🎓", "nome": "Consultoria Essencial", "descricao": "Orientação completa para o exterior.", "preco": 100000, "precoTexto": "100.000 Kz", "link": "servicos/consultoria-essencial.html", "negociavel": true },
+  { "id": "consultoria-completa", "categoria": "consultoria", "icone": "🎓", "nome": "Consultoria Completa", "descricao": "Acompanhamento avançado.", "preco": 250000, "precoTexto": "250.000 Kz", "link": "servicos/consultoria-completa.html", "negociavel": true },
+  { "id": "consultoria-premium", "categoria": "consultoria", "icone": "🎓", "nome": "Consultoria Premium", "descricao": "Serviço completo e personalizado.", "preco": 500000, "precoTexto": "500.000 Kz+", "link": "servicos/consultoria-premium.html", "negociavel": true },
+  { "id": "consultoria-vistos", "categoria": "consultoria", "icone": "🛂", "nome": "Consultoria sobre Vistos", "descricao": "Sessão de 3 horas com especialista.", "preco": 30000, "precoTexto": "30.000 Kz", "link": "servicos/consultoria-vistos.html", "negociavel": true, "novo": true },
+  { "id": "agendamento-passaporte", "categoria": "consultoria", "icone": "🪪", "nome": "Agendamento de Passaporte", "descricao": "Agendamento e acompanhamento.", "preco": 45000, "precoTexto": "45.000 Kz", "link": "servicos/agendamento-passaporte.html", "negociavel": true, "novo": true },
+
+  { "id": "entrega-nacional", "categoria": "entregas", "icone": "📦", "nome": "Entrega Nacional", "descricao": "Documentos e encomendas.", "preco": null, "precoTexto": "Sob consulta", "link": "servicos/entrega-nacional.html", "negociavel": true },
+  { "id": "entrega-internacional", "categoria": "entregas", "icone": "🌍", "nome": "Entrega Internacional", "descricao": "Portugal, Espanha, França e mais.", "preco": 17500, "precoTexto": "a partir de 17.500 Kz", "link": "servicos/entrega-internacional.html", "negociavel": true }
+]

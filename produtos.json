@@ -1,0 +1,219 @@
+[
+  {
+    "id": "iphone-13",
+    "categoria": "telefones",
+    "nome": "iPhone 13",
+    "marca": "Apple",
+    "descricao": "Excelente estado, bateria acima de 88%.",
+    "imagens": {
+      "azul": ["telefone-iphone-blue.jpeg", "telefone-iphone-lineup.jpeg"],
+      "grafite": ["telefone-iphone-graphite.jpeg", "telefone-iphone-lineup.jpeg"]
+    },
+    "atributos": {
+      "cores": ["azul", "grafite"],
+      "capacidades": ["128GB", "256GB"]
+    },
+    "variantes": [
+      { "cor": "azul", "capacidade": "128GB", "preco": 650000, "stock": 3 },
+      { "cor": "azul", "capacidade": "256GB", "preco": 780000, "stock": 2 },
+      { "cor": "grafite", "capacidade": "128GB", "preco": 650000, "stock": 4 },
+      { "cor": "grafite", "capacidade": "256GB", "preco": 780000, "stock": 1 }
+    ],
+    "precoInicial": 650000,
+    "precoFinal": 650000,
+    "garantia": "2 meses",
+    "stock": 10,
+    "estado": "Usado - Excelente",
+    "etiquetas": ["smartphone", "apple", "ios"],
+    "novo": false,
+    "destaque": true
+  },
+  {
+    "id": "samsung-a16",
+    "categoria": "telefones",
+    "nome": "Samsung A16",
+    "marca": "Samsung",
+    "descricao": "4GB RAM, 128GB de armazenamento. Novo, selado.",
+    "imagens": {
+      "padrao": ["telefone-samsung-stack.jpeg"]
+    },
+    "atributos": {
+      "cores": ["preto"],
+      "capacidades": ["128GB"]
+    },
+    "variantes": [
+      { "cor": "preto", "capacidade": "128GB", "preco": 135000, "stock": 6 }
+    ],
+    "precoInicial": 135000,
+    "precoFinal": 135000,
+    "garantia": "2 meses",
+    "stock": 6,
+    "estado": "Novo",
+    "etiquetas": ["smartphone", "samsung", "android"],
+    "novo": true,
+    "destaque": true
+  },
+  {
+    "id": "tenis-adidas",
+    "categoria": "tenis",
+    "nome": "Ténis Adidas",
+    "marca": "Adidas",
+    "descricao": "Modelo desportivo, várias cores disponíveis.",
+    "imagens": {
+      "padrao": ["tenis-adidas.jpeg"]
+    },
+    "atributos": {
+      "tamanhos": ["39", "40", "41", "42", "43", "44"]
+    },
+    "variantes": [
+      { "tamanho": "39", "preco": 45000, "stock": 2 },
+      { "tamanho": "40", "preco": 45000, "stock": 3 },
+      { "tamanho": "41", "preco": 45000, "stock": 3 },
+      { "tamanho": "42", "preco": 45000, "stock": 4 },
+      { "tamanho": "43", "preco": 45000, "stock": 2 },
+      { "tamanho": "44", "preco": 45000, "stock": 1 }
+    ],
+    "precoInicial": 45000,
+    "precoFinal": 45000,
+    "garantia": null,
+    "stock": 15,
+    "estado": "Novo",
+    "etiquetas": ["tenis", "adidas", "desporto"],
+    "novo": false,
+    "destaque": false
+  },
+  {
+    "id": "tenis-vans",
+    "categoria": "tenis",
+    "nome": "Ténis Vans",
+    "marca": "Vans",
+    "descricao": "Estilo casual/skatista, muito procurado.",
+    "imagens": {
+      "padrao": ["tenis-vans.jpeg"]
+    },
+    "atributos": {
+      "tamanhos": ["38", "39", "40", "41", "42", "43"]
+    },
+    "variantes": [
+      { "tamanho": "38", "preco": 42000, "stock": 2 },
+      { "tamanho": "39", "preco": 42000, "stock": 2 },
+      { "tamanho": "40", "preco": 42000, "stock": 3 },
+      { "tamanho": "41", "preco": 42000, "stock": 3 },
+      { "tamanho": "42", "preco": 42000, "stock": 2 },
+      { "tamanho": "43", "preco": 42000, "stock": 1 }
+    ],
+    "precoInicial": 42000,
+    "precoFinal": 42000,
+    "garantia": null,
+    "stock": 13,
+    "estado": "Novo",
+    "etiquetas": ["tenis", "vans", "casual"],
+    "novo": false,
+    "destaque": false
+  },
+  {
+    "id": "sandalia-classica",
+    "categoria": "sandalias",
+    "nome": "Sandálias Clássicas",
+    "marca": "Kazolau",
+    "descricao": "Confortáveis, ideais para o dia a dia.",
+    "imagens": {
+      "padrao": ["sandalhas.jpeg"]
+    },
+    "atributos": {
+      "tamanhos": ["36", "37", "38", "39", "40"]
+    },
+    "variantes": [
+      { "tamanho": "36", "preco": 15000, "stock": 3 },
+      { "tamanho": "37", "preco": 15000, "stock": 3 },
+      { "tamanho": "38", "preco": 15000, "stock": 4 },
+      { "tamanho": "39", "preco": 15000, "stock": 2 },
+      { "tamanho": "40", "preco": 15000, "stock": 2 }
+    ],
+    "precoInicial": 15000,
+    "precoFinal": 15000,
+    "garantia": null,
+    "stock": 14,
+    "estado": "Novo",
+    "etiquetas": ["sandalia", "casual"],
+    "novo": false,
+    "destaque": false
+  },
+  {
+    "id": "sandalia-slide-adidas",
+    "categoria": "sandalias",
+    "nome": "Sandália Slide Adidas",
+    "marca": "Adidas",
+    "descricao": "Slide confortável para uso casual e desportivo.",
+    "imagens": {
+      "padrao": ["sandalia-slide-adidas.jpeg"]
+    },
+    "atributos": {
+      "tamanhos": ["38", "39", "40", "41", "42"]
+    },
+    "variantes": [
+      { "tamanho": "38", "preco": 22000, "stock": 2 },
+      { "tamanho": "39", "preco": 22000, "stock": 3 },
+      { "tamanho": "40", "preco": 22000, "stock": 3 },
+      { "tamanho": "41", "preco": 22000, "stock": 2 },
+      { "tamanho": "42", "preco": 22000, "stock": 1 }
+    ],
+    "precoInicial": 22000,
+    "precoFinal": 22000,
+    "garantia": null,
+    "stock": 11,
+    "estado": "Novo",
+    "etiquetas": ["sandalia", "adidas", "desporto"],
+    "novo": true,
+    "destaque": false
+  },
+  {
+    "id": "bolsa-kazolau",
+    "categoria": "acessorios",
+    "nome": "Bolsa Feminina",
+    "marca": "Kazolau",
+    "descricao": "Bolsa elegante para o dia a dia.",
+    "imagens": {
+      "padrao": ["bolsas.jpeg"]
+    },
+    "atributos": {},
+    "variantes": [
+      { "preco": 18000, "stock": 5 }
+    ],
+    "precoInicial": 18000,
+    "precoFinal": 18000,
+    "garantia": null,
+    "stock": 5,
+    "estado": "Novo",
+    "etiquetas": ["bolsa", "acessorio"],
+    "novo": false,
+    "destaque": false
+  },
+  {
+    "id": "vestido-kazolau",
+    "categoria": "roupas",
+    "nome": "Vestido Casual",
+    "marca": "Kazolau",
+    "descricao": "Vestido leve, ideal para o dia a dia ou eventos.",
+    "imagens": {
+      "padrao": ["ves.jpeg"]
+    },
+    "atributos": {
+      "tamanhos": ["S", "M", "L", "XL"]
+    },
+    "variantes": [
+      { "tamanho": "S", "preco": 12000, "stock": 2 },
+      { "tamanho": "M", "preco": 12000, "stock": 3 },
+      { "tamanho": "L", "preco": 12000, "stock": 3 },
+      { "tamanho": "XL", "preco": 12000, "stock": 1 }
+    ],
+    "precoInicial": 12000,
+    "precoFinal": 12000,
+    "garantia": null,
+    "stock": 9,
+    "estado": "Novo",
+    "etiquetas": ["roupa", "vestido"],
+    "novo": false,
+    "destaque": false
+  }
+]
