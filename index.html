@@ -1564,8 +1564,7 @@
 <section id="loja">
   <h2>🛍️ Loja Kazolau</h2>
   <p>Roupas, acessórios, telefones, ténis e sandálias</p>
-  <div id="loja-produtos">
-    <p style="text-align:center;padding:40px;">⏳ Carregando produtos...</p>
+  <div id="produtos-grid" class="cards"></div>
   </div>
 </section>
 
@@ -2446,6 +2445,20 @@ document.getElementById('pedidoForm').addEventListener('submit', function(e) {
   }, 800);
 });
 </script>
+ <script src="app.js"></script>
+<script src="carrinho.js"></script>
+<script src="favoritos.js"></script>
+<script src="catalogo.js"></script>
+<script src="filtros.js"></script>
+<script src="pesquisa.js"></script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    Catalogo.renderizarProdutos("#produtos-destaque", { destaque: true, limite: 6 });
+    Catalogo.renderizarProdutos("#produtos-grid");
+    Pesquisa.ligar("#campo-pesquisa", "#resultados-pesquisa");
+  });
+</script> 
 
 </body>
   <script>
