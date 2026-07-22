@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Loja — Kazolau Services</title>
+<link rel="icon" type="image/x-icon" href="favicon.ico">
+<meta name="description" content="Loja Kazolau Services — roupas, acessórios, telefones, ténis e sandálias em Angola.">
+
+<!--
+  ⚠️ PASSO MANUAL 1 de 2:
+  Copie aqui TODO o conteúdo de <style>...</style> do seu index.html
+  (para esta página ter as mesmas cores, fontes e cartões).
+  Substitua este comentário pelo <style> real.
+-->
+<style>
+  /* Estilo mínimo temporário — substitua pelo <style> completo do index.html */
+  :root { --brand:#1a3a6b; --brand-light:#2257a8; --accent:#f5a623; --white:#fff; --bg:#f4f6fb; --text:#1a2540; --text2:#4a5568; --border:#d1d9e0; --radius:14px; --radius-sm:8px; --card-shadow:0 4px 24px rgba(26,58,107,0.10); }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:'Segoe UI', system-ui, sans-serif; background:var(--bg); color:var(--text); }
+  main { max-width:1200px; margin:0 auto; padding:30px 5% 70px; }
+</style>
+</head>
+<body>
+
+<!--
+  ⚠️ PASSO MANUAL 2 de 2:
+  Cole aqui o seu <header>...</header> real (com o logótipo, menu e WhatsApp)
+  tal como está no index.html, para a navegação ficar igual em todas as páginas.
+-->
+<header style="background:var(--brand);padding:16px 5%;">
+  <a href="index.html" style="color:#fff;text-decoration:none;font-weight:700;">← Voltar à página inicial</a>
+</header>
+
+<main>
+
+  <!-- Barra de categorias -->
+  <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:24px;">
+    <a href="loja.html" class="filtro-cat" data-cat="">Todos</a>
+    <a href="loja.html?categoria=telefones" class="filtro-cat" data-cat="telefones">Telefones</a>
+    <a href="loja.html?categoria=roupas" class="filtro-cat" data-cat="roupas">Roupas</a>
+    <a href="loja.html?categoria=tenis" class="filtro-cat" data-cat="tenis">Ténis</a>
+    <a href="loja.html?categoria=sandalias" class="filtro-cat" data-cat="sandalias">Sandálias</a>
+    <a href="loja.html?categoria=acessorios" class="filtro-cat" data-cat="acessorios">Acessórios</a>
+  </div>
+
+  <!-- Ordenação -->
+  <div style="margin-bottom:20px;">
+    <label for="ordenar" style="font-size:13px;color:var(--text2);margin-right:8px;">Ordenar por:</label>
+    <select id="ordenar" style="padding:8px 12px;border-radius:8px;border:1.5px solid var(--border);">
+      <option value="relevancia">Relevância</option>
+      <option value="preco-asc">Menor preço</option>
+      <option value="preco-desc">Maior preço</option>
+      <option value="novidades">Novidades</option>
+    </select>
+  </div>
+
+  <h1 id="titulo-categoria" style="font-size:24px;font-weight:800;color:var(--brand);margin-bottom:20px;">
+    Loja Kazolau
+  </h1>
+
+  <div id="produtos-grid" class="cards" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;">
+    <p style="grid-column:1/-1;text-align:center;color:var(--text2);">A carregar produtos...</p>
+  </div>
+
+</main>
+
+<!--
+  ⚠️ PASSO MANUAL (opcional):
+  Cole aqui o seu <footer>...</footer> real, e também os modais
+  #offerOverlay e #notifOverlay se quiser que "Negociar" funcione nesta página.
+-->
+<footer style="padding:30px 5%;text-align:center;color:var(--text2);font-size:13px;">
+  © 2026 Kazolau Services
+</footer>
+
+<script src="app.js"></script>
+<script src="carrinho.js"></script>
+<script src="favoritos.js"></script>
+<script src="catalogo.js"></script>
+<script src="filtros.js"></script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", async () => {
+    await Filtros.iniciar();
+
+    // Título dinâmico conforme a categoria da URL
+    const categoria = Kazolau.getParam("categoria");
+    const nomes = { telefones: "Telefones", roupas: "Roupas", tenis: "Ténis", sandalias: "Sandálias", acessorios: "Acessórios" };
+    document.getElementById("titulo-categoria").textContent = categoria ? nomes[categoria] || categoria : "Loja Kazolau — Todos os produtos";
+
+    // Destacar categoria ativa na barra
+    document.querySelectorAll(".filtro-cat").forEach(a => {
+      if (a.dataset.cat === (categoria || "")) {
+        a.style.fontWeight = "800";
+        a.style.textDecoration = "underline";
+      }
+    });
+
+    // Ligar ordenação
+    document.getElementById("ordenar").addEventListener("change", (e) => {
+      Filtros.definir("ordenacao", e.target.value);
+    });
+  });
+</script>
+
+</body>
+</html>

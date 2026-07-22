@@ -1,79 +1,193 @@
 <!DOCTYPE html>
 <html lang="pt">
-
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title id="titulo-pagina">Produto — Kazolau Services</title>
+<link rel="icon" type="image/x-icon" href="favicon.ico">
 
-<title id="page-title">Produto | Kazolau Services</title>
-
-<meta id="meta-description" name="description" content="">
-
-<link id="canonical-link" rel="canonical">
-
-<meta property="og:title" id="og-title" content="">
-<meta property="og:description" id="og-description" content="">
-<meta property="og:image" id="og-image" content="">
-<meta property="og:url" id="og-url" content="">
-
-<link rel="stylesheet" href="styles.css">
-<link rel="stylesheet" href="produto.css">
-
+<!-- ⚠️ Cole aqui o <style>...</style> completo do seu index.html -->
+<style>
+  :root { --brand:#1a3a6b; --brand-light:#2257a8; --accent:#f5a623; --accent2:#e8410a; --white:#fff; --bg:#f4f6fb; --bg2:#eaf0fb; --text:#1a2540; --text2:#4a5568; --border:#d1d9e0; --radius:14px; --radius-sm:8px; --card-shadow:0 4px 24px rgba(26,58,107,0.10); }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:'Segoe UI', system-ui, sans-serif; background:var(--bg); color:var(--text); }
+  main { max-width:1100px; margin:0 auto; padding:30px 5% 70px; }
+  .produto-topo { display:grid; grid-template-columns:1fr 1fr; gap:40px; }
+  @media (max-width:768px) { .produto-topo { grid-template-columns:1fr; } }
+  .galeria-principal { width:100%; aspect-ratio:1/1; border-radius:var(--radius); overflow:hidden; background:var(--bg2); margin-bottom:12px; }
+  .galeria-principal img { width:100%; height:100%; object-fit:cover; }
+  .galeria-miniaturas { display:flex; gap:8px; }
+  .galeria-miniaturas img { width:64px; height:64px; object-fit:cover; border-radius:8px; cursor:pointer; border:2px solid transparent; }
+  .galeria-miniaturas img.ativa { border-color:var(--brand-light); }
+  .produto-info h1 { font-size:26px; font-weight:800; color:var(--brand); margin-bottom:6px; }
+  .produto-info .marca { color:var(--text2); font-size:14px; margin-bottom:16px; }
+  .produto-preco { font-size:28px; font-weight:800; color:var(--brand-light); margin-bottom:20px; }
+  .opcao-grupo { margin-bottom:20px; }
+  .opcao-grupo label { display:block; font-size:13px; font-weight:700; color:var(--text2); margin-bottom:8px; }
+  .opcao-btns { display:flex; gap:8px; flex-wrap:wrap; }
+  .opcao-btn { padding:8px 16px; border:1.5px solid var(--border); border-radius:8px; background:#fff; cursor:pointer; font-size:14px; }
+  .opcao-btn.ativa { border-color:var(--brand-light); background:var(--bg2); font-weight:700; }
+  .produto-acoes { display:flex; gap:10px; margin-top:24px; }
+  .produto-acoes button, .produto-acoes a { flex:1; padding:14px; border:none; border-radius:var(--radius-sm); font-weight:700; cursor:pointer; text-align:center; text-decoration:none; }
+  .btn-comprar { background:var(--brand); color:#fff; }
+  .btn-negociar { background:#fff7e8; color:var(--accent2); border:1.5px solid var(--accent) !important; }
+  .produto-desc { margin-top:30px; font-size:14px; color:var(--text2); line-height:1.7; }
+  .relacionados { margin-top:60px; }
+  .relacionados h2 { font-size:20px; font-weight:800; color:var(--brand); margin-bottom:16px; }
+  .cards { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:16px; }
+</style>
 </head>
-
 <body>
 
-<header class="site-header">
-
-<h1>Kazolau Services</h1>
-
-<nav>
-
-<a href="index.html">Início</a>
-<a href="index.html#servicos">Serviços</a>
-<a href="index.html#loja">Loja</a>
-<a href="index.html#contacto">Contacto</a>
-
-</nav>
-
+<!-- ⚠️ Cole aqui o seu <header>...</header> real -->
+<header style="background:var(--brand);padding:16px 5%;">
+  <a href="index.html" style="color:#fff;text-decoration:none;font-weight:700;">← Voltar</a>
+  <a href="loja.html" style="color:#fff;text-decoration:none;font-weight:700;margin-left:20px;">Loja</a>
 </header>
 
-<div id="breadcrumb"></div>
-
 <main>
+  <div id="produto-container">
+    <p style="text-align:center;color:var(--text2);padding:60px 0;">A carregar produto...</p>
+  </div>
 
-<div id="produto-container">
-
-    <div class="carregando">
-
-        <h2>A carregar produto...</h2>
-
-        <p>Aguarde alguns segundos.</p>
-
-    </div>
-
-</div>
-<section id="relacionados-section" style="display:none;">
-
-<h2 class="titulo-relacionados">
-    Produtos Relacionados
-</h2>
-
-<div id="rel-grid"></div>
-
-</section>
-
+  <div class="relacionados">
+    <h2>Também pode gostar</h2>
+    <div id="relacionados-grid" class="cards"></div>
+  </div>
 </main>
 
-<footer>
-
-<p>© Kazolau Services</p>
-
+<footer style="padding:30px 5%;text-align:center;color:var(--text2);font-size:13px;">
+  © 2026 Kazolau Services
 </footer>
 
-<script src="produto.js"></script>
+<script src="app.js"></script>
+<script src="carrinho.js"></script>
+<script src="favoritos.js"></script>
+<script src="catalogo.js"></script>
+
+<script>
+  let produtoAtual = null;
+  let selecao = {}; // ex: { cor: 'azul', capacidade: '128GB' } ou { tamanho: '41' }
+
+  function variantePorSelecao() {
+    return produtoAtual.variantes.find(v =>
+      Object.keys(selecao).every(chave => v[chave] === selecao[chave])
+    );
+  }
+
+  function imagemAtual() {
+    const chaveCor = selecao.cor;
+    if (chaveCor && produtoAtual.imagens[chaveCor]) return produtoAtual.imagens[chaveCor];
+    const primeiraChave = Object.keys(produtoAtual.imagens)[0];
+    return produtoAtual.imagens[primeiraChave];
+  }
+
+  function renderizar() {
+    const variante = variantePorSelecao();
+    const preco = variante ? variante.preco : Kazolau.precoMinimo(produtoAtual);
+    const imagens = imagemAtual();
+
+    document.title = produtoAtual.nome + " — Kazolau Services";
+
+    const html = `
+      <div class="produto-topo">
+        <div>
+          <div class="galeria-principal">
+            <img id="img-principal" src="${imagens[0]}" alt="${produtoAtual.nome}">
+          </div>
+          <div class="galeria-miniaturas">
+            ${imagens.map((img, i) => `<img src="${img}" class="${i === 0 ? 'ativa' : ''}" onclick="trocarImagem('${img}', this)">`).join("")}
+          </div>
+        </div>
+        <div class="produto-info">
+          <h1>${produtoAtual.nome}</h1>
+          <div class="marca">${produtoAtual.marca || ""} · ${produtoAtual.estado || ""}</div>
+          <div class="produto-preco">${Kazolau.formatarPreco(preco)}</div>
+
+          ${produtoAtual.atributos.cores ? `
+            <div class="opcao-grupo">
+              <label>Cor</label>
+              <div class="opcao-btns">
+                ${produtoAtual.atributos.cores.map(cor => `
+                  <button class="opcao-btn ${selecao.cor === cor ? 'ativa' : ''}" onclick="selecionar('cor', '${cor}')">${cor}</button>
+                `).join("")}
+              </div>
+            </div>` : ""}
+
+          ${produtoAtual.atributos.capacidades ? `
+            <div class="opcao-grupo">
+              <label>Capacidade</label>
+              <div class="opcao-btns">
+                ${produtoAtual.atributos.capacidades.map(cap => `
+                  <button class="opcao-btn ${selecao.capacidade === cap ? 'ativa' : ''}" onclick="selecionar('capacidade', '${cap}')">${cap}</button>
+                `).join("")}
+              </div>
+            </div>` : ""}
+
+          ${produtoAtual.atributos.tamanhos ? `
+            <div class="opcao-grupo">
+              <label>Tamanho</label>
+              <div class="opcao-btns">
+                ${produtoAtual.atributos.tamanhos.map(tam => `
+                  <button class="opcao-btn ${selecao.tamanho === tam ? 'ativa' : ''}" onclick="selecionar('tamanho', '${tam}')">${tam}</button>
+                `).join("")}
+              </div>
+            </div>` : ""}
+
+          <div class="produto-acoes">
+            <button class="btn-comprar" onclick="adicionarAoCarrinho()">Adicionar ao carrinho</button>
+            <button class="btn-negociar" onclick="Catalogo.abrirNegociacao('${produtoAtual.id}', '${produtoAtual.nome}', ${preco})">Negociar</button>
+          </div>
+
+          <p class="produto-desc">${produtoAtual.descricao}</p>
+        </div>
+      </div>`;
+
+    document.getElementById("produto-container").innerHTML = html;
+  }
+
+  function trocarImagem(src, el) {
+    document.getElementById("img-principal").src = src;
+    document.querySelectorAll(".galeria-miniaturas img").forEach(img => img.classList.remove("ativa"));
+    el.classList.add("ativa");
+  }
+
+  function selecionar(chave, valor) {
+    selecao[chave] = valor;
+    renderizar();
+  }
+
+  function adicionarAoCarrinho() {
+    const variante = variantePorSelecao();
+    const preco = variante ? variante.preco : Kazolau.precoMinimo(produtoAtual);
+    Carrinho.adicionar(produtoAtual.id, produtoAtual.nome, preco, imagemAtual()[0], selecao);
+    alert("Adicionado ao carrinho!");
+  }
+
+  async function iniciar() {
+    const id = Kazolau.getParam("id");
+    const produtos = await Kazolau.carregarJSON("produtos.json");
+    produtoAtual = produtos.find(p => p.id === id);
+
+    if (!produtoAtual) {
+      document.getElementById("produto-container").innerHTML = `<p style="text-align:center;padding:60px 0;">Produto não encontrado.</p>`;
+      return;
+    }
+
+    // Pré-seleciona a primeira opção de cada atributo
+    if (produtoAtual.atributos.cores) selecao.cor = produtoAtual.atributos.cores[0];
+    if (produtoAtual.atributos.capacidades) selecao.capacidade = produtoAtual.atributos.capacidades[0];
+    if (produtoAtual.atributos.tamanhos) selecao.tamanho = produtoAtual.atributos.tamanhos[0];
+
+    renderizar();
+
+    // Produtos relacionados: mesma categoria, excluindo o atual
+    const relacionados = produtos.filter(p => p.categoria === produtoAtual.categoria && p.id !== produtoAtual.id).slice(0, 4);
+    document.getElementById("relacionados-grid").innerHTML = relacionados.map(Catalogo.cartaoProduto).join("");
+  }
+
+  document.addEventListener("DOMContentLoaded", iniciar);
+</script>
 
 </body>
-
 </html>
