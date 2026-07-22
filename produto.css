@@ -161,3 +161,42 @@ footer{
 }
 
 }
+.carregando{
+    text-align:center;
+    padding:80px;
+}
+
+.carregando h2{
+    color:#0b3b75;
+}
+
+.titulo-relacionados{
+    font-size:30px;
+    margin-bottom:25px;
+    color:#0b3b75;
+    text-align:center;
+}
+
+.produto-marca{
+    font-size:18px;
+    color:#666;
+}
+
+.produto-garantia{
+    display:inline-block;
+    margin-top:15px;
+    padding:8px 14px;
+    background:#eef7ee;
+    color:#1b7f3b;
+    border-radius:20px;
+    font-weight:bold;
+}
+
+.produto-info-badge{
+    display:inline-block;
+    background:#0b3b75;
+    color:#fff;
+    padding:8px 14px;
+    border-radius:20px;
+    margin-bottom:15px;
+}
