@@ -58,6 +58,18 @@ function abrirWhatsApp(mensagem) {
   window.open(linkWhatsApp(mensagem), "_blank");
 }
 
+function obterTelefoneCliente() {
+  let tel = localStorage.getItem("kazolau_telefone_cliente");
+  if (!tel) {
+    tel = prompt("Qual é o teu número de WhatsApp? (para poderes acompanhar este pedido em 'Os Meus Pedidos')");
+    if (tel && tel.trim()) {
+      tel = tel.trim();
+      localStorage.setItem("kazolau_telefone_cliente", tel);
+    }
+  }
+  return tel || "";
+}
+
 /* ================= CARRINHO ================= */
 const Carrinho = {
   obter() {
@@ -177,8 +189,8 @@ const Carrinho = {
       resumo += linha + "\n";
     });
     msg += `\nTotal estimado: ${formatKz(Carrinho.total())}\n\nAguardo confirmação, obrigado!`;
-    if (typeof criarPedido === "function") {
-      criarPedido({ tipo: "loja", itens, total: Carrinho.total(), resumo: resumo.trim() });
+    if (typeof criarPedido === "function" && typeof KZ_USER !== "undefined" && KZ_USER) {
+      criarPedido({ tipo: "loja", itens, total: Carrinho.total(), resumo: resumo.trim(), telefone: obterTelefoneCliente() });
     }
     abrirWhatsApp(msg);
   }
@@ -192,6 +204,14 @@ const Favoritos = {
   },
   guardar(lista) {
     localStorage.setItem(KAZOLAU.FAV_KEY, JSON.stringify(lista));
+    Favoritos.atualizarBadge();
+  },
+  atualizarBadge() {
+    document.querySelectorAll(".fav-count").forEach(b => {
+      const n = Favoritos.obter().length;
+      b.textContent = n;
+      b.style.display = n > 0 ? "flex" : "none";
+    });
   },
   alternar(produtoId) {
     let lista = Favoritos.obter();
@@ -244,6 +264,14 @@ function enviarNegociacao(ev) {
     `Preço de tabela: ${precoTabela ? formatKz(precoTabela) : "sob consulta"}\n` +
     `Minha oferta: ${formatKz(oferta)}\n\n` +
     `Nome: ${nome}\nWhatsApp: ${whatsapp}`;
+  if (typeof criarPedido === "function" && typeof KZ_USER !== "undefined" && KZ_USER) {
+    criarPedido({
+      tipo: "negociacao",
+      resumo: `Negociação: ${produtoEmNegociacao.nome}\nPreço de tabela: ${precoTabela ? formatKz(precoTabela) : "sob consulta"}\nOferta: ${formatKz(oferta)}`,
+      total: Number(oferta) || 0,
+      telefone: whatsapp,
+    });
+  }
   abrirWhatsApp(msg);
   fecharNegociar();
 }
@@ -253,17 +281,34 @@ function comprarAgora(produto, variante = {}) {
   const varTxt = Object.values(variante).filter(Boolean).join(", ");
   const preco = produto.preco_final ?? produto.preco;
   const msg = `Olá! Quero comprar:\n\n• ${produto.nome}${varTxt ? " (" + varTxt + ")" : ""}\n${preco ? "Preço: " + formatKz(preco) : "Preço: sob consulta"}\n\nPor favor confirmem disponibilidade e forma de entrega. Obrigado!`;
+  if (typeof criarPedido === "function" && typeof KZ_USER !== "undefined" && KZ_USER) {
+    criarPedido({
+      tipo: "loja",
+      itens: [{ nome: produto.nome, variante, qtd: 1, preco: preco || null }],
+      total: preco || 0,
+      resumo: `• ${produto.nome}${varTxt ? " (" + varTxt + ")" : ""}${preco ? " — " + formatKz(preco) : ""}`,
+      telefone: obterTelefoneCliente(),
+    });
+  }
   abrirWhatsApp(msg);
 }
 
 function solicitarServico(servico) {
   const msg = `Olá! Gostaria de solicitar o serviço "${servico.nome}".\n${servico.preco ? "Valor de referência: " + formatKz(servico.preco) : ""}\n\nPor favor enviem mais informações.`;
+  if (typeof criarPedido === "function" && typeof KZ_USER !== "undefined" && KZ_USER) {
+    criarPedido({
+      tipo: "servico",
+      resumo: `Serviço: ${servico.nome}${servico.preco ? " — " + formatKz(servico.preco) : ""}`,
+      telefone: obterTelefoneCliente(),
+    });
+  }
   abrirWhatsApp(msg);
 }
 
 /* ================= HEADER / MENU ================= */
 function initHeader() {
   Carrinho.atualizarBadge();
+  Favoritos.atualizarBadge();
   Favoritos.marcarAtivos();
 
   document.getElementById("nav-toggle")?.addEventListener("click", () => {
