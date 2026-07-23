@@ -6,24 +6,23 @@
    ============================================================ */
 
 let KZ_USER = null;
+let kzLoginEmAndamento = false;
 
 function loginGoogle() {
+  if (kzLoginEmAndamento) return;
+  kzLoginEmAndamento = true;
   const provider = new firebase.auth.GoogleAuthProvider();
-  auth.signInWithRedirect(provider).catch(err => {
-    console.error(err);
-    toast("Não foi possível entrar. Tenta novamente.");
-  });
+  auth.signInWithPopup(provider)
+    .catch(err => {
+      console.error(err);
+      if (err.code === "auth/popup-blocked") {
+        toast("O navegador bloqueou a janela de login. Permite popups para este site e tenta novamente.");
+      } else if (err.code !== "auth/popup-closed-by-user" && err.code !== "auth/cancelled-popup-request") {
+        toast("Não foi possível entrar. Tenta novamente.");
+      }
+    })
+    .finally(() => { kzLoginEmAndamento = false; });
 }
-
-// Depois de regressar do ecrã de login do Google, o Firebase processa
-// o resultado automaticamente e dispara onAuthStateChanged — isto aqui
-// serve só para mostrar um aviso claro se algo correr mal no processo.
-auth.getRedirectResult().catch(err => {
-  if (err && err.code && err.code !== "auth/no-auth-event") {
-    console.error(err);
-    toast("Não foi possível entrar. Tenta novamente.");
-  }
-});
 
 function logoutGoogle() {
   auth.signOut();
