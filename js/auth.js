@@ -43,13 +43,15 @@ function initAccountButton() {
     const btn = document.getElementById("account-btn");
     if (!btn) return;
     if (user) {
+      btn.classList.remove("account-btn-highlight");
       btn.title = `Os meus pedidos — ${user.displayName || user.email}`;
       btn.innerHTML = user.photoURL
         ? `<img src="${user.photoURL}" alt="" style="width:26px;height:26px;border-radius:50%;object-fit:cover">`
         : "🙂";
     } else {
+      btn.classList.add("account-btn-highlight");
       btn.title = "Entrar com Google";
-      btn.innerHTML = "👤";
+      btn.innerHTML = `👤 <span>Entrar</span>`;
     }
   });
 
