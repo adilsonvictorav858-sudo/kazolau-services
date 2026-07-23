@@ -18,13 +18,14 @@ const ESTADOS_PEDIDO = {
 /* Cria um pedido associado ao utilizador com sessão iniciada.
    Se ninguém tiver sessão iniciada, não faz nada (silenciosamente) —
    o fluxo por WhatsApp continua a funcionar na mesma. */
-async function criarPedido({ tipo, itens, total, resumo }) {
+async function criarPedido({ tipo, itens, total, resumo, telefone }) {
   if (!KZ_USER) return null;
   try {
     const doc = await db.collection("pedidos").add({
       uid: KZ_USER.uid,
       clienteNome: KZ_USER.displayName || "",
       clienteEmail: KZ_USER.email || "",
+      telefone: telefone || "",
       tipo,               // "loja" ou "servico"
       itens: itens || [],
       total: total || 0,
@@ -44,6 +45,19 @@ function formatarData(timestamp) {
   if (!timestamp) return "";
   const d = timestamp.toDate ? timestamp.toDate() : new Date(timestamp);
   return d.toLocaleDateString("pt-PT", { day: "2-digit", month: "short", year: "numeric" });
+}
+
+function pedidosOcultos() {
+  try { return JSON.parse(localStorage.getItem("kazolau_pedidos_ocultos")) || []; }
+  catch { return []; }
+}
+
+function ocultarPedido(id) {
+  const lista = pedidosOcultos();
+  if (!lista.includes(id)) lista.push(id);
+  localStorage.setItem("kazolau_pedidos_ocultos", JSON.stringify(lista));
+  const el = document.getElementById(`pedido-${id}`);
+  if (el) el.remove();
 }
 
 /* ---------- Página "Os meus pedidos" ---------- */
@@ -75,7 +89,12 @@ function carregarPedidosDoCliente(uid, container) {
         container.innerHTML = `<div class="empty-state"><div class="emoji">📦</div><p>Ainda não tens pedidos.<br>Explora a loja ou solicita um serviço.</p><a href="loja.html" class="btn btn-navy" style="margin-top:14px">Ir à loja</a></div>`;
         return;
       }
-      const pedidos = snap.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+      const ocultos = pedidosOcultos();
+      const pedidos = snap.docs.map(doc => ({ id: doc.id, ...doc.data() })).filter(p => !ocultos.includes(p.id));
+      if (!pedidos.length) {
+        container.innerHTML = `<div class="empty-state"><div class="emoji">📦</div><p>Ainda não tens pedidos.<br>Explora a loja ou solicita um serviço.</p><a href="loja.html" class="btn btn-navy" style="margin-top:14px">Ir à loja</a></div>`;
+        return;
+      }
       pedidos.sort((a, b) => {
         const ta = a.criadoEm?.toMillis ? a.criadoEm.toMillis() : 0;
         const tb = b.criadoEm?.toMillis ? b.criadoEm.toMillis() : 0;
@@ -92,8 +111,9 @@ function carregarPedidosDoCliente(uid, container) {
 function cardPedido(id, p) {
   const estado = ESTADOS_PEDIDO[p.estado] || ESTADOS_PEDIDO.pendente;
   const msg = `Olá! Gostaria de falar sobre o meu pedido #${id.slice(0, 6).toUpperCase()} (${p.tipo === "loja" ? "Loja" : "Serviço"}).\n\n${p.resumo || ""}\n\nEstado atual: ${estado.label}`;
+  const podeRemover = p.estado === "entregue" || p.estado === "cancelado";
   return `
-    <div class="card" style="flex-direction:row;align-items:center;gap:16px;padding:18px;margin-bottom:14px">
+    <div class="card" id="pedido-${id}" style="flex-direction:row;align-items:center;gap:16px;padding:18px;margin-bottom:14px">
       <div style="flex:1">
         <div style="display:flex;align-items:center;gap:10px;margin-bottom:6px">
           <strong>Pedido #${id.slice(0, 6).toUpperCase()}</strong>
@@ -103,7 +123,10 @@ function cardPedido(id, p) {
         <div style="font-size:14px;white-space:pre-line">${p.resumo || ""}</div>
         ${p.total ? `<div style="font-weight:700;margin-top:8px">${formatKz(p.total)}</div>` : ""}
       </div>
-      <a class="btn btn-outline-navy btn-sm" href="${linkWhatsApp(msg)}" target="_blank">💬 Falar sobre este pedido</a>
+      <div style="display:flex;flex-direction:column;gap:8px;align-items:stretch">
+        <a class="btn btn-outline-navy btn-sm" href="${linkWhatsApp(msg)}" target="_blank">💬 Falar sobre este pedido</a>
+        ${podeRemover ? `<button class="btn btn-outline-navy btn-sm" style="color:#d1394a;border-color:#d1394a" onclick="ocultarPedido('${id}')">Remover da lista</button>` : ""}
+      </div>
     </div>
   `;
 }
