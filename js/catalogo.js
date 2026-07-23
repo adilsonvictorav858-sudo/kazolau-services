@@ -26,6 +26,46 @@ function renderCategorias(containerId = "categorias-grid") {
   `).join("");
 }
 
+/* ---------- Catálogo unificado: produtos.json + produtos adicionados no painel admin ---------- */
+async function carregarProdutosExtra() {
+  if (typeof db === "undefined") return [];
+  try {
+    const snap = await db.collection("produtos_extra").get();
+    return snap.docs.map(doc => {
+      const d = doc.data();
+      return {
+        id: "extra-" + doc.id,
+        _extraId: doc.id,
+        categoria: d.categoria,
+        nome: d.nome,
+        marca: d.marca || "",
+        descricao: d.descricao || "",
+        imagens: d.imagem ? [d.imagem] : [],
+        atributos: [],
+        combinacoes: [{ preco: d.preco ?? null }],
+        preco_min: d.preco ?? null,
+        preco_max: d.preco ?? null,
+        garantia: d.garantia || null,
+        estado: d.estado || "novo",
+        etiquetas: [d.nome, d.marca, d.categoria].filter(Boolean).map(s => s.toLowerCase()),
+        negociavel: d.negociavel !== false,
+        stock: d.stock ?? 1,
+      };
+    });
+  } catch (err) {
+    console.error("Erro ao carregar produtos extra:", err);
+    return [];
+  }
+}
+
+async function carregarTodosProdutos() {
+  const [base, extra] = await Promise.all([
+    carregarJSON("produtos.json"),
+    carregarProdutosExtra(),
+  ]);
+  return [...base, ...extra];
+}
+
 /* ---------- Preço a partir das combinações ---------- */
 function faixaPreco(p) {
   const precos = (p.combinacoes || []).map(c => c.preco).filter(n => typeof n === "number");
@@ -107,7 +147,7 @@ async function renderDestaquesHome() {
     elServ.innerHTML = destaque.map(cardServico).join("");
   }
   if (elProd) {
-    const produtos = await carregarJSON("produtos.json");
+    const produtos = await carregarTodosProdutos();
     const destaque = produtos.slice(0, 3);
     elProd.innerHTML = destaque.map(cardProduto).join("");
   }
@@ -120,7 +160,7 @@ let TODOS_PRODUTOS = [];
 async function initLoja() {
   const grid = document.getElementById("products-grid");
   if (!grid) return;
-  TODOS_PRODUTOS = await carregarJSON("produtos.json");
+  TODOS_PRODUTOS = await carregarTodosProdutos();
 
   const params = new URLSearchParams(window.location.search);
   const categoriaUrl = params.get("categoria");
