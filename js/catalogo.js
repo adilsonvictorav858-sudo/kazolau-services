@@ -26,31 +26,51 @@ function renderCategorias(containerId = "categorias-grid") {
   `).join("");
 }
 
+/* ---------- Preço a partir das combinações ---------- */
+function faixaPreco(p) {
+  const precos = (p.combinacoes || []).map(c => c.preco).filter(n => typeof n === "number");
+  if (!precos.length) return { min: null, max: null };
+  return { min: Math.min(...precos), max: Math.max(...precos) };
+}
+
+function comboMaisBarato(p) {
+  if (!p.combinacoes || !p.combinacoes.length) return null;
+  return p.combinacoes.reduce((a, b) => (a.preco <= b.preco ? a : b));
+}
+
+/* Objeto "produto-like" com o preço já resolvido, para reutilizar comprarAgora/abrirNegociar/Carrinho.adicionar */
+function produtoComPreco(p, combo) {
+  const { preco, ...variante } = combo || {};
+  return {
+    produto: { id: p.id, nome: p.nome, imagens: p.imagens, preco_final: preco ?? faixaPreco(p).min },
+    variante
+  };
+}
+
 /* ---------- Cartão de produto ---------- */
 function cardProduto(p) {
-  const precoAtual = p.preco_final ?? p.preco_inicial;
-  const temDesconto = p.preco_inicial && p.preco_final && p.preco_inicial > p.preco_final;
+  const { min, max } = faixaPreco(p);
+  const precoTxt = min === null ? "Preço a negociar 🤝" : (min === max ? formatKz(min) : `A partir de ${formatKz(min)}`);
   const img = (p.imagens && p.imagens[0]) || "";
-  const stockTxt = p.stock === 0 ? '<span class="stock-tag out">Esgotado</span>' : (p.stock <= 2 ? `<span class="stock-tag low">Últimas ${p.stock} unid.</span>` : `<span class="stock-tag ok">Em stock</span>`);
+  const combo = comboMaisBarato(p);
+  const { produto: pProduto, variante } = produtoComPreco(p, combo);
+  const stockTxt = p.stock === 0 ? '<span class="stock-tag out">Esgotado</span>' : (p.stock && p.stock <= 2 ? `<span class="stock-tag low">Últimas ${p.stock} unid.</span>` : '<span class="stock-tag ok">Em stock</span>');
   return `
     <div class="card" data-produto-id="${p.id}">
       <div class="card-media">
-        ${temDesconto ? `<span class="card-badge badge-gold">-${Math.round(100 - (p.preco_final / p.preco_inicial) * 100)}%</span>` : (p.estado === "novo" ? `<span class="card-badge">Novo</span>` : "")}
+        ${p.estado === "novo" ? `<span class="card-badge">Novo</span>` : ""}
         <button class="card-fav" data-id="${p.id}" title="Favoritos">♥</button>
         <a href="produto.html?id=${p.id}"><img src="${img}" alt="${p.nome}" loading="lazy" onerror="this.closest('.card-media').style.background='var(--bg-alt)'"></a>
       </div>
       <div class="card-body">
         <a href="produto.html?id=${p.id}"><h3>${p.nome}</h3></a>
         <div class="card-sub">${p.marca || ""}${p.marca ? " · " : ""}${p.descricao ? p.descricao.slice(0, 40) + (p.descricao.length > 40 ? "…" : "") : ""}</div>
-        <div class="card-price-row">
-          <span class="card-price">${precoAtual ? formatKz(precoAtual) : "Preço a negociar 🤝"}</span>
-          ${temDesconto ? `<span class="card-price-old">${formatKz(p.preco_inicial)}</span>` : ""}
-        </div>
+        <div class="card-price-row"><span class="card-price">${precoTxt}</span></div>
         ${stockTxt}
         <div class="card-actions">
-          <button class="btn btn-orange" onclick='comprarAgora(${JSON.stringify(p).replace(/'/g, "&#39;")})'>Comprar</button>
-          <button class="btn btn-outline-navy btn-icon-only" title="Negociar" onclick='abrirNegociar(${JSON.stringify(p).replace(/'/g, "&#39;")})'>🤝</button>
-          <button class="btn btn-outline-navy btn-icon-only" title="Adicionar ao carrinho" onclick='Carrinho.adicionar(${JSON.stringify(p).replace(/'/g, "&#39;")})'>🛒</button>
+          <a class="btn btn-orange" href="produto.html?id=${p.id}">Ver Detalhes</a>
+          <button class="btn btn-outline-navy btn-icon-only" title="Negociar" onclick='abrirNegociar(${JSON.stringify(pProduto).replace(/'/g, "&#39;")})'>🤝</button>
+          <button class="btn btn-outline-navy btn-icon-only" title="Adicionar ao carrinho" onclick='Carrinho.adicionar(${JSON.stringify(pProduto).replace(/'/g, "&#39;")}, ${JSON.stringify(variante).replace(/'/g, "&#39;")})'>🛒</button>
         </div>
       </div>
     </div>
@@ -156,9 +176,6 @@ function aplicarFiltros() {
   const marcasSelecionadas = [...document.querySelectorAll(".filtro-marca:checked")].map(c => c.value);
   if (marcasSelecionadas.length) lista = lista.filter(p => marcasSelecionadas.includes(p.marca));
 
-  const promoOnly = document.getElementById("filtro-promocao")?.checked;
-  if (promoOnly) lista = lista.filter(p => p.preco_inicial && p.preco_final && p.preco_inicial > p.preco_final);
-
   const busca = document.getElementById("busca-loja")?.value?.trim().toLowerCase();
   if (busca) {
     lista = lista.filter(p => [p.nome, p.marca, p.categoria, p.descricao, ...(p.etiquetas || [])]
@@ -166,8 +183,8 @@ function aplicarFiltros() {
   }
 
   const ordenar = document.getElementById("ordenar")?.value;
-  if (ordenar === "preco-asc") lista.sort((a, b) => (a.preco_final || 0) - (b.preco_final || 0));
-  if (ordenar === "preco-desc") lista.sort((a, b) => (b.preco_final || 0) - (a.preco_final || 0));
+  if (ordenar === "preco-asc") lista.sort((a, b) => (faixaPreco(a).min || 0) - (faixaPreco(b).min || 0));
+  if (ordenar === "preco-desc") lista.sort((a, b) => (faixaPreco(b).min || 0) - (faixaPreco(a).min || 0));
   if (ordenar === "nome") lista.sort((a, b) => a.nome.localeCompare(b.nome));
 
   const grid = document.getElementById("products-grid");

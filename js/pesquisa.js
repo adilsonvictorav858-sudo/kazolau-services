@@ -20,11 +20,15 @@ async function initPesquisaHero() {
 
     const prod = produtos.filter(p => [p.nome, p.marca, p.categoria, p.descricao, ...(p.etiquetas || [])]
       .join(" ").toLowerCase().includes(termo)).slice(0, 4)
-      .map(p => `
+      .map(p => {
+        const { min, max } = faixaPreco(p);
+        const precoTxt = min === null ? "Sob consulta" : (min === max ? formatKz(min) : `A partir de ${formatKz(min)}`);
+        return `
         <a class="search-result-item" href="produto.html?id=${p.id}">
           <img src="${(p.imagens && p.imagens[0]) || ''}" alt="" onerror="this.style.opacity=0">
-          <div class="info"><strong>${p.nome}</strong><span>Loja · ${p.preco_final ? formatKz(p.preco_final) : "Sob consulta"}</span></div>
-        </a>`);
+          <div class="info"><strong>${p.nome}</strong><span>Loja · ${precoTxt}</span></div>
+        </a>`;
+      });
 
     const serv = servicos.filter(s => [s.nome, s.categoria, s.descricao].join(" ").toLowerCase().includes(termo)).slice(0, 4)
       .map(s => `

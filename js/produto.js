@@ -1,6 +1,8 @@
 /* ============================================================
    KAZOLAU SERVICES — produto.js
    produto.html?id=... carrega tudo automaticamente do produtos.json
+   Preço varia conforme a combinação de atributos escolhida (cor,
+   armazenamento, tamanho, etc.) — tal como definido em "combinacoes".
    ============================================================ */
 
 async function initProduto() {
@@ -19,53 +21,52 @@ async function initProduto() {
 
   document.title = `${produto.nome} — Kazolau Services`;
 
-  const variante = {};
-  if (produto.variantes?.cor?.length) variante.cor = produto.variantes.cor[0].nome;
-  if (produto.variantes?.capacidade?.length) variante.capacidade = produto.variantes.capacidade[0].nome;
-  if (produto.variantes?.tamanho?.length) variante.tamanho = produto.variantes.tamanho[0].nome;
+  const atributos = produto.atributos || [];
+  const selecao = {};
+  atributos.forEach(a => { selecao[a.nome] = a.opcoes[0]; });
 
-  function precoAtual() {
-    if (produto.variantes?.capacidade) {
-      const cap = produto.variantes.capacidade.find(c => c.nome === variante.capacidade);
-      if (cap?.preco) return cap.preco;
-    }
-    return produto.preco_final ?? produto.preco_inicial;
-  }
-
-  function imagemAtual() {
-    if (produto.variantes?.cor) {
-      const cor = produto.variantes.cor.find(c => c.nome === variante.cor);
-      if (cor?.imagem) return cor.imagem;
-    }
-    return produto.imagens?.[0] || "";
+  function comboAtual() {
+    return (produto.combinacoes || []).find(c =>
+      atributos.every(a => c[a.nome] === selecao[a.nome])
+    );
   }
 
   function render() {
-    const preco = precoAtual();
+    const combo = comboAtual();
+    const { min, max } = faixaPreco(produto);
+    const precoTxt = combo
+      ? formatKz(combo.preco)
+      : (min === max ? formatKz(min) : `A partir de ${formatKz(min)}`);
+
     container.innerHTML = `
       <div class="breadcrumbs"><a href="index.html">Início</a> / <a href="loja.html?categoria=${produto.categoria}">${produto.categoria}</a> / ${produto.nome}</div>
       <div class="product-view">
         <div>
-          <div class="gallery-main"><img id="gm-img" src="${imagemAtual()}" alt="${produto.nome}"></div>
-          ${produto.imagens?.length > 1 ? `<div class="gallery-thumbs">${produto.imagens.map((img, i) => `<img src="${img}" class="${img === imagemAtual() ? 'active' : ''}" onclick="document.getElementById('gm-img').src='${img}'; document.querySelectorAll('.gallery-thumbs img').forEach(t=>t.classList.remove('active')); this.classList.add('active')">`).join("")}</div>` : ""}
+          <div class="gallery-main"><img id="gm-img" src="${produto.imagens?.[0] || ''}" alt="${produto.nome}"></div>
+          ${produto.imagens?.length > 1 ? `<div class="gallery-thumbs">${produto.imagens.map((img, i) => `<img src="${img}" class="${i === 0 ? 'active' : ''}" onclick="document.getElementById('gm-img').src='${img}'; document.querySelectorAll('.gallery-thumbs img').forEach(t=>t.classList.remove('active')); this.classList.add('active')">`).join("")}</div>` : ""}
         </div>
         <div class="product-info">
           <h1>${produto.nome}</h1>
-          <div class="brand">${produto.marca || ""} ${produto.atributos?.estado ? "· " + produto.atributos.estado : ""} ${produto.atributos?.garantia ? "· Garantia " + produto.atributos.garantia : ""}</div>
+          <div class="brand">${produto.marca || ""} ${produto.estado ? "· " + (produto.estado === "usado" ? "Usado - bom estado" : "Novo") : ""} ${produto.garantia ? "· Garantia " + produto.garantia : ""}</div>
           <div class="price-block">
-            <span class="price">${preco ? formatKz(preco) : "Preço a negociar 🤝"}</span>
-            ${produto.preco_inicial && produto.preco_final && produto.preco_inicial > produto.preco_final ? `<span class="card-price-old">${formatKz(produto.preco_inicial)}</span>` : ""}
+            <span class="price">${precoTxt}</span>
           </div>
-          ${produto.stock !== undefined ? `<div>${produto.stock === 0 ? '<span class="stock-tag out">Esgotado</span>' : produto.stock <= 2 ? `<span class="stock-tag low">Últimas ${produto.stock} unidades</span>` : '<span class="stock-tag ok">Em stock</span>'}</div>` : ""}
 
-          ${produto.variantes?.cor ? `<div class="option-group"><h4>Cor</h4><div class="option-pills">${produto.variantes.cor.map(c => `<button class="option-pill ${c.nome === variante.cor ? 'active' : ''}" data-tipo="cor" data-valor="${c.nome}">${c.nome}</button>`).join("")}</div></div>` : ""}
-          ${produto.variantes?.capacidade ? `<div class="option-group"><h4>Capacidade</h4><div class="option-pills">${produto.variantes.capacidade.map(c => `<button class="option-pill ${c.nome === variante.capacidade ? 'active' : ''}" data-tipo="capacidade" data-valor="${c.nome}">${c.nome}</button>`).join("")}</div></div>` : ""}
-          ${produto.variantes?.tamanho ? `<div class="option-group"><h4>Tamanho</h4><div class="option-pills">${produto.variantes.tamanho.map(t => `<button class="option-pill ${t.nome === variante.tamanho ? 'active' : ''}" data-tipo="tamanho" data-valor="${t.nome}">${t.nome}</button>`).join("")}</div></div>` : ""}
+          ${atributos.map(a => `
+            <div class="option-group">
+              <h4>${a.rotulo}</h4>
+              <div class="option-pills">
+                ${a.opcoes.map(op => `<button class="option-pill ${selecao[a.nome] === op ? 'active' : ''}" data-tipo="${a.nome}" data-valor="${op}">${op}</button>`).join("")}
+              </div>
+            </div>
+          `).join("")}
+
+          ${!combo ? `<div class="note-box" style="background:#fff0f0;border:1px solid #f3b8bd;border-radius:10px;padding:12px 14px;font-size:13.5px;margin-bottom:14px">⚠️ Esta combinação não está disponível no momento. Escolha outra opção ou fale connosco no WhatsApp.</div>` : ""}
 
           <div class="card-actions" style="margin-top:6px">
-            <button class="btn btn-orange" id="btn-comprar">Comprar</button>
-            <button class="btn btn-outline-navy" id="btn-negociar">🤝 Negociar</button>
-            <button class="btn btn-outline-navy btn-icon-only" id="btn-add-carrinho" title="Adicionar ao carrinho">🛒</button>
+            <button class="btn btn-orange" id="btn-comprar" ${!combo ? "disabled" : ""}>Comprar</button>
+            <button class="btn btn-outline-navy" id="btn-negociar" ${!combo ? "disabled" : ""}>🤝 Negociar</button>
+            <button class="btn btn-outline-navy btn-icon-only" id="btn-add-carrinho" title="Adicionar ao carrinho" ${!combo ? "disabled" : ""}>🛒</button>
             <button class="btn btn-outline-navy btn-icon-only card-fav" data-id="${produto.id}" title="Favoritos">♥</button>
           </div>
 
@@ -76,14 +77,18 @@ async function initProduto() {
 
     document.querySelectorAll(".option-pill").forEach(pill => {
       pill.addEventListener("click", () => {
-        variante[pill.dataset.tipo] = pill.dataset.valor;
+        selecao[pill.dataset.tipo] = pill.dataset.valor;
         render();
       });
     });
 
-    document.getElementById("btn-comprar").addEventListener("click", () => comprarAgora(produto, variante));
-    document.getElementById("btn-negociar").addEventListener("click", () => abrirNegociar(produto));
-    document.getElementById("btn-add-carrinho").addEventListener("click", () => Carrinho.adicionar(produto, variante));
+    const comboFinal = comboAtual();
+    if (comboFinal) {
+      const produtoComPrecoObj = { id: produto.id, nome: produto.nome, imagens: produto.imagens, preco_final: comboFinal.preco };
+      document.getElementById("btn-comprar").addEventListener("click", () => comprarAgora(produtoComPrecoObj, selecao));
+      document.getElementById("btn-negociar").addEventListener("click", () => abrirNegociar(produtoComPrecoObj));
+      document.getElementById("btn-add-carrinho").addEventListener("click", () => Carrinho.adicionar(produtoComPrecoObj, selecao));
+    }
     Favoritos.marcarAtivos();
   }
 

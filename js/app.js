@@ -160,11 +160,17 @@ const Carrinho = {
     const itens = Carrinho.obter();
     if (itens.length === 0) { toast("O carrinho está vazio"); return; }
     let msg = "Olá! Gostaria de finalizar esta encomenda na Kazolau Services:\n\n";
+    let resumo = "";
     itens.forEach(i => {
       const varTxt = Object.values(i.variante || {}).filter(Boolean).join(", ");
-      msg += `• ${i.nome}${varTxt ? " (" + varTxt + ")" : ""} — Qtd: ${i.qtd}${i.preco ? " — " + formatKz(i.preco * i.qtd) : ""}\n`;
+      const linha = `• ${i.nome}${varTxt ? " (" + varTxt + ")" : ""} — Qtd: ${i.qtd}${i.preco ? " — " + formatKz(i.preco * i.qtd) : ""}`;
+      msg += linha + "\n";
+      resumo += linha + "\n";
     });
     msg += `\nTotal estimado: ${formatKz(Carrinho.total())}\n\nAguardo confirmação, obrigado!`;
+    if (typeof criarPedido === "function") {
+      criarPedido({ tipo: "loja", itens, total: Carrinho.total(), resumo: resumo.trim() });
+    }
     abrirWhatsApp(msg);
   }
 };
