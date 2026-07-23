@@ -69,13 +69,19 @@ function initPaginaPedidos() {
 
 function carregarPedidosDoCliente(uid, container) {
   container.innerHTML = `<p style="color:var(--text-muted)">A carregar os teus pedidos...</p>`;
-  db.collection("pedidos").where("uid", "==", uid).orderBy("criadoEm", "desc").get()
+  db.collection("pedidos").where("uid", "==", uid).get()
     .then(snap => {
       if (snap.empty) {
         container.innerHTML = `<div class="empty-state"><div class="emoji">📦</div><p>Ainda não tens pedidos.<br>Explora a loja ou solicita um serviço.</p><a href="loja.html" class="btn btn-navy" style="margin-top:14px">Ir à loja</a></div>`;
         return;
       }
-      container.innerHTML = snap.docs.map(doc => cardPedido(doc.id, doc.data())).join("");
+      const pedidos = snap.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+      pedidos.sort((a, b) => {
+        const ta = a.criadoEm?.toMillis ? a.criadoEm.toMillis() : 0;
+        const tb = b.criadoEm?.toMillis ? b.criadoEm.toMillis() : 0;
+        return tb - ta;
+      });
+      container.innerHTML = pedidos.map(p => cardPedido(p.id, p)).join("");
     })
     .catch(err => {
       console.error(err);

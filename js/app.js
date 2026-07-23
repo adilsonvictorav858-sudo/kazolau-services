@@ -27,6 +27,15 @@ async function carregarJSON(caminho) {
   }
 }
 
+function escapeAttr(str) {
+  return String(str)
+    .replace(/&/g, "&amp;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;");
+}
+
 function toast(msg) {
   let el = document.getElementById("kz-toast");
   if (!el) {
@@ -136,13 +145,13 @@ const Carrinho = {
           <div class="ci-meta">${Object.values(i.variante || {}).filter(Boolean).join(" · ") || "&nbsp;"}</div>
           <div class="ci-price">${i.preco ? formatKz(i.preco * i.qtd) : "Sob consulta"}</div>
           <div class="qty-control">
-            <button onclick="Carrinho.alterarQtd('${i.chave}', -1)">−</button>
+            <button class="qty-minus" data-chave="${escapeAttr(i.chave)}">−</button>
             <span>${i.qtd}</span>
-            <button onclick="Carrinho.alterarQtd('${i.chave}', 1)">+</button>
+            <button class="qty-plus" data-chave="${escapeAttr(i.chave)}">+</button>
           </div>
         </div>
         <div>
-          <button class="ci-remove" onclick="Carrinho.remover('${i.chave}')">Remover</button>
+          <button class="ci-remove" data-chave="${escapeAttr(i.chave)}">Remover</button>
         </div>
       </div>
     `).join("");
@@ -269,10 +278,19 @@ function initHeader() {
     el.addEventListener("click", () => el.closest(".modal")?.classList.remove("open"));
   });
 
-  // delegação de eventos para favoritos criados dinamicamente
+  // delegação de eventos para favoritos e itens do carrinho criados dinamicamente
   document.addEventListener("click", (ev) => {
     const favBtn = ev.target.closest(".card-fav");
-    if (favBtn) { Favoritos.alternar(favBtn.dataset.id); }
+    if (favBtn) { Favoritos.alternar(favBtn.dataset.id); return; }
+
+    const minusBtn = ev.target.closest(".qty-minus");
+    if (minusBtn) { Carrinho.alterarQtd(minusBtn.dataset.chave, -1); return; }
+
+    const plusBtn = ev.target.closest(".qty-plus");
+    if (plusBtn) { Carrinho.alterarQtd(plusBtn.dataset.chave, 1); return; }
+
+    const removeBtn = ev.target.closest(".ci-remove");
+    if (removeBtn) { Carrinho.remover(removeBtn.dataset.chave); return; }
   });
 }
 
