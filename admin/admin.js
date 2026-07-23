@@ -13,16 +13,19 @@ document.addEventListener("kz-auth-changed", (ev) => {
   const painel = document.getElementById("admin-painel");
   const userBox = document.getElementById("admin-user-box");
   const userName = document.getElementById("admin-user-name");
+  const nav = document.getElementById("admin-nav");
 
   if (!user) {
     loginBox.style.display = "block";
     negadoBox.style.display = "none";
     painel.style.display = "none";
     userBox.style.display = "none";
+    if (nav) nav.style.display = "none";
     return;
   }
 
   userBox.style.display = "flex";
+  if (nav) nav.style.display = "flex";
   userName.textContent = user.displayName || user.email;
 
   if (!isAdmin(user)) {
@@ -83,7 +86,7 @@ function renderPedidosAdmin() {
     <div class="pedido-row">
       <div class="info">
         <strong>#${p.id.slice(0, 6).toUpperCase()}</strong> — ${p.clienteNome || p.clienteEmail || "Cliente"}
-        <div style="font-size:12.5px;color:var(--text-muted);margin:4px 0">${formatarData(p.criadoEm)} · ${p.tipo === "loja" ? "Compra na loja" : "Pedido de serviço"} · ${p.clienteEmail || ""}</div>
+        <div style="font-size:12.5px;color:var(--text-muted);margin:4px 0">${formatarData(p.criadoEm)} · ${NOMES_TIPO_PEDIDO[p.tipo] || p.tipo} · ${p.clienteEmail || ""}${p.telefone ? " · 📱 " + p.telefone : ""}</div>
         <div style="font-size:13.5px;white-space:pre-line">${p.resumo || ""}</div>
         ${p.total ? `<div style="font-weight:700;margin-top:6px">${formatKz(p.total)}</div>` : ""}
       </div>
@@ -94,6 +97,14 @@ function renderPedidosAdmin() {
   `).join("");
 }
 
+const NOMES_ESTADO_MSG = {
+  pendente: "está pendente",
+  confirmado: "foi confirmado! ✅",
+  a_caminho: "está a caminho! 🚚",
+  entregue: "foi entregue. Obrigado pela preferência! 🙏",
+  cancelado: "foi cancelado.",
+};
+
 function atualizarEstadoPedido(id, novoEstado) {
   db.collection("pedidos").doc(id).update({
     estado: novoEstado,
@@ -101,7 +112,14 @@ function atualizarEstadoPedido(id, novoEstado) {
   }).then(() => {
     toast("Estado do pedido atualizado");
     const p = TODOS_PEDIDOS_ADMIN.find(x => x.id === id);
-    if (p) p.estado = novoEstado;
+    if (p) {
+      p.estado = novoEstado;
+      if (p.telefone) {
+        const msg = `Olá ${p.clienteNome || ""}! O teu pedido #${id.slice(0, 6).toUpperCase()} na Kazolau Services ${NOMES_ESTADO_MSG[novoEstado] || "foi atualizado"}.`;
+        const numero = p.telefone.replace(/\D/g, "");
+        window.open(`https://wa.me/${numero}?text=${encodeURIComponent(msg)}`, "_blank");
+      }
+    }
     montarFiltrosAdmin();
     renderPedidosAdmin();
   }).catch(err => {
