@@ -26,7 +26,7 @@ async function criarPedido({ tipo, itens, total, resumo, telefone }) {
       clienteNome: KZ_USER.displayName || "",
       clienteEmail: KZ_USER.email || "",
       telefone: telefone || "",
-      tipo,               // "loja" ou "servico"
+      tipo,               // "loja", "servico" ou "negociacao"
       itens: itens || [],
       total: total || 0,
       resumo: resumo || "",
@@ -108,9 +108,11 @@ function carregarPedidosDoCliente(uid, container) {
     });
 }
 
+const NOMES_TIPO_PEDIDO = { loja: "Compra na loja", servico: "Pedido de serviço", negociacao: "Negociação de preço" };
+
 function cardPedido(id, p) {
   const estado = ESTADOS_PEDIDO[p.estado] || ESTADOS_PEDIDO.pendente;
-  const msg = `Olá! Gostaria de falar sobre o meu pedido #${id.slice(0, 6).toUpperCase()} (${p.tipo === "loja" ? "Loja" : "Serviço"}).\n\n${p.resumo || ""}\n\nEstado atual: ${estado.label}`;
+  const msg = `Olá! Gostaria de falar sobre o meu pedido #${id.slice(0, 6).toUpperCase()} (${NOMES_TIPO_PEDIDO[p.tipo] || p.tipo}).\n\n${p.resumo || ""}\n\nEstado atual: ${estado.label}`;
   const podeRemover = p.estado === "entregue" || p.estado === "cancelado";
   return `
     <div class="card" id="pedido-${id}" style="flex-direction:row;align-items:center;gap:16px;padding:18px;margin-bottom:14px">
@@ -119,7 +121,7 @@ function cardPedido(id, p) {
           <strong>Pedido #${id.slice(0, 6).toUpperCase()}</strong>
           <span class="card-badge" style="background:${estado.cor};position:static">${estado.label}</span>
         </div>
-        <div style="font-size:13.5px;color:var(--text-muted);margin-bottom:6px">${formatarData(p.criadoEm)} · ${p.tipo === "loja" ? "Compra na loja" : "Pedido de serviço"}</div>
+        <div style="font-size:13.5px;color:var(--text-muted);margin-bottom:6px">${formatarData(p.criadoEm)} · ${NOMES_TIPO_PEDIDO[p.tipo] || p.tipo}</div>
         <div style="font-size:14px;white-space:pre-line">${p.resumo || ""}</div>
         ${p.total ? `<div style="font-weight:700;margin-top:8px">${formatKz(p.total)}</div>` : ""}
       </div>
