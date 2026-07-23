@@ -1,169 +1,2195 @@
 [
   {
+    "id": "iphone-x",
+    "categoria": "telefones",
+    "nome": "iPhone X",
+    "marca": "Apple",
+    "descricao": "Telefone Apple em bom estado, com garantia de 2 meses.",
+    "imagens": [
+      "imagens/telefone-iphone-graphite.jpeg"
+    ],
+    "atributos": [
+      {
+        "nome": "cor",
+        "rotulo": "Cor",
+        "opcoes": [
+          "Prateado",
+          "Cinza Espacial"
+        ]
+      },
+      {
+        "nome": "armazenamento",
+        "rotulo": "Armazenamento",
+        "opcoes": [
+          "64GB",
+          "256GB"
+        ]
+      }
+    ],
+    "combinacoes": [
+      {
+        "cor": "Prateado",
+        "armazenamento": "64GB",
+        "preco": 135000
+      },
+      {
+        "cor": "Prateado",
+        "armazenamento": "256GB",
+        "preco": 185000
+      },
+      {
+        "cor": "Cinza Espacial",
+        "armazenamento": "64GB",
+        "preco": 135000
+      },
+      {
+        "cor": "Cinza Espacial",
+        "armazenamento": "256GB",
+        "preco": 185000
+      }
+    ],
+    "preco_min": 135000,
+    "preco_max": 185000,
+    "garantia": "2 meses",
+    "estado": "usado",
+    "etiquetas": [
+      "telefones",
+      "apple",
+      "iphone x"
+    ],
+    "negociavel": true,
+    "stock": 5
+  },
+  {
+    "id": "iphone-xs",
+    "categoria": "telefones",
+    "nome": "iPhone XS",
+    "marca": "Apple",
+    "descricao": "Telefone Apple em bom estado, com garantia de 2 meses.",
+    "imagens": [
+      "imagens/telefone-iphone-graphite.jpeg"
+    ],
+    "atributos": [
+      {
+        "nome": "cor",
+        "rotulo": "Cor",
+        "opcoes": [
+          "Dourado",
+          "Prateado",
+          "Cinza Espacial"
+        ]
+      },
+      {
+        "nome": "armazenamento",
+        "rotulo": "Armazenamento",
+        "opcoes": [
+          "64GB",
+          "256GB"
+        ]
+      }
+    ],
+    "combinacoes": [
+      {
+        "cor": "Dourado",
+        "armazenamento": "64GB",
+        "preco": 160000
+      },
+      {
+        "cor": "Dourado",
+        "armazenamento": "256GB",
+        "preco": 210000
+      },
+      {
+        "cor": "Prateado",
+        "armazenamento": "64GB",
+        "preco": 160000
+      },
+      {
+        "cor": "Prateado",
+        "armazenamento": "256GB",
+        "preco": 210000
+      },
+      {
+        "cor": "Cinza Espacial",
+        "armazenamento": "64GB",
+        "preco": 160000
+      },
+      {
+        "cor": "Cinza Espacial",
+        "armazenamento": "256GB",
+        "preco": 210000
+      }
+    ],
+    "preco_min": 160000,
+    "preco_max": 210000,
+    "garantia": "2 meses",
+    "estado": "usado",
+    "etiquetas": [
+      "iphone xs",
+      "telefones",
+      "apple"
+    ],
+    "negociavel": true,
+    "stock": 5
+  },
+  {
+    "id": "iphone-xs-max",
+    "categoria": "telefones",
+    "nome": "iPhone XS Max",
+    "marca": "Apple",
+    "descricao": "Telefone Apple em bom estado, com garantia de 2 meses.",
+    "imagens": [
+      "imagens/telefone-iphone-graphite.jpeg"
+    ],
+    "atributos": [
+      {
+        "nome": "cor",
+        "rotulo": "Cor",
+        "opcoes": [
+          "Dourado",
+          "Prateado",
+          "Cinza Espacial"
+        ]
+      },
+      {
+        "nome": "armazenamento",
+        "rotulo": "Armazenamento",
+        "opcoes": [
+          "64GB",
+          "256GB"
+        ]
+      }
+    ],
+    "combinacoes": [
+      {
+        "cor": "Dourado",
+        "armazenamento": "64GB",
+        "preco": 190000
+      },
+      {
+        "cor": "Dourado",
+        "armazenamento": "256GB",
+        "preco": 250000
+      },
+      {
+        "cor": "Prateado",
+        "armazenamento": "64GB",
+        "preco": 190000
+      },
+      {
+        "cor": "Prateado",
+        "armazenamento": "256GB",
+        "preco": 250000
+      },
+      {
+        "cor": "Cinza Espacial",
+        "armazenamento": "64GB",
+        "preco": 190000
+      },
+      {
+        "cor": "Cinza Espacial",
+        "armazenamento": "256GB",
+        "preco": 250000
+      }
+    ],
+    "preco_min": 190000,
+    "preco_max": 250000,
+    "garantia": "2 meses",
+    "estado": "usado",
+    "etiquetas": [
+      "telefones",
+      "iphone xs max",
+      "apple"
+    ],
+    "negociavel": true,
+    "stock": 5
+  },
+  {
+    "id": "iphone-11",
+    "categoria": "telefones",
+    "nome": "iPhone 11",
+    "marca": "Apple",
+    "descricao": "Telefone Apple em bom estado, com garantia de 2 meses.",
+    "imagens": [
+      "imagens/telefone-iphone-graphite.jpeg"
+    ],
+    "atributos": [
+      {
+        "nome": "cor",
+        "rotulo": "Cor",
+        "opcoes": [
+          "Preto",
+          "Branco",
+          "Vermelho",
+          "Amarelo",
+          "Verde",
+          "Roxo"
+        ]
+      },
+      {
+        "nome": "armazenamento",
+        "rotulo": "Armazenamento",
+        "opcoes": [
+          "64GB",
+          "128GB"
+        ]
+      }
+    ],
+    "combinacoes": [
+      {
+        "cor": "Preto",
+        "armazenamento": "64GB",
+        "preco": 200000
+      },
+      {
+        "cor": "Preto",
+        "armazenamento": "128GB",
+        "preco": 250000
+      },
+      {
+        "cor": "Branco",
+        "armazenamento": "64GB",
+        "preco": 200000
+      },
+      {
+        "cor": "Branco",
+        "armazenamento": "128GB",
+        "preco": 250000
+      },
+      {
+        "cor": "Vermelho",
+        "armazenamento": "64GB",
+        "preco": 200000
+      },
+      {
+        "cor": "Vermelho",
+        "armazenamento": "128GB",
+        "preco": 250000
+      },
+      {
+        "cor": "Amarelo",
+        "armazenamento": "64GB",
+        "preco": 200000
+      },
+      {
+        "cor": "Amarelo",
+        "armazenamento": "128GB",
+        "preco": 250000
+      },
+      {
+        "cor": "Verde",
+        "armazenamento": "64GB",
+        "preco": 200000
+      },
+      {
+        "cor": "Verde",
+        "armazenamento": "128GB",
+        "preco": 250000
+      },
+      {
+        "cor": "Roxo",
+        "armazenamento": "64GB",
+        "preco": 200000
+      },
+      {
+        "cor": "Roxo",
+        "armazenamento": "128GB",
+        "preco": 250000
+      }
+    ],
+    "preco_min": 200000,
+    "preco_max": 250000,
+    "garantia": "2 meses",
+    "estado": "usado",
+    "etiquetas": [
+      "telefones",
+      "iphone 11",
+      "apple"
+    ],
+    "negociavel": true,
+    "stock": 5
+  },
+  {
+    "id": "iphone-11-pro",
+    "categoria": "telefones",
+    "nome": "iPhone 11 Pro",
+    "marca": "Apple",
+    "descricao": "Telefone Apple em bom estado, com garantia de 2 meses.",
+    "imagens": [
+      "imagens/telefone-iphone-graphite.jpeg"
+    ],
+    "atributos": [
+      {
+        "nome": "cor",
+        "rotulo": "Cor",
+        "opcoes": [
+          "Cinza Espacial",
+          "Prateado",
+          "Dourado",
+          "Verde Noturno"
+        ]
+      },
+      {
+        "nome": "armazenamento",
+        "rotulo": "Armazenamento",
+        "opcoes": [
+          "64GB",
+          "256GB"
+        ]
+      }
+    ],
+    "combinacoes": [
+      {
+        "cor": "Cinza Espacial",
+        "armazenamento": "64GB",
+        "preco": 280000
+      },
+      {
+        "cor": "Cinza Espacial",
+        "armazenamento": "256GB",
+        "preco": 350000
+      },
+      {
+        "cor": "Prateado",
+        "armazenamento": "64GB",
+        "preco": 280000
+      },
+      {
+        "cor": "Prateado",
+        "armazenamento": "256GB",
+        "preco": 350000
+      },
+      {
+        "cor": "Dourado",
+        "armazenamento": "64GB",
+        "preco": 280000
+      },
+      {
+        "cor": "Dourado",
+        "armazenamento": "256GB",
+        "preco": 350000
+      },
+      {
+        "cor": "Verde Noturno",
+        "armazenamento": "64GB",
+        "preco": 280000
+      },
+      {
+        "cor": "Verde Noturno",
+        "armazenamento": "256GB",
+        "preco": 350000
+      }
+    ],
+    "preco_min": 280000,
+    "preco_max": 350000,
+    "garantia": "2 meses",
+    "estado": "usado",
+    "etiquetas": [
+      "iphone 11 pro",
+      "telefones",
+      "apple"
+    ],
+    "negociavel": true,
+    "stock": 5
+  },
+  {
+    "id": "iphone-11-pro-max",
+    "categoria": "telefones",
+    "nome": "iPhone 11 Pro Max",
+    "marca": "Apple",
+    "descricao": "Telefone Apple em bom estado, com garantia de 2 meses.",
+    "imagens": [
+      "imagens/telefone-iphone-graphite.jpeg"
+    ],
+    "atributos": [
+      {
+        "nome": "cor",
+        "rotulo": "Cor",
+        "opcoes": [
+          "Cinza Espacial",
+          "Prateado",
+          "Dourado",
+          "Verde Noturno"
+        ]
+      },
+      {
+        "nome": "armazenamento",
+        "rotulo": "Armazenamento",
+        "opcoes": [
+          "64GB",
+          "256GB"
+        ]
+      }
+    ],
+    "combinacoes": [
+      {
+        "cor": "Cinza Espacial",
+        "armazenamento": "64GB",
+        "preco": 320000
+      },
+      {
+        "cor": "Cinza Espacial",
+        "armazenamento": "256GB",
+        "preco": 390000
+      },
+      {
+        "cor": "Prateado",
+        "armazenamento": "64GB",
+        "preco": 320000
+      },
+      {
+        "cor": "Prateado",
+        "armazenamento": "256GB",
+        "preco": 390000
+      },
+      {
+        "cor": "Dourado",
+        "armazenamento": "64GB",
+        "preco": 320000
+      },
+      {
+        "cor": "Dourado",
+        "armazenamento": "256GB",
+        "preco": 390000
+      },
+      {
+        "cor": "Verde Noturno",
+        "armazenamento": "64GB",
+        "preco": 320000
+      },
+      {
+        "cor": "Verde Noturno",
+        "armazenamento": "256GB",
+        "preco": 390000
+      }
+    ],
+    "preco_min": 320000,
+    "preco_max": 390000,
+    "garantia": "2 meses",
+    "estado": "usado",
+    "etiquetas": [
+      "telefones",
+      "iphone 11 pro max",
+      "apple"
+    ],
+    "negociavel": true,
+    "stock": 5
+  },
+  {
+    "id": "iphone-12",
+    "categoria": "telefones",
+    "nome": "iPhone 12",
+    "marca": "Apple",
+    "descricao": "Telefone Apple em bom estado, com garantia de 2 meses.",
+    "imagens": [
+      "imagens/telefone-iphone-blue.jpeg"
+    ],
+    "atributos": [
+      {
+        "nome": "cor",
+        "rotulo": "Cor",
+        "opcoes": [
+          "Preto",
+          "Branco",
+          "Vermelho",
+          "Verde",
+          "Azul",
+          "Roxo"
+        ]
+      },
+      {
+        "nome": "armazenamento",
+        "rotulo": "Armazenamento",
+        "opcoes": [
+          "64GB",
+          "128GB"
+        ]
+      }
+    ],
+    "combinacoes": [
+      {
+        "cor": "Preto",
+        "armazenamento": "64GB",
+        "preco": 300000
+      },
+      {
+        "cor": "Preto",
+        "armazenamento": "128GB",
+        "preco": 350000
+      },
+      {
+        "cor": "Branco",
+        "armazenamento": "64GB",
+        "preco": 300000
+      },
+      {
+        "cor": "Branco",
+        "armazenamento": "128GB",
+        "preco": 350000
+      },
+      {
+        "cor": "Vermelho",
+        "armazenamento": "64GB",
+        "preco": 300000
+      },
+      {
+        "cor": "Vermelho",
+        "armazenamento": "128GB",
+        "preco": 350000
+      },
+      {
+        "cor": "Verde",
+        "armazenamento": "64GB",
+        "preco": 300000
+      },
+      {
+        "cor": "Verde",
+        "armazenamento": "128GB",
+        "preco": 350000
+      },
+      {
+        "cor": "Azul",
+        "armazenamento": "64GB",
+        "preco": 300000
+      },
+      {
+        "cor": "Azul",
+        "armazenamento": "128GB",
+        "preco": 350000
+      },
+      {
+        "cor": "Roxo",
+        "armazenamento": "64GB",
+        "preco": 300000
+      },
+      {
+        "cor": "Roxo",
+        "armazenamento": "128GB",
+        "preco": 350000
+      }
+    ],
+    "preco_min": 300000,
+    "preco_max": 350000,
+    "garantia": "2 meses",
+    "estado": "usado",
+    "etiquetas": [
+      "iphone 12",
+      "telefones",
+      "apple"
+    ],
+    "negociavel": true,
+    "stock": 5
+  },
+  {
+    "id": "iphone-12-pro",
+    "categoria": "telefones",
+    "nome": "iPhone 12 Pro",
+    "marca": "Apple",
+    "descricao": "Telefone Apple em bom estado, com garantia de 2 meses.",
+    "imagens": [
+      "imagens/telefone-iphone-blue.jpeg"
+    ],
+    "atributos": [
+      {
+        "nome": "cor",
+        "rotulo": "Cor",
+        "opcoes": [
+          "Grafite",
+          "Prateado",
+          "Dourado",
+          "Azul Pacífico"
+        ]
+      },
+      {
+        "nome": "armazenamento",
+        "rotulo": "Armazenamento",
+        "opcoes": [
+          "128GB",
+          "256GB"
+        ]
+      }
+    ],
+    "combinacoes": [
+      {
+        "cor": "Grafite",
+        "armazenamento": "128GB",
+        "preco": 400000
+      },
+      {
+        "cor": "Grafite",
+        "armazenamento": "256GB",
+        "preco": 450000
+      },
+      {
+        "cor": "Prateado",
+        "armazenamento": "128GB",
+        "preco": 400000
+      },
+      {
+        "cor": "Prateado",
+        "armazenamento": "256GB",
+        "preco": 450000
+      },
+      {
+        "cor": "Dourado",
+        "armazenamento": "128GB",
+        "preco": 400000
+      },
+      {
+        "cor": "Dourado",
+        "armazenamento": "256GB",
+        "preco": 450000
+      },
+      {
+        "cor": "Azul Pacífico",
+        "armazenamento": "128GB",
+        "preco": 400000
+      },
+      {
+        "cor": "Azul Pacífico",
+        "armazenamento": "256GB",
+        "preco": 450000
+      }
+    ],
+    "preco_min": 400000,
+    "preco_max": 450000,
+    "garantia": "2 meses",
+    "estado": "usado",
+    "etiquetas": [
+      "telefones",
+      "iphone 12 pro",
+      "apple"
+    ],
+    "negociavel": true,
+    "stock": 5
+  },
+  {
+    "id": "iphone-12-pro-max",
+    "categoria": "telefones",
+    "nome": "iPhone 12 Pro Max",
+    "marca": "Apple",
+    "descricao": "Telefone Apple em bom estado, com garantia de 2 meses.",
+    "imagens": [
+      "imagens/telefone-iphone-blue.jpeg"
+    ],
+    "atributos": [
+      {
+        "nome": "cor",
+        "rotulo": "Cor",
+        "opcoes": [
+          "Grafite",
+          "Prateado",
+          "Dourado",
+          "Azul Pacífico"
+        ]
+      },
+      {
+        "nome": "armazenamento",
+        "rotulo": "Armazenamento",
+        "opcoes": [
+          "128GB",
+          "256GB"
+        ]
+      }
+    ],
+    "combinacoes": [
+      {
+        "cor": "Grafite",
+        "armazenamento": "128GB",
+        "preco": 450000
+      },
+      {
+        "cor": "Grafite",
+        "armazenamento": "256GB",
+        "preco": 500000
+      },
+      {
+        "cor": "Prateado",
+        "armazenamento": "128GB",
+        "preco": 450000
+      },
+      {
+        "cor": "Prateado",
+        "armazenamento": "256GB",
+        "preco": 500000
+      },
+      {
+        "cor": "Dourado",
+        "armazenamento": "128GB",
+        "preco": 450000
+      },
+      {
+        "cor": "Dourado",
+        "armazenamento": "256GB",
+        "preco": 500000
+      },
+      {
+        "cor": "Azul Pacífico",
+        "armazenamento": "128GB",
+        "preco": 450000
+      },
+      {
+        "cor": "Azul Pacífico",
+        "armazenamento": "256GB",
+        "preco": 500000
+      }
+    ],
+    "preco_min": 450000,
+    "preco_max": 500000,
+    "garantia": "2 meses",
+    "estado": "usado",
+    "etiquetas": [
+      "telefones",
+      "iphone 12 pro max",
+      "apple"
+    ],
+    "negociavel": true,
+    "stock": 5
+  },
+  {
     "id": "iphone-13",
     "categoria": "telefones",
     "nome": "iPhone 13",
     "marca": "Apple",
-    "descricao": "iPhone 13 em excelente estado, com garantia de 2 meses. Bateria saudável e ecrã sem riscos.",
-    "imagens": ["imagens/telefone-iphone-blue.jpeg", "imagens/telefone-iphone-graphite.jpeg", "imagens/telefone-iphone-lineup.jpeg"],
-    "atributos": { "garantia": "2 meses", "estado": "Usado - excelente estado" },
-    "variantes": {
-      "cor": [
-        { "nome": "Azul", "imagem": "imagens/telefone-iphone-blue.jpeg" },
-        { "nome": "Grafite", "imagem": "imagens/telefone-iphone-graphite.jpeg" }
-      ],
-      "capacidade": [
-        { "nome": "128GB", "preco": 650000 },
-        { "nome": "256GB", "preco": 730000 }
-      ]
-    },
-    "preco_inicial": 730000,
-    "preco_final": 650000,
-    "stock": 3,
+    "descricao": "Telefone Apple em bom estado, com garantia de 2 meses.",
+    "imagens": [
+      "imagens/telefone-iphone-blue.jpeg"
+    ],
+    "atributos": [
+      {
+        "nome": "cor",
+        "rotulo": "Cor",
+        "opcoes": [
+          "Meia-Noite",
+          "Estelar",
+          "Vermelho",
+          "Azul",
+          "Rosa",
+          "Verde"
+        ]
+      },
+      {
+        "nome": "armazenamento",
+        "rotulo": "Armazenamento",
+        "opcoes": [
+          "128GB",
+          "256GB"
+        ]
+      }
+    ],
+    "combinacoes": [
+      {
+        "cor": "Meia-Noite",
+        "armazenamento": "128GB",
+        "preco": 420000
+      },
+      {
+        "cor": "Meia-Noite",
+        "armazenamento": "256GB",
+        "preco": 500000
+      },
+      {
+        "cor": "Estelar",
+        "armazenamento": "128GB",
+        "preco": 420000
+      },
+      {
+        "cor": "Estelar",
+        "armazenamento": "256GB",
+        "preco": 500000
+      },
+      {
+        "cor": "Vermelho",
+        "armazenamento": "128GB",
+        "preco": 420000
+      },
+      {
+        "cor": "Vermelho",
+        "armazenamento": "256GB",
+        "preco": 500000
+      },
+      {
+        "cor": "Azul",
+        "armazenamento": "128GB",
+        "preco": 420000
+      },
+      {
+        "cor": "Azul",
+        "armazenamento": "256GB",
+        "preco": 500000
+      },
+      {
+        "cor": "Rosa",
+        "armazenamento": "128GB",
+        "preco": 420000
+      },
+      {
+        "cor": "Rosa",
+        "armazenamento": "256GB",
+        "preco": 500000
+      },
+      {
+        "cor": "Verde",
+        "armazenamento": "128GB",
+        "preco": 420000
+      },
+      {
+        "cor": "Verde",
+        "armazenamento": "256GB",
+        "preco": 500000
+      }
+    ],
+    "preco_min": 420000,
+    "preco_max": 500000,
+    "garantia": "2 meses",
     "estado": "usado",
-    "etiquetas": ["iphone", "apple", "telefone", "smartphone"],
-    "negociavel": true
+    "etiquetas": [
+      "telefones",
+      "iphone 13",
+      "apple"
+    ],
+    "negociavel": true,
+    "stock": 5
   },
   {
-    "id": "samsung-a16",
+    "id": "iphone-13-pro",
     "categoria": "telefones",
-    "nome": "Samsung A16",
+    "nome": "iPhone 13 Pro",
+    "marca": "Apple",
+    "descricao": "Telefone Apple em bom estado, com garantia de 2 meses.",
+    "imagens": [
+      "imagens/telefone-iphone-blue.jpeg"
+    ],
+    "atributos": [
+      {
+        "nome": "cor",
+        "rotulo": "Cor",
+        "opcoes": [
+          "Grafite",
+          "Prateado",
+          "Dourado",
+          "Azul-Sierra",
+          "Verde-Alpino"
+        ]
+      },
+      {
+        "nome": "armazenamento",
+        "rotulo": "Armazenamento",
+        "opcoes": [
+          "128GB",
+          "256GB"
+        ]
+      }
+    ],
+    "combinacoes": [
+      {
+        "cor": "Grafite",
+        "armazenamento": "128GB",
+        "preco": 500000
+      },
+      {
+        "cor": "Grafite",
+        "armazenamento": "256GB",
+        "preco": 580000
+      },
+      {
+        "cor": "Prateado",
+        "armazenamento": "128GB",
+        "preco": 500000
+      },
+      {
+        "cor": "Prateado",
+        "armazenamento": "256GB",
+        "preco": 580000
+      },
+      {
+        "cor": "Dourado",
+        "armazenamento": "128GB",
+        "preco": 500000
+      },
+      {
+        "cor": "Dourado",
+        "armazenamento": "256GB",
+        "preco": 580000
+      },
+      {
+        "cor": "Azul-Sierra",
+        "armazenamento": "128GB",
+        "preco": 500000
+      },
+      {
+        "cor": "Azul-Sierra",
+        "armazenamento": "256GB",
+        "preco": 580000
+      },
+      {
+        "cor": "Verde-Alpino",
+        "armazenamento": "128GB",
+        "preco": 500000
+      },
+      {
+        "cor": "Verde-Alpino",
+        "armazenamento": "256GB",
+        "preco": 580000
+      }
+    ],
+    "preco_min": 500000,
+    "preco_max": 580000,
+    "garantia": "2 meses",
+    "estado": "usado",
+    "etiquetas": [
+      "telefones",
+      "apple",
+      "iphone 13 pro"
+    ],
+    "negociavel": true,
+    "stock": 5
+  },
+  {
+    "id": "iphone-13-pro-max",
+    "categoria": "telefones",
+    "nome": "iPhone 13 Pro Max",
+    "marca": "Apple",
+    "descricao": "Telefone Apple em bom estado, com garantia de 2 meses.",
+    "imagens": [
+      "imagens/telefone-iphone-blue.jpeg"
+    ],
+    "atributos": [
+      {
+        "nome": "cor",
+        "rotulo": "Cor",
+        "opcoes": [
+          "Grafite",
+          "Prateado",
+          "Dourado",
+          "Azul-Sierra",
+          "Verde-Alpino"
+        ]
+      },
+      {
+        "nome": "armazenamento",
+        "rotulo": "Armazenamento",
+        "opcoes": [
+          "128GB",
+          "256GB"
+        ]
+      }
+    ],
+    "combinacoes": [
+      {
+        "cor": "Grafite",
+        "armazenamento": "128GB",
+        "preco": 580000
+      },
+      {
+        "cor": "Grafite",
+        "armazenamento": "256GB",
+        "preco": 650000
+      },
+      {
+        "cor": "Prateado",
+        "armazenamento": "128GB",
+        "preco": 580000
+      },
+      {
+        "cor": "Prateado",
+        "armazenamento": "256GB",
+        "preco": 650000
+      },
+      {
+        "cor": "Dourado",
+        "armazenamento": "128GB",
+        "preco": 580000
+      },
+      {
+        "cor": "Dourado",
+        "armazenamento": "256GB",
+        "preco": 650000
+      },
+      {
+        "cor": "Azul-Sierra",
+        "armazenamento": "128GB",
+        "preco": 580000
+      },
+      {
+        "cor": "Azul-Sierra",
+        "armazenamento": "256GB",
+        "preco": 650000
+      },
+      {
+        "cor": "Verde-Alpino",
+        "armazenamento": "128GB",
+        "preco": 580000
+      },
+      {
+        "cor": "Verde-Alpino",
+        "armazenamento": "256GB",
+        "preco": 650000
+      }
+    ],
+    "preco_min": 580000,
+    "preco_max": 650000,
+    "garantia": "2 meses",
+    "estado": "usado",
+    "etiquetas": [
+      "telefones",
+      "iphone 13 pro max",
+      "apple"
+    ],
+    "negociavel": true,
+    "stock": 5
+  },
+  {
+    "id": "iphone-14",
+    "categoria": "telefones",
+    "nome": "iPhone 14",
+    "marca": "Apple",
+    "descricao": "Telefone Apple em bom estado, com garantia de 2 meses.",
+    "imagens": [
+      "imagens/telefone-iphone-graphite.jpeg"
+    ],
+    "atributos": [
+      {
+        "nome": "cor",
+        "rotulo": "Cor",
+        "opcoes": [
+          "Meia-Noite",
+          "Estelar",
+          "Vermelho",
+          "Azul",
+          "Roxo",
+          "Amarelo"
+        ]
+      },
+      {
+        "nome": "armazenamento",
+        "rotulo": "Armazenamento",
+        "opcoes": [
+          "128GB",
+          "256GB"
+        ]
+      }
+    ],
+    "combinacoes": [
+      {
+        "cor": "Meia-Noite",
+        "armazenamento": "128GB",
+        "preco": 580000
+      },
+      {
+        "cor": "Meia-Noite",
+        "armazenamento": "256GB",
+        "preco": 650000
+      },
+      {
+        "cor": "Estelar",
+        "armazenamento": "128GB",
+        "preco": 580000
+      },
+      {
+        "cor": "Estelar",
+        "armazenamento": "256GB",
+        "preco": 650000
+      },
+      {
+        "cor": "Vermelho",
+        "armazenamento": "128GB",
+        "preco": 580000
+      },
+      {
+        "cor": "Vermelho",
+        "armazenamento": "256GB",
+        "preco": 650000
+      },
+      {
+        "cor": "Azul",
+        "armazenamento": "128GB",
+        "preco": 580000
+      },
+      {
+        "cor": "Azul",
+        "armazenamento": "256GB",
+        "preco": 650000
+      },
+      {
+        "cor": "Roxo",
+        "armazenamento": "128GB",
+        "preco": 580000
+      },
+      {
+        "cor": "Roxo",
+        "armazenamento": "256GB",
+        "preco": 650000
+      },
+      {
+        "cor": "Amarelo",
+        "armazenamento": "128GB",
+        "preco": 580000
+      },
+      {
+        "cor": "Amarelo",
+        "armazenamento": "256GB",
+        "preco": 650000
+      }
+    ],
+    "preco_min": 580000,
+    "preco_max": 650000,
+    "garantia": "2 meses",
+    "estado": "usado",
+    "etiquetas": [
+      "telefones",
+      "iphone 14",
+      "apple"
+    ],
+    "negociavel": true,
+    "stock": 5
+  },
+  {
+    "id": "iphone-14-plus",
+    "categoria": "telefones",
+    "nome": "iPhone 14 Plus",
+    "marca": "Apple",
+    "descricao": "Telefone Apple em bom estado, com garantia de 2 meses.",
+    "imagens": [
+      "imagens/telefone-iphone-graphite.jpeg"
+    ],
+    "atributos": [
+      {
+        "nome": "cor",
+        "rotulo": "Cor",
+        "opcoes": [
+          "Meia-Noite",
+          "Estelar",
+          "Vermelho",
+          "Azul",
+          "Roxo",
+          "Amarelo"
+        ]
+      },
+      {
+        "nome": "armazenamento",
+        "rotulo": "Armazenamento",
+        "opcoes": [
+          "128GB"
+        ]
+      }
+    ],
+    "combinacoes": [
+      {
+        "cor": "Meia-Noite",
+        "armazenamento": "128GB",
+        "preco": 620000
+      },
+      {
+        "cor": "Estelar",
+        "armazenamento": "128GB",
+        "preco": 620000
+      },
+      {
+        "cor": "Vermelho",
+        "armazenamento": "128GB",
+        "preco": 620000
+      },
+      {
+        "cor": "Azul",
+        "armazenamento": "128GB",
+        "preco": 620000
+      },
+      {
+        "cor": "Roxo",
+        "armazenamento": "128GB",
+        "preco": 620000
+      },
+      {
+        "cor": "Amarelo",
+        "armazenamento": "128GB",
+        "preco": 620000
+      }
+    ],
+    "preco_min": 620000,
+    "preco_max": 620000,
+    "garantia": "2 meses",
+    "estado": "usado",
+    "etiquetas": [
+      "telefones",
+      "iphone 14 plus",
+      "apple"
+    ],
+    "negociavel": true,
+    "stock": 5
+  },
+  {
+    "id": "iphone-14-pro",
+    "categoria": "telefones",
+    "nome": "iPhone 14 Pro",
+    "marca": "Apple",
+    "descricao": "Telefone Apple em bom estado, com garantia de 2 meses.",
+    "imagens": [
+      "imagens/telefone-iphone-graphite.jpeg"
+    ],
+    "atributos": [
+      {
+        "nome": "cor",
+        "rotulo": "Cor",
+        "opcoes": [
+          "Preto-Espacial",
+          "Prateado",
+          "Dourado",
+          "Roxo-Profundo"
+        ]
+      },
+      {
+        "nome": "armazenamento",
+        "rotulo": "Armazenamento",
+        "opcoes": [
+          "128GB",
+          "256GB"
+        ]
+      }
+    ],
+    "combinacoes": [
+      {
+        "cor": "Preto-Espacial",
+        "armazenamento": "128GB",
+        "preco": 700000
+      },
+      {
+        "cor": "Preto-Espacial",
+        "armazenamento": "256GB",
+        "preco": 780000
+      },
+      {
+        "cor": "Prateado",
+        "armazenamento": "128GB",
+        "preco": 700000
+      },
+      {
+        "cor": "Prateado",
+        "armazenamento": "256GB",
+        "preco": 780000
+      },
+      {
+        "cor": "Dourado",
+        "armazenamento": "128GB",
+        "preco": 700000
+      },
+      {
+        "cor": "Dourado",
+        "armazenamento": "256GB",
+        "preco": 780000
+      },
+      {
+        "cor": "Roxo-Profundo",
+        "armazenamento": "128GB",
+        "preco": 700000
+      },
+      {
+        "cor": "Roxo-Profundo",
+        "armazenamento": "256GB",
+        "preco": 780000
+      }
+    ],
+    "preco_min": 700000,
+    "preco_max": 780000,
+    "garantia": "2 meses",
+    "estado": "usado",
+    "etiquetas": [
+      "telefones",
+      "iphone 14 pro",
+      "apple"
+    ],
+    "negociavel": true,
+    "stock": 5
+  },
+  {
+    "id": "iphone-14-pro-max",
+    "categoria": "telefones",
+    "nome": "iPhone 14 Pro Max",
+    "marca": "Apple",
+    "descricao": "Telefone Apple em bom estado, com garantia de 2 meses.",
+    "imagens": [
+      "imagens/telefone-iphone-graphite.jpeg"
+    ],
+    "atributos": [
+      {
+        "nome": "cor",
+        "rotulo": "Cor",
+        "opcoes": [
+          "Preto-Espacial",
+          "Prateado",
+          "Dourado",
+          "Roxo-Profundo"
+        ]
+      },
+      {
+        "nome": "armazenamento",
+        "rotulo": "Armazenamento",
+        "opcoes": [
+          "128GB",
+          "256GB"
+        ]
+      }
+    ],
+    "combinacoes": [
+      {
+        "cor": "Preto-Espacial",
+        "armazenamento": "128GB",
+        "preco": 800000
+      },
+      {
+        "cor": "Preto-Espacial",
+        "armazenamento": "256GB",
+        "preco": 880000
+      },
+      {
+        "cor": "Prateado",
+        "armazenamento": "128GB",
+        "preco": 800000
+      },
+      {
+        "cor": "Prateado",
+        "armazenamento": "256GB",
+        "preco": 880000
+      },
+      {
+        "cor": "Dourado",
+        "armazenamento": "128GB",
+        "preco": 800000
+      },
+      {
+        "cor": "Dourado",
+        "armazenamento": "256GB",
+        "preco": 880000
+      },
+      {
+        "cor": "Roxo-Profundo",
+        "armazenamento": "128GB",
+        "preco": 800000
+      },
+      {
+        "cor": "Roxo-Profundo",
+        "armazenamento": "256GB",
+        "preco": 880000
+      }
+    ],
+    "preco_min": 800000,
+    "preco_max": 880000,
+    "garantia": "2 meses",
+    "estado": "usado",
+    "etiquetas": [
+      "telefones",
+      "iphone 14 pro max",
+      "apple"
+    ],
+    "negociavel": true,
+    "stock": 5
+  },
+  {
+    "id": "samsung-s21-ultra",
+    "categoria": "telefones",
+    "nome": "Samsung Galaxy S21 Ultra",
     "marca": "Samsung",
-    "descricao": "Samsung Galaxy A16, 4GB de RAM e 128GB de armazenamento. Ideal para o dia a dia com ótimo custo-benefício.",
-    "imagens": ["imagens/telefone-samsung-stack.jpeg"],
-    "atributos": { "garantia": "2 meses", "estado": "Novo" },
-    "variantes": {},
-    "preco_inicial": 135000,
-    "preco_final": 135000,
-    "stock": 5,
-    "estado": "novo",
-    "etiquetas": ["samsung", "android", "telefone", "smartphone", "a16"],
-    "negociavel": true
+    "descricao": "Telefone Samsung em bom estado, com garantia de 2 meses.",
+    "imagens": [
+      "imagens/telefone-samsung-stack.jpeg"
+    ],
+    "atributos": [
+      {
+        "nome": "cor",
+        "rotulo": "Cor",
+        "opcoes": [
+          "Preto Fantasma",
+          "Prateado Fantasma",
+          "Marrom",
+          "Azul",
+          "Cinza"
+        ]
+      },
+      {
+        "nome": "armazenamento",
+        "rotulo": "Armazenamento",
+        "opcoes": [
+          "128GB",
+          "256GB"
+        ]
+      }
+    ],
+    "combinacoes": [
+      {
+        "cor": "Preto Fantasma",
+        "armazenamento": "128GB",
+        "preco": 280000
+      },
+      {
+        "cor": "Preto Fantasma",
+        "armazenamento": "256GB",
+        "preco": 320000
+      },
+      {
+        "cor": "Prateado Fantasma",
+        "armazenamento": "128GB",
+        "preco": 280000
+      },
+      {
+        "cor": "Prateado Fantasma",
+        "armazenamento": "256GB",
+        "preco": 320000
+      },
+      {
+        "cor": "Marrom",
+        "armazenamento": "128GB",
+        "preco": 280000
+      },
+      {
+        "cor": "Marrom",
+        "armazenamento": "256GB",
+        "preco": 320000
+      },
+      {
+        "cor": "Azul",
+        "armazenamento": "128GB",
+        "preco": 280000
+      },
+      {
+        "cor": "Azul",
+        "armazenamento": "256GB",
+        "preco": 320000
+      },
+      {
+        "cor": "Cinza",
+        "armazenamento": "128GB",
+        "preco": 280000
+      },
+      {
+        "cor": "Cinza",
+        "armazenamento": "256GB",
+        "preco": 320000
+      }
+    ],
+    "preco_min": 280000,
+    "preco_max": 320000,
+    "garantia": "2 meses",
+    "estado": "usado",
+    "etiquetas": [
+      "samsung galaxy s21 ultra",
+      "samsung",
+      "telefones"
+    ],
+    "negociavel": true,
+    "stock": 5
   },
   {
-    "id": "tenis-adidas",
-    "categoria": "tenis",
-    "nome": "Ténis Adidas",
-    "marca": "Adidas",
-    "descricao": "Ténis Adidas confortável e resistente, ideal para o dia a dia ou treino. Vários tamanhos disponíveis.",
-    "imagens": ["imagens/tenis-adidas.jpeg"],
-    "atributos": { "estado": "Novo" },
-    "variantes": {
-      "tamanho": [
-        { "nome": "39" }, { "nome": "40" }, { "nome": "41" }, { "nome": "42" }, { "nome": "43" }
-      ]
-    },
-    "preco_inicial": null,
-    "preco_final": null,
-    "stock": 4,
-    "estado": "novo",
-    "etiquetas": ["adidas", "tenis", "calcado", "desporto"],
-    "negociavel": true
+    "id": "samsung-s22-ultra",
+    "categoria": "telefones",
+    "nome": "Samsung Galaxy S22 Ultra",
+    "marca": "Samsung",
+    "descricao": "Telefone Samsung em bom estado, com garantia de 2 meses.",
+    "imagens": [
+      "imagens/telefone-samsung-stack.jpeg"
+    ],
+    "atributos": [
+      {
+        "nome": "cor",
+        "rotulo": "Cor",
+        "opcoes": [
+          "Preto Fantasma",
+          "Branco Fantasma",
+          "Verde",
+          "Borgonha",
+          "Grafite",
+          "Azul",
+          "Vermelho"
+        ]
+      },
+      {
+        "nome": "armazenamento",
+        "rotulo": "Armazenamento",
+        "opcoes": [
+          "128GB",
+          "256GB"
+        ]
+      }
+    ],
+    "combinacoes": [
+      {
+        "cor": "Preto Fantasma",
+        "armazenamento": "128GB",
+        "preco": 420000
+      },
+      {
+        "cor": "Preto Fantasma",
+        "armazenamento": "256GB",
+        "preco": 480000
+      },
+      {
+        "cor": "Branco Fantasma",
+        "armazenamento": "128GB",
+        "preco": 420000
+      },
+      {
+        "cor": "Branco Fantasma",
+        "armazenamento": "256GB",
+        "preco": 480000
+      },
+      {
+        "cor": "Verde",
+        "armazenamento": "128GB",
+        "preco": 420000
+      },
+      {
+        "cor": "Verde",
+        "armazenamento": "256GB",
+        "preco": 480000
+      },
+      {
+        "cor": "Borgonha",
+        "armazenamento": "128GB",
+        "preco": 420000
+      },
+      {
+        "cor": "Borgonha",
+        "armazenamento": "256GB",
+        "preco": 480000
+      },
+      {
+        "cor": "Grafite",
+        "armazenamento": "128GB",
+        "preco": 420000
+      },
+      {
+        "cor": "Grafite",
+        "armazenamento": "256GB",
+        "preco": 480000
+      },
+      {
+        "cor": "Azul",
+        "armazenamento": "128GB",
+        "preco": 420000
+      },
+      {
+        "cor": "Azul",
+        "armazenamento": "256GB",
+        "preco": 480000
+      },
+      {
+        "cor": "Vermelho",
+        "armazenamento": "128GB",
+        "preco": 420000
+      },
+      {
+        "cor": "Vermelho",
+        "armazenamento": "256GB",
+        "preco": 480000
+      }
+    ],
+    "preco_min": 420000,
+    "preco_max": 480000,
+    "garantia": "2 meses",
+    "estado": "usado",
+    "etiquetas": [
+      "samsung galaxy s22 ultra",
+      "samsung",
+      "telefones"
+    ],
+    "negociavel": true,
+    "stock": 5
   },
   {
-    "id": "tenis-vans",
-    "categoria": "tenis",
-    "nome": "Ténis Vans",
-    "marca": "Vans",
-    "descricao": "Ténis Vans clássico, estilo casual para todos os dias.",
-    "imagens": ["imagens/tenis-vans.jpeg"],
-    "atributos": { "estado": "Novo" },
-    "variantes": {
-      "tamanho": [
-        { "nome": "38" }, { "nome": "39" }, { "nome": "40" }, { "nome": "41" }, { "nome": "42" }
-      ]
-    },
-    "preco_inicial": null,
-    "preco_final": null,
-    "stock": 4,
-    "estado": "novo",
-    "etiquetas": ["vans", "tenis", "calcado", "desporto"],
-    "negociavel": true
+    "id": "samsung-s23-ultra",
+    "categoria": "telefones",
+    "nome": "Samsung Galaxy S23 Ultra",
+    "marca": "Samsung",
+    "descricao": "Telefone Samsung em bom estado, com garantia de 2 meses.",
+    "imagens": [
+      "imagens/telefone-samsung-stack.jpeg"
+    ],
+    "atributos": [
+      {
+        "nome": "cor",
+        "rotulo": "Cor",
+        "opcoes": [
+          "Preto Fantasma",
+          "Creme",
+          "Verde",
+          "Lavanda",
+          "Grafite",
+          "Lima"
+        ]
+      },
+      {
+        "nome": "armazenamento",
+        "rotulo": "Armazenamento",
+        "opcoes": [
+          "256GB",
+          "512GB"
+        ]
+      }
+    ],
+    "combinacoes": [
+      {
+        "cor": "Preto Fantasma",
+        "armazenamento": "256GB",
+        "preco": 550000
+      },
+      {
+        "cor": "Preto Fantasma",
+        "armazenamento": "512GB",
+        "preco": 630000
+      },
+      {
+        "cor": "Creme",
+        "armazenamento": "256GB",
+        "preco": 550000
+      },
+      {
+        "cor": "Creme",
+        "armazenamento": "512GB",
+        "preco": 630000
+      },
+      {
+        "cor": "Verde",
+        "armazenamento": "256GB",
+        "preco": 550000
+      },
+      {
+        "cor": "Verde",
+        "armazenamento": "512GB",
+        "preco": 630000
+      },
+      {
+        "cor": "Lavanda",
+        "armazenamento": "256GB",
+        "preco": 550000
+      },
+      {
+        "cor": "Lavanda",
+        "armazenamento": "512GB",
+        "preco": 630000
+      },
+      {
+        "cor": "Grafite",
+        "armazenamento": "256GB",
+        "preco": 550000
+      },
+      {
+        "cor": "Grafite",
+        "armazenamento": "512GB",
+        "preco": 630000
+      },
+      {
+        "cor": "Lima",
+        "armazenamento": "256GB",
+        "preco": 550000
+      },
+      {
+        "cor": "Lima",
+        "armazenamento": "512GB",
+        "preco": 630000
+      }
+    ],
+    "preco_min": 550000,
+    "preco_max": 630000,
+    "garantia": "2 meses",
+    "estado": "usado",
+    "etiquetas": [
+      "samsung",
+      "samsung galaxy s23 ultra",
+      "telefones"
+    ],
+    "negociavel": true,
+    "stock": 5
   },
   {
-    "id": "sandalias-classicas",
-    "categoria": "sandalias",
-    "nome": "Sandálias",
-    "marca": "Kazolau",
-    "descricao": "Sandálias confortáveis para o dia a dia, várias cores e tamanhos disponíveis.",
-    "imagens": ["imagens/sandalhas.jpeg"],
-    "atributos": { "estado": "Novo" },
-    "variantes": {},
-    "preco_inicial": null,
-    "preco_final": null,
-    "stock": 6,
+    "id": "conjunto-feminino-top-calca",
+    "categoria": "roupas",
+    "nome": "Conjunto Feminino (Top + Calça)",
+    "marca": "",
+    "descricao": "Peça de roupa confortável e moderna, disponível em várias cores e tamanhos.",
+    "imagens": [
+      "imagens/ves.jpeg",
+      "imagens/v2.jpeg"
+    ],
+    "atributos": [
+      {
+        "nome": "cor",
+        "rotulo": "Cor",
+        "opcoes": [
+          "Preto",
+          "Branco",
+          "Amarelo"
+        ]
+      },
+      {
+        "nome": "tamanho",
+        "rotulo": "Tamanho",
+        "opcoes": [
+          "M",
+          "L",
+          "XL"
+        ]
+      }
+    ],
+    "combinacoes": [
+      {
+        "cor": "Preto",
+        "tamanho": "M",
+        "preco": 15000
+      },
+      {
+        "cor": "Preto",
+        "tamanho": "L",
+        "preco": 15000
+      },
+      {
+        "cor": "Preto",
+        "tamanho": "XL",
+        "preco": 15000
+      },
+      {
+        "cor": "Branco",
+        "tamanho": "M",
+        "preco": 15000
+      },
+      {
+        "cor": "Branco",
+        "tamanho": "L",
+        "preco": 15000
+      },
+      {
+        "cor": "Branco",
+        "tamanho": "XL",
+        "preco": 15000
+      },
+      {
+        "cor": "Amarelo",
+        "tamanho": "M",
+        "preco": 15000
+      },
+      {
+        "cor": "Amarelo",
+        "tamanho": "L",
+        "preco": 15000
+      },
+      {
+        "cor": "Amarelo",
+        "tamanho": "XL",
+        "preco": 15000
+      }
+    ],
+    "preco_min": 15000,
+    "preco_max": 15000,
+    "garantia": null,
     "estado": "novo",
-    "etiquetas": ["sandalia", "calcado", "verao"],
-    "negociavel": true
+    "etiquetas": [
+      "conjunto feminino (top + calça)",
+      "roupas"
+    ],
+    "negociavel": true,
+    "stock": 5
   },
   {
-    "id": "sandalia-slide-adidas",
-    "categoria": "sandalias",
-    "nome": "Sandália Slide Adidas",
-    "marca": "Adidas",
-    "descricao": "Sandália slide Adidas, leve e confortável, perfeita para o dia a dia.",
-    "imagens": ["imagens/sandalia-slide-adidas.jpeg"],
-    "atributos": { "estado": "Novo" },
-    "variantes": {
-      "tamanho": [ { "nome": "40" }, { "nome": "41" }, { "nome": "42" }, { "nome": "43" } ]
-    },
-    "preco_inicial": null,
-    "preco_final": null,
-    "stock": 5,
-    "estado": "novo",
-    "etiquetas": ["adidas", "slide", "sandalia", "calcado"],
-    "negociavel": true
-  },
-  {
-    "id": "bolsa-kazolau",
+    "id": "pasta-bolsa-feminina",
     "categoria": "acessorios",
-    "nome": "Bolsa",
-    "marca": "Kazolau",
-    "descricao": "Bolsa elegante e resistente, ideal para o dia a dia ou ocasiões especiais.",
-    "imagens": ["imagens/bolsas.jpeg"],
-    "atributos": { "estado": "Novo" },
-    "variantes": {},
-    "preco_inicial": null,
-    "preco_final": null,
-    "stock": 3,
+    "nome": "Pasta / Bolsa Feminina",
+    "marca": "",
+    "descricao": "Acessório elegante e resistente, ideal para o dia a dia.",
+    "imagens": [
+      "imagens/bolsas.jpeg"
+    ],
+    "atributos": [
+      {
+        "nome": "cor",
+        "rotulo": "Cor",
+        "opcoes": [
+          "Preto",
+          "Castanho",
+          "Bege"
+        ]
+      }
+    ],
+    "combinacoes": [
+      {
+        "cor": "Preto",
+        "preco": 25000
+      },
+      {
+        "cor": "Castanho",
+        "preco": 25000
+      },
+      {
+        "cor": "Bege",
+        "preco": 27000
+      }
+    ],
+    "preco_min": 25000,
+    "preco_max": 27000,
+    "garantia": null,
     "estado": "novo",
-    "etiquetas": ["bolsa", "acessorio", "moda"],
-    "negociavel": true
+    "etiquetas": [
+      "acessorios",
+      "pasta / bolsa feminina",
+      "pastas e acessórios"
+    ],
+    "negociavel": true,
+    "stock": 5
   },
   {
-    "id": "conjunto-casual",
-    "categoria": "roupas",
-    "nome": "Conjunto Casual",
-    "marca": "Kazolau",
-    "descricao": "Conjunto casual moderno, confortável e versátil para o dia a dia.",
-    "imagens": ["imagens/v2.jpeg"],
-    "atributos": { "estado": "Novo" },
-    "variantes": {
-      "tamanho": [ { "nome": "S" }, { "nome": "M" }, { "nome": "L" }, { "nome": "XL" } ]
-    },
-    "preco_inicial": null,
-    "preco_final": null,
-    "stock": 4,
+    "id": "sandalia-feminina",
+    "categoria": "sandalias",
+    "nome": "Sandália Feminina",
+    "marca": "",
+    "descricao": "Sandália confortável, ideal para o dia a dia.",
+    "imagens": [
+      "imagens/sandalhas.jpeg"
+    ],
+    "atributos": [
+      {
+        "nome": "cor",
+        "rotulo": "Cor",
+        "opcoes": [
+          "Preto",
+          "Bege",
+          "Castanho"
+        ]
+      },
+      {
+        "nome": "tamanho",
+        "rotulo": "Tamanho",
+        "opcoes": [
+          "36",
+          "37",
+          "38",
+          "39",
+          "40",
+          "41"
+        ]
+      }
+    ],
+    "combinacoes": [
+      {
+        "cor": "Preto",
+        "tamanho": "36",
+        "preco": 18000
+      },
+      {
+        "cor": "Preto",
+        "tamanho": "37",
+        "preco": 18000
+      },
+      {
+        "cor": "Preto",
+        "tamanho": "38",
+        "preco": 18000
+      },
+      {
+        "cor": "Preto",
+        "tamanho": "39",
+        "preco": 18000
+      },
+      {
+        "cor": "Preto",
+        "tamanho": "40",
+        "preco": 18000
+      },
+      {
+        "cor": "Preto",
+        "tamanho": "41",
+        "preco": 18000
+      },
+      {
+        "cor": "Bege",
+        "tamanho": "36",
+        "preco": 18000
+      },
+      {
+        "cor": "Bege",
+        "tamanho": "37",
+        "preco": 18000
+      },
+      {
+        "cor": "Bege",
+        "tamanho": "38",
+        "preco": 18000
+      },
+      {
+        "cor": "Bege",
+        "tamanho": "39",
+        "preco": 18000
+      },
+      {
+        "cor": "Bege",
+        "tamanho": "40",
+        "preco": 18000
+      },
+      {
+        "cor": "Bege",
+        "tamanho": "41",
+        "preco": 18000
+      },
+      {
+        "cor": "Castanho",
+        "tamanho": "36",
+        "preco": 20000
+      },
+      {
+        "cor": "Castanho",
+        "tamanho": "37",
+        "preco": 20000
+      },
+      {
+        "cor": "Castanho",
+        "tamanho": "38",
+        "preco": 20000
+      },
+      {
+        "cor": "Castanho",
+        "tamanho": "39",
+        "preco": 20000
+      },
+      {
+        "cor": "Castanho",
+        "tamanho": "40",
+        "preco": 20000
+      },
+      {
+        "cor": "Castanho",
+        "tamanho": "41",
+        "preco": 20000
+      }
+    ],
+    "preco_min": 18000,
+    "preco_max": 20000,
+    "garantia": null,
     "estado": "novo",
-    "etiquetas": ["roupa", "casual", "moda"],
-    "negociavel": true
+    "etiquetas": [
+      "sandálias",
+      "sandalias",
+      "sandália feminina"
+    ],
+    "negociavel": true,
+    "stock": 5
   },
   {
-    "id": "vestido-kazolau",
-    "categoria": "roupas",
-    "nome": "Vestido",
-    "marca": "Kazolau",
-    "descricao": "Vestido elegante, ideal para o dia a dia ou ocasiões especiais.",
-    "imagens": ["imagens/ves.jpeg"],
-    "atributos": { "estado": "Novo" },
-    "variantes": {
-      "tamanho": [ { "nome": "S" }, { "nome": "M" }, { "nome": "L" } ]
-    },
-    "preco_inicial": null,
-    "preco_final": null,
-    "stock": 3,
+    "id": "chinelo-adidas-slide",
+    "categoria": "sandalias",
+    "nome": "Chinelo Adidas Slide",
+    "marca": "Adidas",
+    "descricao": "Sandália confortável, ideal para o dia a dia.",
+    "imagens": [
+      "imagens/sandalia-slide-adidas.jpeg"
+    ],
+    "atributos": [
+      {
+        "nome": "cor",
+        "rotulo": "Cor",
+        "opcoes": [
+          "Preto/Branco"
+        ]
+      },
+      {
+        "nome": "tamanho",
+        "rotulo": "Tamanho",
+        "opcoes": [
+          "38",
+          "39",
+          "40",
+          "41",
+          "42"
+        ]
+      }
+    ],
+    "combinacoes": [
+      {
+        "cor": "Preto/Branco",
+        "tamanho": "38",
+        "preco": 22000
+      },
+      {
+        "cor": "Preto/Branco",
+        "tamanho": "39",
+        "preco": 22000
+      },
+      {
+        "cor": "Preto/Branco",
+        "tamanho": "40",
+        "preco": 22000
+      },
+      {
+        "cor": "Preto/Branco",
+        "tamanho": "41",
+        "preco": 22000
+      },
+      {
+        "cor": "Preto/Branco",
+        "tamanho": "42",
+        "preco": 22000
+      }
+    ],
+    "preco_min": 22000,
+    "preco_max": 22000,
+    "garantia": null,
     "estado": "novo",
-    "etiquetas": ["vestido", "roupa", "moda"],
-    "negociavel": true
+    "etiquetas": [
+      "chinelo adidas slide",
+      "adidas",
+      "sandálias",
+      "sandalias"
+    ],
+    "negociavel": true,
+    "stock": 5
+  },
+  {
+    "id": "adidas-runfalcon",
+    "categoria": "tenis",
+    "nome": "Adidas Runfalcon",
+    "marca": "Adidas",
+    "descricao": "Ténis Adidas confortável e resistente, ideal para o dia a dia ou desporto.",
+    "imagens": [
+      "imagens/tenis-adidas.jpeg"
+    ],
+    "atributos": [
+      {
+        "nome": "cor",
+        "rotulo": "Cor",
+        "opcoes": [
+          "Cinza/Rosa",
+          "Preto/Branco"
+        ]
+      },
+      {
+        "nome": "tamanho",
+        "rotulo": "Tamanho",
+        "opcoes": [
+          "38",
+          "39",
+          "40",
+          "41",
+          "42"
+        ]
+      }
+    ],
+    "combinacoes": [
+      {
+        "cor": "Cinza/Rosa",
+        "tamanho": "38",
+        "preco": 65000
+      },
+      {
+        "cor": "Cinza/Rosa",
+        "tamanho": "39",
+        "preco": 65000
+      },
+      {
+        "cor": "Cinza/Rosa",
+        "tamanho": "40",
+        "preco": 65000
+      },
+      {
+        "cor": "Cinza/Rosa",
+        "tamanho": "41",
+        "preco": 65000
+      },
+      {
+        "cor": "Preto/Branco",
+        "tamanho": "39",
+        "preco": 60000
+      },
+      {
+        "cor": "Preto/Branco",
+        "tamanho": "40",
+        "preco": 60000
+      },
+      {
+        "cor": "Preto/Branco",
+        "tamanho": "41",
+        "preco": 60000
+      },
+      {
+        "cor": "Preto/Branco",
+        "tamanho": "42",
+        "preco": 60000
+      }
+    ],
+    "preco_min": 60000,
+    "preco_max": 65000,
+    "garantia": null,
+    "estado": "novo",
+    "etiquetas": [
+      "adidas runfalcon",
+      "ténis",
+      "adidas",
+      "tenis"
+    ],
+    "negociavel": true,
+    "stock": 5
+  },
+  {
+    "id": "vans-classic",
+    "categoria": "tenis",
+    "nome": "Vans Classic",
+    "marca": "Vans",
+    "descricao": "Ténis Vans confortável e resistente, ideal para o dia a dia ou desporto.",
+    "imagens": [
+      "imagens/tenis-vans.jpeg"
+    ],
+    "atributos": [
+      {
+        "nome": "cor",
+        "rotulo": "Cor",
+        "opcoes": [
+          "Preto/Branco"
+        ]
+      },
+      {
+        "nome": "tamanho",
+        "rotulo": "Tamanho",
+        "opcoes": [
+          "38",
+          "39",
+          "40",
+          "41",
+          "42"
+        ]
+      }
+    ],
+    "combinacoes": [
+      {
+        "cor": "Preto/Branco",
+        "tamanho": "38",
+        "preco": 55000
+      },
+      {
+        "cor": "Preto/Branco",
+        "tamanho": "39",
+        "preco": 55000
+      },
+      {
+        "cor": "Preto/Branco",
+        "tamanho": "40",
+        "preco": 55000
+      },
+      {
+        "cor": "Preto/Branco",
+        "tamanho": "41",
+        "preco": 55000
+      },
+      {
+        "cor": "Preto/Branco",
+        "tamanho": "42",
+        "preco": 55000
+      }
+    ],
+    "preco_min": 55000,
+    "preco_max": 55000,
+    "garantia": null,
+    "estado": "novo",
+    "etiquetas": [
+      "tenis",
+      "ténis",
+      "vans",
+      "vans classic"
+    ],
+    "negociavel": true,
+    "stock": 5
   }
 ]
