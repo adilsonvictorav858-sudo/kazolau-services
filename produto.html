@@ -1,360 +1,81 @@
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="pt-AO">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title id="titulo-pagina">Produto — Kazolau Services</title>
-<link rel="icon" type="image/x-icon" href="favicon.ico">
-<style>
-  :root {
-    --brand: #1a3a6b;
-    --brand-light: #2257a8;
-    --accent: #f5a623;
-    --accent2: #e8410a;
-    --white: #ffffff;
-    --bg: #f4f6fb;
-    --bg2: #eaf0fb;
-    --text: #1a2540;
-    --text2: #4a5568;
-    --border: #d1d9e0;
-    --card-shadow: 0 4px 24px rgba(26,58,107,0.10);
-    --radius: 14px;
-    --radius-sm: 8px;
-  }
-
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-
-  body {
-    font-family: 'Segoe UI', system-ui, sans-serif;
-    background: var(--bg);
-    color: var(--text);
-    min-height: 100vh;
-  }
-
-  header {
-    background: var(--brand);
-    padding: 0 5%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    box-shadow: 0 2px 16px rgba(0,0,0,0.18);
-    height: 64px;
-  }
-
-  .logo-wrap { display: flex; align-items: center; gap: 12px; text-decoration: none; }
-  .logo-svg { width: 42px; height: 42px; flex-shrink: 0; }
-  .logo-text { display: flex; flex-direction: column; line-height: 1.1; }
-  .logo-text span:first-child { font-size: 18px; font-weight: 700; color: #fff; letter-spacing: 0.01em; }
-  .logo-text span:last-child { font-size: 11px; color: var(--accent); font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; }
-
-  nav { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
-  nav a { color: rgba(255,255,255,0.82); text-decoration: none; font-size: 14px; padding: 6px 12px; border-radius: 6px; transition: background 0.2s, color 0.2s; }
-  nav a:hover { background: rgba(255,255,255,0.12); color: #fff; }
-
-  .btn-login { background: var(--accent) !important; color: var(--brand) !important; font-weight: 700 !important; padding: 7px 18px !important; border-radius: 6px !important; font-size: 14px !important; cursor: pointer; border: none; transition: background 0.2s, transform 0.1s; }
-  .btn-login:hover { background: #ffc14a !important; transform: scale(1.03); }
-
-  .btn-notif { position: relative; background: rgba(255,255,255,0.12); border: none; color: #fff; font-size: 17px; width: 36px; height: 36px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background 0.2s; }
-  .btn-notif:hover { background: rgba(255,255,255,0.22); }
-
-  .notif-badge { position: absolute; top: -4px; right: -4px; background: var(--accent2); color: #fff; font-size: 10px; font-weight: 800; min-width: 17px; height: 17px; border-radius: 9px; display: flex; align-items: center; justify-content: center; padding: 0 4px; border: 2px solid var(--brand); }
-
-  #user-nav-info { display: flex; align-items: center; gap: 8px; color: #fff; font-size: 14px; }
-  #user-nav-info .avatar { width: 32px; height: 32px; border-radius: 50%; background: var(--accent); color: var(--brand); font-weight: 700; display: flex; align-items: center; justify-content: center; font-size: 13px; }
-
-  .hero { background: linear-gradient(135deg, var(--brand) 0%, #2257a8 60%, #1a4080 100%); color: white; padding: 80px 5% 70px; text-align: center; position: relative; overflow: hidden; }
-  .hero::before { content: ''; position: absolute; inset: 0; background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"); }
-  .hero-inner { position: relative; }
-  .hero h1 { font-size: clamp(28px, 5vw, 52px); font-weight: 800; margin-bottom: 18px; letter-spacing: -0.02em; line-height: 1.15; }
-  .hero h1 span { color: var(--accent); }
-  .hero p { font-size: 18px; opacity: 0.88; margin-bottom: 36px; max-width: 540px; margin-left: auto; margin-right: auto; }
-  .hero-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
-  .btn-hero { padding: 14px 32px; border-radius: var(--radius-sm); font-size: 15px; font-weight: 700; text-decoration: none; transition: transform 0.15s, box-shadow 0.15s; cursor: pointer; }
-  .btn-primary { background: var(--accent); color: var(--brand); }
-  .btn-secondary { background: transparent; color: white; border: 2px solid rgba(255,255,255,0.5); }
-  .btn-hero:hover { transform: translateY(-2px); box-shadow: 0 6px 24px rgba(0,0,0,0.2); }
-
-  .whatsapp-float { position: fixed; bottom: 28px; right: 28px; width: 56px; height: 56px; background: #25d366; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 26px; text-decoration: none; box-shadow: 0 4px 20px rgba(37,211,102,0.4); z-index: 200; transition: transform 0.2s; }
-  .whatsapp-float:hover { transform: scale(1.12); }
-
-  .info-strip { background: #0f2952; border-bottom: 1px solid rgba(255,255,255,0.08); }
-  .info-strip-inner { max-width: 1200px; margin: 0 auto; padding: 14px 5%; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 10px; }
-  .info-item { display: flex; align-items: center; gap: 10px; color: #fff; font-size: 12.5px; }
-  .info-icon { font-size: 22px; flex-shrink: 0; }
-  .info-item div { display: flex; flex-direction: column; line-height: 1.3; }
-  .info-item strong { font-size: 13px; font-weight: 700; color: #fff; }
-  .info-item span { color: rgba(255,255,255,0.72); }
-  .info-item span a { color: var(--accent); text-decoration: none; font-weight: 600; }
-  .info-item span a:hover { text-decoration: underline; }
-
-  .section-title { font-size: clamp(22px, 3vw, 32px); font-weight: 800; color: var(--brand); margin-bottom: 8px; text-align: center; }
-  .section-sub { text-align: center; color: var(--text2); margin-bottom: 36px; font-size: 15px; }
-  .eyebrow { display: block; text-align: center; font-size: 12px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent2); margin-bottom: 8px; }
-
-  .section-services { padding: 70px 5%; background: var(--white); }
-  .section-services:nth-child(even) { background: var(--bg); }
-  .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 18px; }
-  .card { background: var(--white); border: 1.5px solid var(--border); border-radius: var(--radius); padding: 24px 20px; text-decoration: none; color: var(--text); transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s; position: relative; }
-  .card:hover { border-color: var(--brand-light); box-shadow: var(--card-shadow); transform: translateY(-3px); }
-  .card h3 { font-size: 17px; font-weight: 700; margin-bottom: 6px; }
-  .card p { font-size: 14px; color: var(--text2); }
-  .card-price { font-size: 16px; font-weight: 800; color: var(--brand-light); margin-top: 12px; }
-
-  .badge-new { position: absolute; top: 12px; right: 12px; background: var(--accent2); color: #fff; font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 4px; letter-spacing: 0.05em; text-transform: uppercase; }
-
-  .product-card { background: var(--white); border: 1.5px solid var(--border); border-radius: var(--radius); overflow: hidden; transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s; position: relative; display: flex; flex-direction: column; }
-  .product-card:hover { border-color: var(--brand-light); box-shadow: var(--card-shadow); transform: translateY(-3px); }
-  .product-img { height: 130px; display: flex; align-items: center; justify-content: center; font-size: 56px; background: var(--bg2); overflow: hidden; position: relative; }
-  .product-img-badge { position: absolute; top: 8px; left: 8px; background: rgba(15,25,55,0.65); color: #fff; font-size: 10px; font-weight: 700; padding: 3px 9px; border-radius: 20px; z-index: 3; letter-spacing: 0.02em; }
-  .product-img img { width: 100%; height: 100%; object-fit: cover; object-position: top center; }
-  .product-body { padding: 18px 18px 20px; display: flex; flex-direction: column; flex: 1; }
-  .product-body h3 { font-size: 16px; font-weight: 700; margin-bottom: 4px; }
-  .product-body p { font-size: 13px; color: var(--text2); margin-bottom: 10px; }
-  .product-price { font-size: 16px; font-weight: 800; color: var(--brand-light); margin-bottom: 14px; }
-  .product-actions { display: flex; gap: 8px; margin-top: auto; }
-  .btn-comprar, .btn-negociar { flex: 1; border: none; border-radius: var(--radius-sm); padding: 10px 8px; font-size: 12.5px; font-weight: 700; cursor: pointer; text-align: center; text-decoration: none; transition: background 0.2s, transform 0.1s; }
-  .btn-comprar { background: var(--brand); color: #fff; }
-  .btn-comprar:hover { background: var(--brand-light); }
-  .btn-negociar { background: #fff7e8; color: var(--accent2); border: 1.5px solid var(--accent); }
-  .btn-negociar:hover { background: var(--accent); color: #fff; }
-
-  #offerOverlay { display: none; position: fixed; inset: 0; background: rgba(15,25,55,0.80); z-index: 1000; align-items: center; justify-content: center; backdrop-filter: blur(4px); }
-  #offerOverlay.active { display: flex; }
-  .offer-box { background: #fff; border-radius: var(--radius); width: 90%; max-width: 420px; padding: 32px 30px; position: relative; box-shadow: 0 24px 80px rgba(0,0,0,0.3); animation: slideUp 0.25s ease; }
-  .offer-close { position: absolute; top: 14px; right: 18px; font-size: 22px; cursor: pointer; color: var(--text2); border: none; background: none; line-height: 1; }
-  .offer-box h3 { color: var(--brand); font-size: 19px; font-weight: 800; margin-bottom: 4px; }
-  .offer-box .offer-product { font-size: 14px; color: var(--text2); margin-bottom: 18px; }
-  .offer-box .offer-original { font-size: 13px; color: var(--text2); margin-bottom: 18px; }
-  .offer-box .offer-original span { font-weight: 700; color: var(--brand-light); }
-  .offer-field { margin-bottom: 14px; }
-  .offer-field label { display: block; font-size: 13px; font-weight: 600; color: var(--text2); margin-bottom: 5px; }
-  .offer-field input { width: 100%; padding: 12px 14px; border: 1.5px solid var(--border); border-radius: var(--radius-sm); font-size: 15px; font-family: inherit; transition: border-color 0.2s; }
-  .offer-field input:focus { border-color: var(--brand-light); outline: none; }
-  .btn-submit-offer { width: 100%; padding: 13px; background: var(--accent); color: var(--brand); font-size: 15px; font-weight: 800; border: none; border-radius: var(--radius-sm); cursor: pointer; margin-top: 4px; transition: background 0.2s; font-family: inherit; }
-  .btn-submit-offer:hover { background: #ffc14a; }
-
-  @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-
-  footer { background: var(--brand); color: rgba(255,255,255,0.7); text-align: center; padding: 28px 5%; font-size: 14px; }
-  footer a { color: var(--accent); text-decoration: none; }
-
-  @media (max-width: 640px) {
-    header { padding: 0 4%; gap: 10px; }
-    .logo-text span:first-child { font-size: 15px; }
-    nav { gap: 2px; }
-    nav a { font-size: 12px; padding: 5px 8px; }
-    .hero { padding: 50px 4% 50px; }
-  }
-</style>
-<style>
-  :root { --brand:#1a3a6b; --brand-light:#2257a8; --accent:#f5a623; --accent2:#e8410a; --white:#fff; --bg:#f4f6fb; --bg2:#eaf0fb; --text:#1a2540; --text2:#4a5568; --border:#d1d9e0; --radius:14px; --radius-sm:8px; --card-shadow:0 4px 24px rgba(26,58,107,0.10); }
-  * { margin:0; padding:0; box-sizing:border-box; }
-  body { font-family:'Segoe UI', system-ui, sans-serif; background:var(--bg); color:var(--text); }
-  main { max-width:1100px; margin:0 auto; padding:30px 5% 70px; }
-  .produto-topo { display:grid; grid-template-columns:1fr 1fr; gap:40px; }
-  @media (max-width:768px) { .produto-topo { grid-template-columns:1fr; } }
-  .galeria-principal { width:100%; aspect-ratio:1/1; border-radius:var(--radius); overflow:hidden; background:var(--bg2); margin-bottom:12px; }
-  .galeria-principal img { width:100%; height:100%; object-fit:cover; }
-  .galeria-miniaturas { display:flex; gap:8px; }
-  .galeria-miniaturas img { width:64px; height:64px; object-fit:cover; border-radius:8px; cursor:pointer; border:2px solid transparent; }
-  .galeria-miniaturas img.ativa { border-color:var(--brand-light); }
-  .produto-info h1 { font-size:26px; font-weight:800; color:var(--brand); margin-bottom:6px; }
-  .produto-info .marca { color:var(--text2); font-size:14px; margin-bottom:16px; }
-  .produto-preco { font-size:28px; font-weight:800; color:var(--brand-light); margin-bottom:20px; }
-  .opcao-grupo { margin-bottom:20px; }
-  .opcao-grupo label { display:block; font-size:13px; font-weight:700; color:var(--text2); margin-bottom:8px; }
-  .opcao-btns { display:flex; gap:8px; flex-wrap:wrap; }
-  .opcao-btn { padding:8px 16px; border:1.5px solid var(--border); border-radius:8px; background:#fff; cursor:pointer; font-size:14px; }
-  .opcao-btn.ativa { border-color:var(--brand-light); background:var(--bg2); font-weight:700; }
-  .produto-acoes { display:flex; gap:10px; margin-top:24px; }
-  .produto-acoes button, .produto-acoes a { flex:1; padding:14px; border:none; border-radius:var(--radius-sm); font-weight:700; cursor:pointer; text-align:center; text-decoration:none; }
-  .btn-comprar { background:var(--brand); color:#fff; }
-  .btn-negociar { background:#fff7e8; color:var(--accent2); border:1.5px solid var(--accent) !important; }
-  .produto-desc { margin-top:30px; font-size:14px; color:var(--text2); line-height:1.7; }
-  .relacionados { margin-top:60px; }
-  .relacionados h2 { font-size:20px; font-weight:800; color:var(--brand); margin-bottom:16px; }
-  .cards { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:16px; }
-</style>
+<title>Produto — Kazolau Services</title>
+<link rel="icon" href="favicon-32x32.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-<header>
-  <a href="index.html" class="logo-wrap">
-    <svg class="logo-svg" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Kazolau Services">
-      <circle cx="21" cy="21" r="21" fill="#f5a623"/>
-      <text x="21" y="16" text-anchor="middle" font-family="'Segoe UI',Arial,sans-serif" font-weight="800" font-size="10" fill="#1a3a6b" letter-spacing="0.5">KZ</text>
-      <path d="M10 22 Q21 14 32 22 Q21 30 10 22Z" fill="#1a3a6b" opacity="0.85"/>
-      <circle cx="21" cy="22" r="4" fill="#f5a623"/>
-      <path d="M10 34 Q21 28 32 34" stroke="#1a3a6b" stroke-width="2" fill="none" stroke-linecap="round"/>
-    </svg>
-    <div class="logo-text">
-      <span>Kazolau Services</span>
-      <span>Angola · Digital · Vistos</span>
+<header class="site-header">
+  <div class="header-inner">
+    <a href="index.html" class="logo"><span class="mark">K</span><span>KAZOLAU<small>SERVICES</small></span></a>
+    <nav class="main-nav" id="main-nav">
+      <a href="index.html">Início</a>
+      <a href="servicos.html">Serviços</a>
+      <a href="loja.html" class="active">Loja</a>
+      <a href="vistos.html">Vistos e Agendamentos</a>
+      <a href="sobre.html">Sobre Nós</a>
+      <a href="contactos.html">Contactos</a>
+    </nav>
+    <div class="header-actions">
+      <button class="icon-btn" id="cart-toggle" aria-label="Carrinho">🛒<span class="badge cart-count" style="display:none">0</span></button>
+      <a class="icon-btn btn-whatsapp" href="https://wa.me/244957400234" target="_blank" aria-label="WhatsApp">💬</a>
+      <button class="icon-btn nav-toggle" id="nav-toggle" aria-label="Menu">☰</button>
     </div>
-  </a>
-
-  <nav>
-    <a href="index.html">Início</a>
-    <a href="index.html#digitais">Serviços</a>
-    <a href="loja.html">Loja</a>
-    <a href="index.html#flyers-visuais">Promoções</a>
-    <a href="index.html#agendamentos">Agendamentos</a>
-    <a href="index.html#contacto">Contacto</a>
-  </nav>
+  </div>
 </header>
 
-<a href="https://wa.me/244957400234" class="whatsapp-float" target="_blank" title="Fale connosco no WhatsApp">💬</a>
-<header style="background:var(--brand);padding:16px 5%;">
-  <a href="index.html" style="color:#fff;text-decoration:none;font-weight:700;">← Voltar</a>
-  <a href="loja.html" style="color:#fff;text-decoration:none;font-weight:700;margin-left:20px;">Loja</a>
-</header>
+<section class="section" style="padding-top:32px">
+  <div class="container" id="produto-container"></div>
+</section>
 
-<main>
-  <div id="produto-container">
-    <p style="text-align:center;color:var(--text2);padding:60px 0;">A carregar produto...</p>
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-head"><h2>Produtos relacionados</h2></div>
+    <div class="related-grid" id="relacionados-grid"></div>
   </div>
+</section>
 
-  <div class="relacionados">
-    <h2>Também pode gostar</h2>
-    <div id="relacionados-grid" class="cards"></div>
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-bottom">
+      <span>© 2026 Kazolau Services — Todos os direitos reservados.</span>
+      <span><a href="loja.html">← Voltar à loja</a></span>
+    </div>
   </div>
-</main>
-
-<footer style="padding:30px 5%;text-align:center;color:var(--text2);font-size:13px;">
-  © 2026 Kazolau Services
 </footer>
 
-<script src="app.js"></script>
-<script src="carrinho.js"></script>
-<script src="favoritos.js"></script>
-<script src="catalogo.js"></script>
+<a class="wa-float" href="https://wa.me/244957400234" target="_blank" aria-label="Fale connosco no WhatsApp">💬</a>
 
-<script>
-  let produtoAtual = null;
-  let selecao = {}; // ex: { cor: 'azul', capacidade: '128GB' } ou { tamanho: '41' }
+<div class="overlay" id="cart-overlay"></div>
+<aside class="drawer" id="cart-drawer">
+  <div class="drawer-head"><h3>🛒 O meu carrinho</h3><button class="drawer-close" id="cart-close">✕</button></div>
+  <div class="drawer-body" id="cart-body"></div>
+  <div class="drawer-foot" id="cart-foot"></div>
+</aside>
 
-  function variantePorSelecao() {
-    return produtoAtual.variantes.find(v =>
-      Object.keys(selecao).every(chave => v[chave] === selecao[chave])
-    );
-  }
+<div class="modal" id="modal-negociar">
+  <div class="modal-card">
+    <div class="modal-head"><h3>🤝 Faça a sua oferta</h3><button data-close-modal>✕</button></div>
+    <div class="modal-body">
+      <div class="field"><label>Produto</label><div id="neg-produto-nome" style="font-weight:700"></div><div class="ref-price" id="neg-produto-preco"></div></div>
+      <form id="neg-form">
+        <div class="field"><label>O seu nome</label><input type="text" id="neg-nome" placeholder="Nome completo" required></div>
+        <div class="field"><label>WhatsApp</label><input type="text" id="neg-whatsapp" placeholder="9XX XXX XXX" required></div>
+        <div class="field"><label>Quanto quer pagar? (Kz)</label><input type="number" id="neg-oferta" placeholder="Ex: 100000" required></div>
+        <button type="submit" class="btn btn-gold btn-block">Enviar oferta no WhatsApp →</button>
+      </form>
+    </div>
+  </div>
+</div>
 
-  function imagemAtual() {
-    const chaveCor = selecao.cor;
-    if (chaveCor && produtoAtual.imagens[chaveCor]) return produtoAtual.imagens[chaveCor];
-    const primeiraChave = Object.keys(produtoAtual.imagens)[0];
-    return produtoAtual.imagens[primeiraChave];
-  }
-
-  function renderizar() {
-    const variante = variantePorSelecao();
-    const preco = variante ? variante.preco : Kazolau.precoMinimo(produtoAtual);
-    const imagens = imagemAtual();
-
-    document.title = produtoAtual.nome + " — Kazolau Services";
-
-    const html = `
-      <div class="produto-topo">
-        <div>
-          <div class="galeria-principal">
-            <img id="img-principal" src="${imagens[0]}" alt="${produtoAtual.nome}">
-          </div>
-          <div class="galeria-miniaturas">
-            ${imagens.map((img, i) => `<img src="${img}" class="${i === 0 ? 'ativa' : ''}" onclick="trocarImagem('${img}', this)">`).join("")}
-          </div>
-        </div>
-        <div class="produto-info">
-          <h1>${produtoAtual.nome}</h1>
-          <div class="marca">${produtoAtual.marca || ""} · ${produtoAtual.estado || ""}</div>
-          <div class="produto-preco">${Kazolau.formatarPreco(preco)}</div>
-
-          ${produtoAtual.atributos.cores ? `
-            <div class="opcao-grupo">
-              <label>Cor</label>
-              <div class="opcao-btns">
-                ${produtoAtual.atributos.cores.map(cor => `
-                  <button class="opcao-btn ${selecao.cor === cor ? 'ativa' : ''}" onclick="selecionar('cor', '${cor}')">${cor}</button>
-                `).join("")}
-              </div>
-            </div>` : ""}
-
-          ${produtoAtual.atributos.capacidades ? `
-            <div class="opcao-grupo">
-              <label>Capacidade</label>
-              <div class="opcao-btns">
-                ${produtoAtual.atributos.capacidades.map(cap => `
-                  <button class="opcao-btn ${selecao.capacidade === cap ? 'ativa' : ''}" onclick="selecionar('capacidade', '${cap}')">${cap}</button>
-                `).join("")}
-              </div>
-            </div>` : ""}
-
-          ${produtoAtual.atributos.tamanhos ? `
-            <div class="opcao-grupo">
-              <label>Tamanho</label>
-              <div class="opcao-btns">
-                ${produtoAtual.atributos.tamanhos.map(tam => `
-                  <button class="opcao-btn ${selecao.tamanho === tam ? 'ativa' : ''}" onclick="selecionar('tamanho', '${tam}')">${tam}</button>
-                `).join("")}
-              </div>
-            </div>` : ""}
-
-          <div class="produto-acoes">
-            <button class="btn-comprar" onclick="adicionarAoCarrinho()">Adicionar ao carrinho</button>
-            <button class="btn-negociar" onclick="Catalogo.abrirNegociacao('${produtoAtual.id}', '${produtoAtual.nome}', ${preco})">Negociar</button>
-          </div>
-
-          <p class="produto-desc">${produtoAtual.descricao}</p>
-        </div>
-      </div>`;
-
-    document.getElementById("produto-container").innerHTML = html;
-  }
-
-  function trocarImagem(src, el) {
-    document.getElementById("img-principal").src = src;
-    document.querySelectorAll(".galeria-miniaturas img").forEach(img => img.classList.remove("ativa"));
-    el.classList.add("ativa");
-  }
-
-  function selecionar(chave, valor) {
-    selecao[chave] = valor;
-    renderizar();
-  }
-
-  function adicionarAoCarrinho() {
-    const variante = variantePorSelecao();
-    const preco = variante ? variante.preco : Kazolau.precoMinimo(produtoAtual);
-    Carrinho.adicionar(produtoAtual.id, produtoAtual.nome, preco, imagemAtual()[0], selecao);
-    alert("Adicionado ao carrinho!");
-  }
-
-  async function iniciar() {
-    const id = Kazolau.getParam("id");
-    const produtos = await Kazolau.carregarJSON("produtos.json");
-    produtoAtual = produtos.find(p => p.id === id);
-
-    if (!produtoAtual) {
-      document.getElementById("produto-container").innerHTML = `<p style="text-align:center;padding:60px 0;">Produto não encontrado.</p>`;
-      return;
-    }
-
-    // Pré-seleciona a primeira opção de cada atributo
-    if (produtoAtual.atributos.cores) selecao.cor = produtoAtual.atributos.cores[0];
-    if (produtoAtual.atributos.capacidades) selecao.capacidade = produtoAtual.atributos.capacidades[0];
-    if (produtoAtual.atributos.tamanhos) selecao.tamanho = produtoAtual.atributos.tamanhos[0];
-
-    renderizar();
-
-    // Produtos relacionados: mesma categoria, excluindo o atual
-    const relacionados = produtos.filter(p => p.categoria === produtoAtual.categoria && p.id !== produtoAtual.id).slice(0, 4);
-    document.getElementById("relacionados-grid").innerHTML = relacionados.map(Catalogo.cartaoProduto).join("");
-  }
-
-  document.addEventListener("DOMContentLoaded", iniciar);
-</script>
-
+<script src="js/app.js"></script>
+<script src="js/catalogo.js"></script>
+<script src="js/produto.js"></script>
 </body>
 </html>

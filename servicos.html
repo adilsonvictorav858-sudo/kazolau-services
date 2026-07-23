@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Loja — Kazolau Services</title>
-<meta name="description" content="Loja Kazolau Services: telefones, roupas, ténis, sandálias e acessórios com entrega em toda Luanda.">
+<title>Serviços — Kazolau Services</title>
+<meta name="description" content="Serviços digitais, websites, design, consultoria, entregas e vistos — Kazolau Services.">
 <link rel="icon" href="favicon-32x32.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -17,8 +17,8 @@
     <a href="index.html" class="logo"><span class="mark">K</span><span>KAZOLAU<small>SERVICES</small></span></a>
     <nav class="main-nav" id="main-nav">
       <a href="index.html">Início</a>
-      <a href="servicos.html">Serviços</a>
-      <a href="loja.html" class="active">Loja</a>
+      <a href="servicos.html" class="active">Serviços</a>
+      <a href="loja.html">Loja</a>
       <a href="vistos.html">Vistos e Agendamentos</a>
       <a href="sobre.html">Sobre Nós</a>
       <a href="contactos.html">Contactos</a>
@@ -33,43 +33,9 @@
 
 <section class="section" style="padding-top:32px">
   <div class="container">
-    <div class="breadcrumbs"><a href="index.html">Início</a> / Loja</div>
-    <div class="section-head"><h2>Loja Kazolau</h2><span class="eyebrow">Telefones, roupas, ténis, sandálias e acessórios</span></div>
-
-    <div style="margin-bottom:22px">
-      <input type="text" id="busca-loja" placeholder="🔍 Pesquisar na loja..." style="width:100%;max-width:420px;padding:12px 16px;border:1.5px solid var(--border);border-radius:10px;font-size:14.5px;outline:none">
-    </div>
-
-    <div class="shop-layout">
-      <aside class="filters-panel" id="filters-panel">
-        <div class="filter-group">
-          <h4>Categoria</h4>
-          <div id="filtro-categorias"></div>
-        </div>
-        <div class="filter-group">
-          <h4>Marca</h4>
-          <div id="filtro-marcas"></div>
-        </div>
-        <div class="filter-group">
-          <h4>Promoção</h4>
-          <label><input type="checkbox" id="filtro-promocao"> Apenas com desconto</label>
-        </div>
-        <button class="btn btn-outline-navy btn-block btn-sm" id="limpar-filtros">Limpar filtros</button>
-      </aside>
-
-      <div>
-        <div class="results-bar">
-          <span id="results-count" style="color:var(--text-muted);font-size:14px"></span>
-          <select id="ordenar">
-            <option value="">Ordenar por</option>
-            <option value="preco-asc">Preço: menor para maior</option>
-            <option value="preco-desc">Preço: maior para menor</option>
-            <option value="nome">Nome A-Z</option>
-          </select>
-        </div>
-        <div class="products-grid" id="products-grid"></div>
-      </div>
-    </div>
+    <div class="breadcrumbs"><a href="index.html">Início</a> / Serviços</div>
+    <div class="section-head"><h2>Todos os Serviços</h2><span class="eyebrow">Documentos, websites, design, consultoria e mais</span></div>
+    <div id="servicos-page"></div>
   </div>
 </section>
 

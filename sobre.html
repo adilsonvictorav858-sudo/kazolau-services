@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-AO">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sobre Nós — Kazolau Services</title>
+<link rel="icon" href="favicon-32x32.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a href="index.html" class="logo"><span class="mark">K</span><span>KAZOLAU<small>SERVICES</small></span></a>
+    <nav class="main-nav" id="main-nav">
+      <a href="index.html">Início</a>
+      <a href="servicos.html">Serviços</a>
+      <a href="loja.html">Loja</a>
+      <a href="vistos.html">Vistos e Agendamentos</a>
+      <a href="sobre.html" class="active">Sobre Nós</a>
+      <a href="contactos.html">Contactos</a>
+    </nav>
+    <div class="header-actions">
+      <button class="icon-btn" id="cart-toggle" aria-label="Carrinho">🛒<span class="badge cart-count" style="display:none">0</span></button>
+      <a class="icon-btn btn-whatsapp" href="https://wa.me/244957400234" target="_blank" aria-label="WhatsApp">💬</a>
+      <button class="icon-btn nav-toggle" id="nav-toggle" aria-label="Menu">☰</button>
+    </div>
+  </div>
+</header>
+
+<section class="section" style="padding-top:32px">
+  <div class="container" style="max-width:820px">
+    <div class="breadcrumbs"><a href="index.html">Início</a> / Sobre Nós</div>
+    <h2 style="font-size:30px;margin-bottom:16px">Sobre a Kazolau Services</h2>
+    <p style="color:var(--text-muted);font-size:16px;line-height:1.8;margin-bottom:18px">
+      A Kazolau Services nasceu em Angola com um objetivo simples: reunir num só lugar os serviços digitais,
+      a loja online e o apoio a vistos e agendamentos que as pessoas mais precisam no dia a dia — com rapidez,
+      confiança e um atendimento próximo, sempre a um WhatsApp de distância.
+    </p>
+    <p style="color:var(--text-muted);font-size:16px;line-height:1.8;margin-bottom:18px">
+      Já apoiámos mais de 500 clientes em Luanda, Benguela, Huambo e outras províncias — de currículos
+      profissionais a websites completos, passando por agendamentos e vistos para Portugal, Espanha, Holanda
+      e China, além de uma loja com telefones, roupas, ténis, sandálias e acessórios.
+    </p>
+    <div class="benefits-strip" style="margin-top:36px;background:var(--white);border-radius:var(--radius-md);box-shadow:var(--shadow-sm);border:1px solid var(--border)">
+      <div class="benefit-item"><div class="ico" style="background:#2f6fed1a;color:var(--blue)">🛡️</div><div><strong>Compra Segura</strong><span>Seus dados sempre protegidos</span></div></div>
+      <div class="benefit-item"><div class="ico" style="background:#17a8661a;color:var(--green)">✅</div><div><strong>Qualidade Garantida</strong><span>Serviços e produtos de qualidade</span></div></div>
+      <div class="benefit-item"><div class="ico" style="background:#7c4fe01a;color:var(--purple)">🎧</div><div><strong>Suporte Dedicado</strong><span>Atendimento rápido e humanizado</span></div></div>
+      <div class="benefit-item"><div class="ico" style="background:#f2801f1a;color:var(--orange)">🚚</div><div><strong>Entrega Rápida</strong><span>Para todo o país e exterior</span></div></div>
+    </div>
+    <a href="contactos.html" class="btn btn-gold" style="margin-top:32px">Falar connosco →</a>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-bottom">
+      <span>© 2026 Kazolau Services — Todos os direitos reservados.</span>
+      <span><a href="index.html">Voltar ao início</a></span>
+    </div>
+  </div>
+</footer>
+
+<a class="wa-float" href="https://wa.me/244957400234" target="_blank" aria-label="Fale connosco no WhatsApp">💬</a>
+<div class="overlay" id="cart-overlay"></div>
+<aside class="drawer" id="cart-drawer">
+  <div class="drawer-head"><h3>🛒 O meu carrinho</h3><button class="drawer-close" id="cart-close">✕</button></div>
+  <div class="drawer-body" id="cart-body"></div>
+  <div class="drawer-foot" id="cart-foot"></div>
+</aside>
+<script src="js/app.js"></script>
+</body>
+</html>

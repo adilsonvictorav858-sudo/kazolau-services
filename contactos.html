@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="pt-AO">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contactos — Kazolau Services</title>
+<link rel="icon" href="favicon-32x32.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<style>
+  .contact-grid { display:grid; grid-template-columns: 1.2fr 1fr; gap:40px; align-items:start; }
+  .contact-info-card { background:var(--navy-900); color:var(--white); border-radius:var(--radius-lg); padding:32px; }
+  .contact-info-card h3 { color:var(--white); margin-bottom:18px; }
+  .contact-info-card .item { display:flex; gap:12px; align-items:center; margin-bottom:16px; font-size:14.5px; color:rgba(255,255,255,.82); }
+  @media (max-width: 900px) { .contact-grid { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a href="index.html" class="logo"><span class="mark">K</span><span>KAZOLAU<small>SERVICES</small></span></a>
+    <nav class="main-nav" id="main-nav">
+      <a href="index.html">Início</a>
+      <a href="servicos.html">Serviços</a>
+      <a href="loja.html">Loja</a>
+      <a href="vistos.html">Vistos e Agendamentos</a>
+      <a href="sobre.html">Sobre Nós</a>
+      <a href="contactos.html" class="active">Contactos</a>
+    </nav>
+    <div class="header-actions">
+      <button class="icon-btn" id="cart-toggle" aria-label="Carrinho">🛒<span class="badge cart-count" style="display:none">0</span></button>
+      <a class="icon-btn btn-whatsapp" href="https://wa.me/244957400234" target="_blank" aria-label="WhatsApp">💬</a>
+      <button class="icon-btn nav-toggle" id="nav-toggle" aria-label="Menu">☰</button>
+    </div>
+  </div>
+</header>
+
+<section class="section" style="padding-top:32px">
+  <div class="container">
+    <div class="breadcrumbs"><a href="index.html">Início</a> / Contactos</div>
+    <div class="section-head"><h2>Solicitar Serviço</h2><span class="eyebrow">Preencha o formulário e entraremos em contacto brevemente</span></div>
+
+    <div class="contact-grid">
+      <form id="form-contacto" style="background:var(--white);border:1px solid var(--border);border-radius:var(--radius-lg);padding:28px;box-shadow:var(--shadow-sm)">
+        <div class="field">
+          <label>Escolha um serviço</label>
+          <select id="c-servico" required><option value="">A carregar serviços…</option></select>
+        </div>
+        <div class="field"><label>Nome completo</label><input type="text" id="c-nome" required></div>
+        <div class="field"><label>WhatsApp</label><input type="text" id="c-whatsapp" placeholder="9XX XXX XXX" required></div>
+        <div class="field"><label>Mensagem (opcional)</label><textarea id="c-msg" rows="4" placeholder="Detalhes do que precisa..."></textarea></div>
+        <button type="submit" class="btn btn-gold btn-block">Enviar Pedido no WhatsApp →</button>
+      </form>
+
+      <div>
+        <div class="contact-info-card">
+          <h3>Fale connosco</h3>
+          <div class="item">📞 <a href="tel:+244957400234" style="color:inherit">+244 957 400 234</a></div>
+          <div class="item">💬 <a href="https://wa.me/244957400234" style="color:inherit">WhatsApp direto</a></div>
+          <div class="item">🛵 Entrega em toda Luanda</div>
+          <div class="item">🕐 Atendimento 24/7</div>
+        </div>
+        <div class="note-box" style="background:#fff7e8;border:1px solid #f5d99a;border-radius:var(--radius-md);padding:16px 18px;font-size:14px;margin-top:20px">
+          💳 <strong>Pagamento:</strong> Multicaixa Express, transferência bancária ou numerário na entrega — combinado diretamente por WhatsApp após confirmação do pedido.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-bottom">
+      <span>© 2026 Kazolau Services — Todos os direitos reservados.</span>
+      <span><a href="index.html">Voltar ao início</a></span>
+    </div>
+  </div>
+</footer>
+
+<a class="wa-float" href="https://wa.me/244957400234" target="_blank" aria-label="Fale connosco no WhatsApp">💬</a>
+
+<div class="overlay" id="cart-overlay"></div>
+<aside class="drawer" id="cart-drawer">
+  <div class="drawer-head"><h3>🛒 O meu carrinho</h3><button class="drawer-close" id="cart-close">✕</button></div>
+  <div class="drawer-body" id="cart-body"></div>
+  <div class="drawer-foot" id="cart-foot"></div>
+</aside>
+
+<script src="js/app.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", async () => {
+    const [servicos, produtos] = await Promise.all([carregarJSON("servicos.json"), carregarJSON("produtos.json")]);
+    const sel = document.getElementById("c-servico");
+    const grupos = {};
+    servicos.forEach(s => { (grupos[s.categoria] ||= []).push(s); });
+    const nomes = { digitais:"Serviços Digitais", websites:"Websites", design:"Design & Flyers", consultoria:"Consultoria e Imigração", entregas:"Entregas", agendamentos:"Agendamentos", vistos:"Vistos" };
+    sel.innerHTML = '<option value="">Selecione um serviço</option>' + Object.keys(grupos).map(g => `
+      <optgroup label="${nomes[g] || g}">
+        ${grupos[g].map(s => `<option value="${s.nome}">${s.nome}${s.preco_texto ? " — " + s.preco_texto : ""}</option>`).join("")}
+      </optgroup>
+    `).join("") + `<optgroup label="Loja">${produtos.map(p => `<option value="${p.nome}">${p.nome}</option>`).join("")}</optgroup>`;
+
+    document.getElementById("form-contacto").addEventListener("submit", (ev) => {
+      ev.preventDefault();
+      const servico = sel.value;
+      const nome = document.getElementById("c-nome").value.trim();
+      const whatsapp = document.getElementById("c-whatsapp").value.trim();
+      const msg = document.getElementById("c-msg").value.trim();
+      if (!servico || !nome || !whatsapp) { toast("Preencha os campos obrigatórios"); return; }
+      const texto = `Olá! Gostaria de solicitar: ${servico}\n\nNome: ${nome}\nWhatsApp: ${whatsapp}${msg ? "\nMensagem: " + msg : ""}`;
+      abrirWhatsApp(texto);
+    });
+  });
+</script>
+</body>
+</html>
