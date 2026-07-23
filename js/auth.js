@@ -24,14 +24,19 @@ function isAdmin(user) {
 }
 
 function initAccountButton() {
-  // A deteção de sessão iniciada funciona sempre, mesmo em páginas
-  // (como o painel admin) que não têm o botão 👤 do cabeçalho normal.
+  const btn = document.getElementById("account-btn");
+  if (!btn) return;
+
+  btn.addEventListener("click", () => {
+    if (KZ_USER) {
+      window.location.href = "pedidos.html";
+    } else {
+      loginGoogle();
+    }
+  });
+
   auth.onAuthStateChanged(user => {
     KZ_USER = user;
-    document.dispatchEvent(new CustomEvent("kz-auth-changed", { detail: { user } }));
-
-    const btn = document.getElementById("account-btn");
-    if (!btn) return;
     if (user) {
       btn.title = `Os meus pedidos — ${user.displayName || user.email}`;
       btn.innerHTML = user.photoURL
@@ -41,16 +46,7 @@ function initAccountButton() {
       btn.title = "Entrar com Google";
       btn.innerHTML = "👤";
     }
-  });
-
-  const btn = document.getElementById("account-btn");
-  if (!btn) return;
-  btn.addEventListener("click", () => {
-    if (KZ_USER) {
-      window.location.href = "pedidos.html";
-    } else {
-      loginGoogle();
-    }
+    document.dispatchEvent(new CustomEvent("kz-auth-changed", { detail: { user } }));
   });
 }
 
