@@ -124,11 +124,11 @@
       const whatsapp = document.getElementById("c-whatsapp").value.trim();
       const msg = document.getElementById("c-msg").value.trim();
       if (!servico || !nome || !whatsapp) { toast("Preencha os campos obrigatórios"); return; }
-      const texto = `Olá! Gostaria de solicitar: ${servico}\n\nNome: ${nome}\nWhatsApp: ${whatsapp}${msg ? "\nMensagem: " + msg : ""}`;
-      if (typeof criarPedido === "function") {
+      exigirLogin(() => {
+        const texto = `Olá! Gostaria de solicitar: ${servico}\n\nNome: ${nome}\nWhatsApp: ${whatsapp}${msg ? "\nMensagem: " + msg : ""}`;
         criarPedido({ tipo: "servico", resumo: `Serviço: ${servico}${msg ? "\n" + msg : ""}`, telefone: whatsapp });
-      }
-      abrirWhatsApp(texto);
+        abrirWhatsApp(texto);
+      });
     });
   });
 </script>
