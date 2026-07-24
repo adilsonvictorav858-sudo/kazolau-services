@@ -58,6 +58,23 @@ function abrirWhatsApp(mensagem) {
   window.open(linkWhatsApp(mensagem), "_blank");
 }
 
+/* Depois de voltar de um login por redireccionamento (telemóvel), abrir o
+   WhatsApp automaticamente costuma ser bloqueado pelo navegador (não é um
+   clique direto da pessoa). Por isso mostramos um botão para ela tocar. */
+function mostrarBotaoWhatsAppPendente(mensagem) {
+  let el = document.getElementById("kz-wa-pendente");
+  if (!el) {
+    el = document.createElement("div");
+    el.id = "kz-wa-pendente";
+    el.style.cssText = "position:fixed;left:16px;right:16px;bottom:16px;z-index:500;background:var(--navy-900);color:#fff;padding:16px;border-radius:14px;box-shadow:0 12px 30px rgba(0,0,0,.3);display:flex;align-items:center;gap:12px";
+    document.body.appendChild(el);
+  }
+  el.innerHTML = `
+    <span style="flex:1;font-size:14px">✅ Pedido registado! Toca para continuares no WhatsApp.</span>
+    <a href="${linkWhatsApp(mensagem)}" target="_blank" class="btn btn-gold btn-sm" onclick="document.getElementById('kz-wa-pendente')?.remove()">Abrir →</a>
+  `;
+}
+
 function obterTelefoneCliente() {
   let tel = localStorage.getItem("kazolau_telefone_cliente");
   if (!tel) {
@@ -180,19 +197,23 @@ const Carrinho = {
   finalizar() {
     const itens = Carrinho.obter();
     if (itens.length === 0) { toast("O carrinho está vazio"); return; }
-    exigirLogin(() => {
-      let msg = "Olá! Gostaria de finalizar esta encomenda na Kazolau Services:\n\n";
-      let resumo = "";
-      itens.forEach(i => {
-        const varTxt = Object.values(i.variante || {}).filter(Boolean).join(", ");
-        const linha = `• ${i.nome}${varTxt ? " (" + varTxt + ")" : ""} — Qtd: ${i.qtd}${i.preco ? " — " + formatKz(i.preco * i.qtd) : ""}`;
-        msg += linha + "\n";
-        resumo += linha + "\n";
-      });
-      msg += `\nTotal estimado: ${formatKz(Carrinho.total())}\n\nAguardo confirmação, obrigado!`;
-      criarPedido({ tipo: "loja", itens, total: Carrinho.total(), resumo: resumo.trim(), telefone: obterTelefoneCliente() });
-      abrirWhatsApp(msg);
+    exigirLogin(() => Carrinho._executarFinalizar(false), { tipo: "carrinho" });
+  },
+  _executarFinalizar(retomado) {
+    const itens = Carrinho.obter();
+    if (itens.length === 0) return;
+    let msg = "Olá! Gostaria de finalizar esta encomenda na Kazolau Services:\n\n";
+    let resumo = "";
+    itens.forEach(i => {
+      const varTxt = Object.values(i.variante || {}).filter(Boolean).join(", ");
+      const linha = `• ${i.nome}${varTxt ? " (" + varTxt + ")" : ""} — Qtd: ${i.qtd}${i.preco ? " — " + formatKz(i.preco * i.qtd) : ""}`;
+      msg += linha + "\n";
+      resumo += linha + "\n";
     });
+    msg += `\nTotal estimado: ${formatKz(Carrinho.total())}\n\nAguardo confirmação, obrigado!`;
+    criarPedido({ tipo: "loja", itens, total: Carrinho.total(), resumo: resumo.trim(), telefone: obterTelefoneCliente() });
+    if (retomado) mostrarBotaoWhatsAppPendente(msg);
+    else abrirWhatsApp(msg);
   }
 };
 
@@ -259,51 +280,78 @@ function enviarNegociacao(ev) {
   const whatsapp = document.getElementById("neg-whatsapp").value.trim();
   const oferta = document.getElementById("neg-oferta").value.trim();
   if (!nome || !whatsapp || !oferta) { toast("Preencha todos os campos"); return; }
-  exigirLogin(() => {
-    const precoTabela = produtoEmNegociacao.preco_final ?? produtoEmNegociacao.preco;
-    const msg = `Olá! Gostaria de negociar o preço de "${produtoEmNegociacao.nome}".\n` +
-      `Preço de tabela: ${precoTabela ? formatKz(precoTabela) : "sob consulta"}\n` +
-      `Minha oferta: ${formatKz(oferta)}\n\n` +
-      `Nome: ${nome}\nWhatsApp: ${whatsapp}`;
-    criarPedido({
-      tipo: "negociacao",
-      resumo: `Negociação: ${produtoEmNegociacao.nome}\nPreço de tabela: ${precoTabela ? formatKz(precoTabela) : "sob consulta"}\nOferta: ${formatKz(oferta)}`,
-      total: Number(oferta) || 0,
-      telefone: whatsapp,
-    });
-    abrirWhatsApp(msg);
-    fecharNegociar();
+  const dados = { produto: produtoEmNegociacao, nome, whatsapp, oferta };
+  exigirLogin(() => { _executarNegociacao(dados, false); fecharNegociar(); }, { tipo: "negociar", dados });
+}
+
+function _executarNegociacao({ produto, nome, whatsapp, oferta }, retomado) {
+  const precoTabela = produto.preco_final ?? produto.preco;
+  const msg = `Olá! Gostaria de negociar o preço de "${produto.nome}".\n` +
+    `Preço de tabela: ${precoTabela ? formatKz(precoTabela) : "sob consulta"}\n` +
+    `Minha oferta: ${formatKz(oferta)}\n\n` +
+    `Nome: ${nome}\nWhatsApp: ${whatsapp}`;
+  criarPedido({
+    tipo: "negociacao",
+    resumo: `Negociação: ${produto.nome}\nPreço de tabela: ${precoTabela ? formatKz(precoTabela) : "sob consulta"}\nOferta: ${formatKz(oferta)}`,
+    total: Number(oferta) || 0,
+    telefone: whatsapp,
   });
+  if (retomado) mostrarBotaoWhatsAppPendente(msg);
+  else abrirWhatsApp(msg);
 }
 
 /* ================= COMPRAR DIRETO ================= */
 function comprarAgora(produto, variante = {}) {
-  exigirLogin(() => {
-    const varTxt = Object.values(variante).filter(Boolean).join(", ");
-    const preco = produto.preco_final ?? produto.preco;
-    const msg = `Olá! Quero comprar:\n\n• ${produto.nome}${varTxt ? " (" + varTxt + ")" : ""}\n${preco ? "Preço: " + formatKz(preco) : "Preço: sob consulta"}\n\nPor favor confirmem disponibilidade e forma de entrega. Obrigado!`;
-    criarPedido({
-      tipo: "loja",
-      itens: [{ nome: produto.nome, variante, qtd: 1, preco: preco || null }],
-      total: preco || 0,
-      resumo: `• ${produto.nome}${varTxt ? " (" + varTxt + ")" : ""}${preco ? " — " + formatKz(preco) : ""}`,
-      telefone: obterTelefoneCliente(),
-    });
-    abrirWhatsApp(msg);
+  exigirLogin(() => _executarComprarAgora(produto, variante, false), { tipo: "comprar", dados: { produto, variante } });
+}
+
+function _executarComprarAgora(produto, variante, retomado) {
+  const varTxt = Object.values(variante).filter(Boolean).join(", ");
+  const preco = produto.preco_final ?? produto.preco;
+  const msg = `Olá! Quero comprar:\n\n• ${produto.nome}${varTxt ? " (" + varTxt + ")" : ""}\n${preco ? "Preço: " + formatKz(preco) : "Preço: sob consulta"}\n\nPor favor confirmem disponibilidade e forma de entrega. Obrigado!`;
+  criarPedido({
+    tipo: "loja",
+    itens: [{ nome: produto.nome, variante, qtd: 1, preco: preco || null }],
+    total: preco || 0,
+    resumo: `• ${produto.nome}${varTxt ? " (" + varTxt + ")" : ""}${preco ? " — " + formatKz(preco) : ""}`,
+    telefone: obterTelefoneCliente(),
   });
+  if (retomado) mostrarBotaoWhatsAppPendente(msg);
+  else abrirWhatsApp(msg);
 }
 
 function solicitarServico(servico) {
-  exigirLogin(() => {
-    const msg = `Olá! Gostaria de solicitar o serviço "${servico.nome}".\n${servico.preco ? "Valor de referência: " + formatKz(servico.preco) : ""}\n\nPor favor enviem mais informações.`;
-    criarPedido({
-      tipo: "servico",
-      resumo: `Serviço: ${servico.nome}${servico.preco ? " — " + formatKz(servico.preco) : ""}`,
-      telefone: obterTelefoneCliente(),
-    });
-    abrirWhatsApp(msg);
-  });
+  exigirLogin(() => _executarSolicitarServico(servico, false), { tipo: "servico", dados: { servico } });
 }
+
+function _executarSolicitarServico(servico, retomado) {
+  const msg = `Olá! Gostaria de solicitar o serviço "${servico.nome}".\n${servico.preco ? "Valor de referência: " + formatKz(servico.preco) : ""}\n\nPor favor enviem mais informações.`;
+  criarPedido({
+    tipo: "servico",
+    resumo: `Serviço: ${servico.nome}${servico.preco ? " — " + formatKz(servico.preco) : ""}`,
+    telefone: obterTelefoneCliente(),
+  });
+  if (retomado) mostrarBotaoWhatsAppPendente(msg);
+  else abrirWhatsApp(msg);
+}
+
+/* ================= RETOMAR AÇÃO APÓS LOGIN NO TELEMÓVEL ================= */
+document.addEventListener("kz-auth-changed", (ev) => {
+  const user = ev.detail.user;
+  if (!user) return;
+  const raw = sessionStorage.getItem("kz_pending_action");
+  if (!raw) return;
+  sessionStorage.removeItem("kz_pending_action");
+  try {
+    const pending = JSON.parse(raw);
+    if (pending.tipo === "carrinho") Carrinho._executarFinalizar(true);
+    else if (pending.tipo === "comprar") _executarComprarAgora(pending.dados.produto, pending.dados.variante, true);
+    else if (pending.tipo === "servico") _executarSolicitarServico(pending.dados.servico, true);
+    else if (pending.tipo === "negociar") _executarNegociacao(pending.dados, true);
+  } catch (err) {
+    console.error("Erro ao retomar ação pendente:", err);
+  }
+});
 
 /* ================= HEADER / MENU ================= */
 function initHeader() {
