@@ -56,6 +56,8 @@ function carregarTodosPedidos() {
     });
 }
 
+const CORES_TIPO_PEDIDO = { loja: "var(--blue)", servico: "var(--purple)", negociacao: "var(--orange)" };
+
 function montarFiltrosAdmin() {
   const el = document.getElementById("admin-filtros");
   const ativos = TODOS_PEDIDOS_ADMIN.filter(p => !p.arquivado);
@@ -94,10 +96,11 @@ function renderPedidosAdmin() {
   const podeArquivar = (p) => p.estado === "entregue" || p.estado === "cancelado";
 
   lista.innerHTML = filtrados.map(p => `
-    <div class="pedido-row">
+    <div class="pedido-row" style="border-left:4px solid ${CORES_TIPO_PEDIDO[p.tipo] || 'var(--border)'}">
       <div class="info">
         <strong>#${p.id.slice(0, 6).toUpperCase()}</strong> — ${p.clienteNome || p.clienteEmail || "Cliente"}
-        <div style="font-size:12.5px;color:var(--text-muted);margin:4px 0">${formatarData(p.criadoEm)} · ${NOMES_TIPO_PEDIDO[p.tipo] || p.tipo} · ${p.clienteEmail || ""}${p.telefone ? " · 📱 " + p.telefone : ""}</div>
+        <span style="display:inline-block;margin-left:8px;font-size:11px;font-weight:700;color:${CORES_TIPO_PEDIDO[p.tipo] || 'var(--text-muted)'}">${(NOMES_TIPO_PEDIDO[p.tipo] || p.tipo).toUpperCase()}</span>
+        <div style="font-size:12.5px;color:var(--text-muted);margin:4px 0">${formatarData(p.criadoEm)} · ${p.clienteEmail || ""}${p.telefone ? " · 📱 " + p.telefone : ""}</div>
         <div style="font-size:13.5px;white-space:pre-line">${p.resumo || ""}</div>
         ${p.total ? `<div style="font-weight:700;margin-top:6px">${formatKz(p.total)}</div>` : ""}
       </div>
@@ -108,6 +111,7 @@ function renderPedidosAdmin() {
            </select>`
       }
       ${!p.arquivado && podeArquivar(p) ? `<button class="btn btn-outline-navy btn-sm" style="margin-left:8px" onclick="arquivarPedido('${p.id}')">📦 Arquivar</button>` : ""}
+      <button class="btn btn-outline-navy btn-sm" style="margin-left:8px;color:#d1394a;border-color:#d1394a" onclick="apagarPedido('${p.id}')">🗑️ Apagar</button>
     </div>
   `).join("");
 }
@@ -136,6 +140,39 @@ function desarquivarPedido(id) {
     console.error(err);
     toast("Não foi possível repor.");
   });
+}
+
+function apagarPedido(id) {
+  if (!confirm("Apagar este pedido definitivamente? Esta ação não tem volta atrás.")) return;
+  db.collection("pedidos").doc(id).delete().then(() => {
+    toast("Pedido apagado");
+    TODOS_PEDIDOS_ADMIN = TODOS_PEDIDOS_ADMIN.filter(x => x.id !== id);
+    montarFiltrosAdmin();
+    renderPedidosAdmin();
+  }).catch(err => {
+    console.error(err);
+    toast("Não foi possível apagar. Confirma as regras do Firestore.");
+  });
+}
+
+async function apagarTodosPedidos() {
+  if (!confirm(`Isto vai apagar TODOS os ${TODOS_PEDIDOS_ADMIN.length} pedidos, de todos os clientes, para sempre. Tens a certeza?`)) return;
+  const digitado = prompt('Para confirmar, escreve a palavra APAGAR (tudo em maiúsculas):');
+  if (digitado !== "APAGAR") { toast("Cancelado — não foi apagado nada"); return; }
+
+  toast("A apagar tudo, aguarda...");
+  try {
+    const lote = db.batch();
+    TODOS_PEDIDOS_ADMIN.forEach(p => lote.delete(db.collection("pedidos").doc(p.id)));
+    await lote.commit();
+    toast("Todos os pedidos foram apagados");
+    TODOS_PEDIDOS_ADMIN = [];
+    montarFiltrosAdmin();
+    renderPedidosAdmin();
+  } catch (err) {
+    console.error(err);
+    toast("Não foi possível apagar tudo. Confirma as regras do Firestore.");
+  }
 }
 
 const NOMES_ESTADO_MSG = {
