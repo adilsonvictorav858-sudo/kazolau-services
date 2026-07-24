@@ -1,9 +1,5 @@
 /* ============================================================
    KAZOLAU SERVICES — firebase-config.js
-   ⚠️ PREENCHE COM OS DADOS DO TEU PROJETO FIREBASE ⚠️
-   Vai a https://console.firebase.google.com → cria um projeto →
-   Definições do projeto → "As tuas apps" → Web → copia os valores
-   para aqui. Instruções completas no LEIA-ME-LOGIN.md
    ============================================================ */
 
 const firebaseConfig = {
@@ -16,8 +12,11 @@ const firebaseConfig = {
 };
 
 // 🔑 Email da conta que deve ter acesso ao painel de administração.
-// Muda para o teu email do Google (o mesmo que vais usar para entrar).
 const ADMIN_EMAIL = "adilsonvictorav858@gmail.com";
+
+// ID do cliente OAuth da Web (Google Identity Services) — usado para o
+// login funcionar mesmo em navegadores que bloqueiam cookies entre domínios.
+const GOOGLE_CLIENT_ID = "814927011147-jnsuccbha311j2snddf5rl7el2n0t1sb.apps.googleusercontent.com";
 
 firebase.initializeApp(firebaseConfig);
 const auth = firebase.auth();
