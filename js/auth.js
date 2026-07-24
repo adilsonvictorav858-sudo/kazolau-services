@@ -32,6 +32,25 @@ function isAdmin(user) {
   return !!user && !!user.email && user.email.toLowerCase() === ADMIN_EMAIL.toLowerCase();
 }
 
+/* Garante que há sessão iniciada antes de continuar uma ação (comprar,
+   negociar, solicitar serviço, finalizar carrinho). Se já tiver sessão,
+   executa logo. Se não tiver, pede login e só continua se tiver sucesso. */
+function exigirLogin(callback) {
+  if (KZ_USER) { callback(); return; }
+  toast("Inicia sessão para continuares");
+  const provider = new firebase.auth.GoogleAuthProvider();
+  auth.signInWithPopup(provider)
+    .then(result => { if (result && result.user) { KZ_USER = result.user; callback(); } })
+    .catch(err => {
+      console.error(err);
+      if (err.code === "auth/popup-blocked") {
+        toast("O navegador bloqueou a janela de login. Permite popups para este site.");
+      } else if (err.code !== "auth/popup-closed-by-user" && err.code !== "auth/cancelled-popup-request") {
+        toast("Não foi possível entrar. Tenta novamente.");
+      }
+    });
+}
+
 function initAccountButton() {
   // A deteção de sessão iniciada funciona sempre, mesmo em páginas
   // (como o painel admin) que não têm o botão 👤 do cabeçalho normal.
