@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="pt-AO">
+<head> 
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gerir Produtos — Kazolau Services</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
+<style>
+  body { background: var(--bg-light); }
+  .admin-header { background: var(--navy-900); color: var(--white); padding: 18px 0; }
+  .admin-header .container { display: flex; align-items: center; justify-content: space-between; }
+  .admin-nav { display: flex; gap: 18px; }
+  .admin-nav a { color: rgba(255,255,255,.7); font-size: 14px; font-weight: 600; padding: 6px 2px; border-bottom: 2px solid transparent; }
+  .admin-nav a.active, .admin-nav a:hover { color: var(--gold); border-color: var(--gold); }
+  .produto-row { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius-md); padding: 16px 18px; margin-bottom: 12px; display: flex; gap: 14px; align-items: center; }
+  .produto-row img { width: 56px; height: 56px; border-radius: 8px; object-fit: cover; background: var(--bg-alt); flex-shrink: 0; }
+  .produto-row .info { flex: 1; min-width: 0; }
+  .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .form-grid .full { grid-column: 1 / -1; }
+</style>
+</head>
+<body>
+
+<div class="admin-header">
+  <div class="container">
+    <div class="logo"><span class="mark">K</span><span>KAZOLAU<small>ADMIN</small></span></div>
+    <nav class="admin-nav" id="admin-nav" style="display:none">
+      <a href="index.html">Pedidos</a>
+      <a href="produtos.html" class="active">Produtos</a>
+    </nav>
+    <div id="admin-user-box" style="display:none;align-items:center;gap:12px">
+      <span id="admin-user-name" style="font-size:14px;color:rgba(255,255,255,.8)"></span>
+      <button class="btn btn-outline-light btn-sm" onclick="logoutGoogle()">Sair</button>
+    </div>
+  </div>
+</div>
+
+<section class="section" style="padding-top:36px">
+  <div class="container">
+
+    <div id="admin-login-box">
+      <div class="empty-state" style="background:var(--white);border:1px solid var(--border);border-radius:var(--radius-md);padding:50px 20px">
+        <div class="emoji">🔐</div>
+        <p>Área restrita. Inicia sessão com a conta de administrador.</p>
+        <button class="btn btn-gold" style="margin-top:16px" onclick="loginGoogle()">Entrar com Google →</button>
+      </div>
+    </div>
+
+    <div id="admin-negado-box" style="display:none">
+      <div class="empty-state" style="background:var(--white);border:1px solid var(--border);border-radius:var(--radius-md);padding:50px 20px">
+        <div class="emoji">🚫</div>
+        <p>Esta conta não tem acesso ao painel administrativo.</p>
+        <button class="btn btn-outline-navy" style="margin-top:16px" onclick="logoutGoogle()">Sair e tentar com outra conta</button>
+      </div>
+    </div>
+
+    <div id="admin-painel" style="display:none">
+      <div class="section-head"><h2>Adicionar Produto</h2></div>
+      <form id="form-produto" style="background:var(--white);border:1px solid var(--border);border-radius:var(--radius-md);padding:22px;margin-bottom:36px">
+        <div class="form-grid">
+          <div class="field"><label>Nome do produto *</label><input type="text" id="p-nome" required></div>
+          <div class="field"><label>Marca</label><input type="text" id="p-marca" placeholder="Ex: Apple, Nike..."></div>
+          <div class="field">
+            <label>Categoria *</label>
+            <select id="p-categoria" required>
+              <option value="telefones">Telefones</option>
+              <option value="roupas">Roupas</option>
+              <option value="tenis">Ténis</option>
+              <option value="sandalias">Sandálias</option>
+              <option value="acessorios">Pastas e Acessórios</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>Estado</label>
+            <select id="p-estado">
+              <option value="novo">Novo</option>
+              <option value="usado">Usado</option>
+            </select>
+          </div>
+          <div class="field"><label>Preço (Kz) — deixa vazio para "Preço a negociar"</label><input type="number" id="p-preco" placeholder="Ex: 45000"></div>
+          <div class="field"><label>Stock (unidades)</label><input type="number" id="p-stock" value="1" min="0"></div>
+          <div class="field full"><label>Link da imagem (URL) *</label><input type="url" id="p-imagem" placeholder="https://..." required></div>
+          <div class="field full" style="margin:-4px 0 0"><span class="ref-price">A imagem tem de estar já publicada algures (ex: sobe-a para o teu Google Drive/Imgur e usa o link de partilha direto, ou usa uma foto já existente no site).</span></div>
+          <div class="field full"><label>Descrição</label><textarea id="p-descricao" rows="3"></textarea></div>
+        </div>
+        <button type="submit" class="btn btn-gold" style="margin-top:6px">Adicionar à loja →</button>
+      </form>
+
+      <div class="section-head"><h2>Produtos adicionados por aqui</h2><span class="eyebrow" id="produtos-contagem"></span></div>
+      <p style="color:var(--text-muted);font-size:13.5px;margin-bottom:16px">Nota: os produtos que já vêm do <code>produtos.json</code> (o catálogo original) não aparecem aqui — esses continuam a editar-se no GitHub. Esta lista mostra só os que foram adicionados através deste painel.</p>
+      <div id="produtos-lista"></div>
+    </div>
+
+  </div>
+</section>
+
+<script src="https://accounts.google.com/gsi/client" async defer></script>
+<script src="https://www.gstatic.com/firebasejs/10.13.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.13.0/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.13.0/firebase-firestore-compat.js"></script>
+<script src="../js/firebase-config.js"></script>
+<script src="../js/auth.js"></script>
+<script src="../js/pedidos.js"></script>
+<script src="../js/app.js"></script>
+<script src="produtos-admin.js"></script>
+</body>
+</html>
