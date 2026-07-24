@@ -2,12 +2,6 @@
    KAZOLAU SERVICES — auth.js
    Login com Google, usando o SDK "Google Identity Services" (GIS)
    diretamente, em vez do signInWithPopup/signInWithRedirect do Firebase.
-
-   Porquê: desde 2024, os navegadores (Chrome, Firefox, Safari) bloqueiam
-   por defeito comunicação entre domínios diferentes durante o login
-   (kazolau.site ↔ kazolau-services.firebaseapp.com), o que faz o método
-   antigo falhar silenciosamente em muitos telemóveis. O GIS evita esse
-   problema por completo — o Firebase só recebe o resultado já pronto.
    ============================================================ */
 
 let KZ_USER = null;
@@ -70,8 +64,6 @@ function isAdmin(user) {
   return !!user && !!user.email && user.email.toLowerCase() === ADMIN_EMAIL.toLowerCase();
 }
 
-/* Garante que há sessão iniciada antes de continuar uma ação (comprar,
-   negociar, solicitar serviço, finalizar carrinho). */
 function exigirLogin(callback) {
   if (KZ_USER) { callback(); return; }
   kzLoginCallback = callback;
