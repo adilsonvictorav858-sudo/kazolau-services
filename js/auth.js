@@ -3,15 +3,33 @@
    Login com Google (Firebase Auth). Atualiza o botão de conta no
    cabeçalho em todas as páginas e mantém o utilizador disponível
    globalmente em KZ_USER.
+
+   Em computador usamos uma janela popup (mais rápido). Em telemóvel
+   usamos redireccionamento de página inteira, porque os popups de
+   login costumam bloquear ou ficar pendurados em navegadores móveis.
    ============================================================ */
 
 let KZ_USER = null;
 let kzLoginEmAndamento = false;
 
+function isMobileDevice() {
+  return /Android|iPhone|iPad|iPod|Mobile|webOS/i.test(navigator.userAgent);
+}
+
 function loginGoogle() {
   if (kzLoginEmAndamento) return;
   kzLoginEmAndamento = true;
   const provider = new firebase.auth.GoogleAuthProvider();
+
+  if (isMobileDevice()) {
+    auth.signInWithRedirect(provider).catch(err => {
+      console.error(err);
+      toast("Não foi possível abrir o login. Tenta novamente.");
+      kzLoginEmAndamento = false;
+    });
+    return;
+  }
+
   auth.signInWithPopup(provider)
     .catch(err => {
       console.error(err);
@@ -33,10 +51,28 @@ function isAdmin(user) {
 }
 
 /* Garante que há sessão iniciada antes de continuar uma ação (comprar,
-   negociar, solicitar serviço, finalizar carrinho). Se já tiver sessão,
-   executa logo. Se não tiver, pede login e só continua se tiver sucesso. */
-function exigirLogin(callback) {
+   negociar, solicitar serviço, finalizar carrinho).
+   - Se já tiver sessão, executa logo (callback).
+   - Em computador sem sessão: abre popup e, se tiver sucesso, executa o callback.
+   - Em telemóvel sem sessão: guarda o que a pessoa estava a fazer
+     (pendingAction) e redireciona para o login da Google. Quando a
+     página voltar a carregar já com sessão iniciada, essa ação
+     pendente é retomada automaticamente (ver app.js). */
+function exigirLogin(callback, pendingAction) {
   if (KZ_USER) { callback(); return; }
+
+  if (isMobileDevice()) {
+    if (pendingAction) sessionStorage.setItem("kz_pending_action", JSON.stringify(pendingAction));
+    toast("A abrir o login da Google...");
+    const provider = new firebase.auth.GoogleAuthProvider();
+    auth.signInWithRedirect(provider).catch(err => {
+      console.error(err);
+      toast("Não foi possível abrir o login. Tenta novamente.");
+      sessionStorage.removeItem("kz_pending_action");
+    });
+    return;
+  }
+
   toast("Inicia sessão para continuares");
   const provider = new firebase.auth.GoogleAuthProvider();
   auth.signInWithPopup(provider)
