@@ -3,10 +3,6 @@
    Login com Google (Firebase Auth). Atualiza o botão de conta no
    cabeçalho em todas as páginas e mantém o utilizador disponível
    globalmente em KZ_USER.
-
-   Em computador usamos uma janela popup (mais rápido). Em telemóvel
-   usamos redireccionamento de página inteira, porque os popups de
-   login costumam bloquear ou ficar pendurados em navegadores móveis.
    ============================================================ */
 
 let KZ_USER = null;
@@ -39,19 +35,15 @@ kzDebug("isMobileDevice(): " + isMobileDevice());
 function loginGoogle() {
   if (kzLoginEmAndamento) return;
   kzLoginEmAndamento = true;
+  kzDebug("loginGoogle() chamado — a usar popup (teste)");
   const provider = new firebase.auth.GoogleAuthProvider();
 
-  if (isMobileDevice()) {
-    auth.signInWithRedirect(provider).catch(err => {
-      console.error(err);
-      toast("Não foi possível abrir o login. Tenta novamente.");
-      kzLoginEmAndamento = false;
-    });
-    return;
-  }
-
   auth.signInWithPopup(provider)
+    .then(result => {
+      kzDebug("signInWithPopup OK: " + (result && result.user ? result.user.email : "sem utilizador"));
+    })
     .catch(err => {
+      kzDebug("ERRO signInWithPopup: " + (err.code || err.message));
       console.error(err);
       if (err.code === "auth/popup-blocked") {
         toast("O navegador bloqueou a janela de login. Permite popups para este site e tenta novamente.");
@@ -71,35 +63,20 @@ function isAdmin(user) {
 }
 
 /* Garante que há sessão iniciada antes de continuar uma ação (comprar,
-   negociar, solicitar serviço, finalizar carrinho).
-   - Se já tiver sessão, executa logo (callback).
-   - Em computador sem sessão: abre popup e, se tiver sucesso, executa o callback.
-   - Em telemóvel sem sessão: guarda o que a pessoa estava a fazer
-     (pendingAction) e redireciona para o login da Google. Quando a
-     página voltar a carregar já com sessão iniciada, essa ação
-     pendente é retomada automaticamente (ver app.js). */
+   negociar, solicitar serviço, finalizar carrinho). */
 function exigirLogin(callback, pendingAction) {
   if (KZ_USER) { callback(); return; }
 
-  if (isMobileDevice()) {
-    if (pendingAction) sessionStorage.setItem("kz_pending_action", JSON.stringify(pendingAction));
-    kzDebug("A chamar signInWithRedirect()...");
-    toast("A abrir o login da Google...");
-    const provider = new firebase.auth.GoogleAuthProvider();
-    auth.signInWithRedirect(provider).catch(err => {
-      kzDebug("ERRO em signInWithRedirect: " + (err.code || err.message));
-      console.error(err);
-      toast("Não foi possível abrir o login. Tenta novamente.");
-      sessionStorage.removeItem("kz_pending_action");
-    });
-    return;
-  }
-
+  kzDebug("exigirLogin: sem sessão, a usar popup (teste)");
   toast("Inicia sessão para continuares");
   const provider = new firebase.auth.GoogleAuthProvider();
   auth.signInWithPopup(provider)
-    .then(result => { if (result && result.user) { KZ_USER = result.user; callback(); } })
+    .then(result => {
+      kzDebug("exigirLogin popup OK: " + (result && result.user ? result.user.email : "sem utilizador"));
+      if (result && result.user) { KZ_USER = result.user; callback(); }
+    })
     .catch(err => {
+      kzDebug("ERRO exigirLogin popup: " + (err.code || err.message));
       console.error(err);
       if (err.code === "auth/popup-blocked") {
         toast("O navegador bloqueou a janela de login. Permite popups para este site.");
@@ -110,8 +87,6 @@ function exigirLogin(callback, pendingAction) {
 }
 
 function initAccountButton() {
-  // A deteção de sessão iniciada funciona sempre, mesmo em páginas
-  // (como o painel admin) que não têm o botão 👤 do cabeçalho normal.
   auth.onAuthStateChanged(user => {
     KZ_USER = user;
     kzDebug("onAuthStateChanged: " + (user ? "logado como " + user.email : "sem sessão"));
@@ -145,9 +120,6 @@ function initAccountButton() {
 
 document.addEventListener("DOMContentLoaded", initAccountButton);
 
-/* Processa o regresso do login por redireccionamento (telemóvel) e mostra
-   qualquer erro diretamente no ecrã, já que no telemóvel não é fácil abrir
-   a consola do navegador para ver o que correu mal. */
 kzDebug("A chamar getRedirectResult()...");
 auth.getRedirectResult().then(result => {
   kzDebug("getRedirectResult OK — utilizador: " + (result && result.user ? result.user.email : "NENHUM (result vazio)"));
