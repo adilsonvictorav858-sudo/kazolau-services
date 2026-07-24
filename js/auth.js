@@ -11,6 +11,25 @@
 
 let KZ_USER = null;
 let kzLoginEmAndamento = false;
+let kzAuthPronto = false;
+
+/* Espera até o Firebase confirmar (pela primeira vez) se há ou não sessão
+   iniciada, antes de decidir se pede login. Sem isto, num telemóvel com
+   ligação mais lenta, clicar em "Comprar" logo a seguir a abrir o site
+   podia pedir login outra vez mesmo já tendo sessão iniciada. */
+function aguardarAuthPronto(cb) {
+  if (kzAuthPronto) { cb(); return; }
+  const handler = () => {
+    document.removeEventListener("kz-auth-changed", handler);
+    clearTimeout(timeoutId);
+    cb();
+  };
+  const timeoutId = setTimeout(() => {
+    document.removeEventListener("kz-auth-changed", handler);
+    cb();
+  }, 4000);
+  document.addEventListener("kz-auth-changed", handler);
+}
 
 function isMobileDevice() {
   return /Android|iPhone|iPad|iPod|Mobile|webOS/i.test(navigator.userAgent);
@@ -59,32 +78,34 @@ function isAdmin(user) {
      página voltar a carregar já com sessão iniciada, essa ação
      pendente é retomada automaticamente (ver app.js). */
 function exigirLogin(callback, pendingAction) {
-  if (KZ_USER) { callback(); return; }
+  aguardarAuthPronto(() => {
+    if (KZ_USER) { callback(); return; }
 
-  if (isMobileDevice()) {
-    if (pendingAction) sessionStorage.setItem("kz_pending_action", JSON.stringify(pendingAction));
-    toast("A abrir o login da Google...");
+    if (isMobileDevice()) {
+      if (pendingAction) sessionStorage.setItem("kz_pending_action", JSON.stringify(pendingAction));
+      toast("A abrir o login da Google...");
+      const provider = new firebase.auth.GoogleAuthProvider();
+      auth.signInWithRedirect(provider).catch(err => {
+        console.error(err);
+        toast("Não foi possível abrir o login. Tenta novamente.");
+        sessionStorage.removeItem("kz_pending_action");
+      });
+      return;
+    }
+
+    toast("Inicia sessão para continuares");
     const provider = new firebase.auth.GoogleAuthProvider();
-    auth.signInWithRedirect(provider).catch(err => {
-      console.error(err);
-      toast("Não foi possível abrir o login. Tenta novamente.");
-      sessionStorage.removeItem("kz_pending_action");
-    });
-    return;
-  }
-
-  toast("Inicia sessão para continuares");
-  const provider = new firebase.auth.GoogleAuthProvider();
-  auth.signInWithPopup(provider)
-    .then(result => { if (result && result.user) { KZ_USER = result.user; callback(); } })
-    .catch(err => {
-      console.error(err);
-      if (err.code === "auth/popup-blocked") {
-        toast("O navegador bloqueou a janela de login. Permite popups para este site.");
-      } else if (err.code !== "auth/popup-closed-by-user" && err.code !== "auth/cancelled-popup-request") {
-        toast("Não foi possível entrar. Tenta novamente.");
-      }
-    });
+    auth.signInWithPopup(provider)
+      .then(result => { if (result && result.user) { KZ_USER = result.user; callback(); } })
+      .catch(err => {
+        console.error(err);
+        if (err.code === "auth/popup-blocked") {
+          toast("O navegador bloqueou a janela de login. Permite popups para este site.");
+        } else if (err.code !== "auth/popup-closed-by-user" && err.code !== "auth/cancelled-popup-request") {
+          toast("Não foi possível entrar. Tenta novamente.");
+        }
+      });
+  });
 }
 
 function initAccountButton() {
@@ -92,6 +113,7 @@ function initAccountButton() {
   // (como o painel admin) que não têm o botão 👤 do cabeçalho normal.
   auth.onAuthStateChanged(user => {
     KZ_USER = user;
+    kzAuthPronto = true;
     document.dispatchEvent(new CustomEvent("kz-auth-changed", { detail: { user } }));
 
     const btn = document.getElementById("account-btn");
