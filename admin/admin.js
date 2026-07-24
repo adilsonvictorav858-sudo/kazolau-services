@@ -52,18 +52,21 @@ function carregarTodosPedidos() {
     })
     .catch(err => {
       console.error(err);
-      lista.innerHTML = `<p style="color:#d1394a">Erro ao carregar pedidos. Confirma as regras de segurança do Firestore (ver LEIA-ME-LOGIN.md).</p>`;
+      lista.innerHTML = `<p style="color:#d1394a">Erro ao carregar pedidos. Confirma as regras de segurança do Firestore.</p>`;
     });
 }
 
 function montarFiltrosAdmin() {
   const el = document.getElementById("admin-filtros");
-  const contagens = { todos: TODOS_PEDIDOS_ADMIN.length };
+  const ativos = TODOS_PEDIDOS_ADMIN.filter(p => !p.arquivado);
+  const arquivados = TODOS_PEDIDOS_ADMIN.filter(p => p.arquivado).length;
+  const contagens = { todos: ativos.length };
   Object.keys(ESTADOS_PEDIDO).forEach(k => {
-    contagens[k] = TODOS_PEDIDOS_ADMIN.filter(p => p.estado === k).length;
+    contagens[k] = ativos.filter(p => p.estado === k).length;
   });
   const pill = (chave, label) => `<button class="stat-pill" data-filtro="${chave}" style="border:2px solid ${FILTRO_ESTADO === chave ? 'var(--gold)' : 'transparent'}">${label} (${contagens[chave] ?? 0})</button>`;
-  el.innerHTML = pill("todos", "Todos") + Object.entries(ESTADOS_PEDIDO).map(([k, v]) => pill(k, v.label)).join("");
+  el.innerHTML = pill("todos", "Todos") + Object.entries(ESTADOS_PEDIDO).map(([k, v]) => pill(k, v.label)).join("")
+    + `<button class="stat-pill" data-filtro="arquivados" style="border:2px solid ${FILTRO_ESTADO === 'arquivados' ? 'var(--gold)' : 'transparent'}">📦 Arquivados (${arquivados})</button>`;
   el.querySelectorAll("[data-filtro]").forEach(b => b.addEventListener("click", () => {
     FILTRO_ESTADO = b.dataset.filtro;
     montarFiltrosAdmin();
@@ -74,13 +77,21 @@ function montarFiltrosAdmin() {
 function renderPedidosAdmin() {
   const lista = document.getElementById("admin-pedidos-lista");
   const contagem = document.getElementById("admin-contagem");
-  const filtrados = FILTRO_ESTADO === "todos" ? TODOS_PEDIDOS_ADMIN : TODOS_PEDIDOS_ADMIN.filter(p => p.estado === FILTRO_ESTADO);
+  let filtrados;
+  if (FILTRO_ESTADO === "arquivados") {
+    filtrados = TODOS_PEDIDOS_ADMIN.filter(p => p.arquivado);
+  } else {
+    const ativos = TODOS_PEDIDOS_ADMIN.filter(p => !p.arquivado);
+    filtrados = FILTRO_ESTADO === "todos" ? ativos : ativos.filter(p => p.estado === FILTRO_ESTADO);
+  }
   contagem.textContent = `${filtrados.length} pedido${filtrados.length === 1 ? "" : "s"}`;
 
   if (!filtrados.length) {
     lista.innerHTML = `<div class="empty-state"><div class="emoji">📭</div><p>Sem pedidos nesta categoria.</p></div>`;
     return;
   }
+
+  const podeArquivar = (p) => p.estado === "entregue" || p.estado === "cancelado";
 
   lista.innerHTML = filtrados.map(p => `
     <div class="pedido-row">
@@ -90,11 +101,41 @@ function renderPedidosAdmin() {
         <div style="font-size:13.5px;white-space:pre-line">${p.resumo || ""}</div>
         ${p.total ? `<div style="font-weight:700;margin-top:6px">${formatKz(p.total)}</div>` : ""}
       </div>
-      <select onchange="atualizarEstadoPedido('${p.id}', this.value)">
-        ${Object.entries(ESTADOS_PEDIDO).map(([k, v]) => `<option value="${k}" ${p.estado === k ? "selected" : ""}>${v.label}</option>`).join("")}
-      </select>
+      ${p.arquivado
+        ? `<button class="btn btn-outline-navy btn-sm" onclick="desarquivarPedido('${p.id}')">Repor</button>`
+        : `<select onchange="atualizarEstadoPedido('${p.id}', this.value)">
+             ${Object.entries(ESTADOS_PEDIDO).map(([k, v]) => `<option value="${k}" ${p.estado === k ? "selected" : ""}>${v.label}</option>`).join("")}
+           </select>`
+      }
+      ${!p.arquivado && podeArquivar(p) ? `<button class="btn btn-outline-navy btn-sm" style="margin-left:8px" onclick="arquivarPedido('${p.id}')">📦 Arquivar</button>` : ""}
     </div>
   `).join("");
+}
+
+function arquivarPedido(id) {
+  db.collection("pedidos").doc(id).update({ arquivado: true }).then(() => {
+    toast("Pedido arquivado");
+    const p = TODOS_PEDIDOS_ADMIN.find(x => x.id === id);
+    if (p) p.arquivado = true;
+    montarFiltrosAdmin();
+    renderPedidosAdmin();
+  }).catch(err => {
+    console.error(err);
+    toast("Não foi possível arquivar.");
+  });
+}
+
+function desarquivarPedido(id) {
+  db.collection("pedidos").doc(id).update({ arquivado: false }).then(() => {
+    toast("Pedido reposto na lista");
+    const p = TODOS_PEDIDOS_ADMIN.find(x => x.id === id);
+    if (p) p.arquivado = false;
+    montarFiltrosAdmin();
+    renderPedidosAdmin();
+  }).catch(err => {
+    console.error(err);
+    toast("Não foi possível repor.");
+  });
 }
 
 const NOMES_ESTADO_MSG = {
