@@ -8,16 +8,18 @@ let KZ_USER = null;
 let googleTokenClient = null;
 let kzLoginCallback = null;
 
-function kzDebug(texto) {
-  let el = document.getElementById("kz-debug-panel");
-  if (!el) {
-    el = document.createElement("div");
-    el.id = "kz-debug-panel";
-    el.style.cssText = "position:fixed;top:0;left:0;right:0;z-index:99999;background:#000;color:#0f0;font-family:monospace;font-size:11px;line-height:1.5;padding:10px;max-height:45vh;overflow-y:auto;white-space:pre-wrap;border-bottom:3px solid red";
-    document.body.prepend(el);
+/* Se um utilizador diferente do último a ter sessão iniciada neste
+   aparelho entrar agora, limpa carrinho/favoritos/telefone guardados —
+   evita que dados de uma pessoa apareçam para a pessoa seguinte a usar
+   o mesmo telemóvel/computador. */
+function limparDadosSeContaDiferente(user) {
+  const ultimoUid = localStorage.getItem("kazolau_ultimo_uid");
+  if (ultimoUid && ultimoUid !== user.uid) {
+    localStorage.removeItem("kazolau_carrinho");
+    localStorage.removeItem("kazolau_favoritos");
+    localStorage.removeItem("kazolau_telefone_cliente");
   }
-  const hora = new Date().toLocaleTimeString("pt-PT");
-  el.textContent += `[${hora}] ${texto}\n`;
+  localStorage.setItem("kazolau_ultimo_uid", user.uid);
 }
 
 function obterTokenClient() {
@@ -27,22 +29,18 @@ function obterTokenClient() {
     scope: "openid email profile",
     callback: (response) => {
       if (response.error) {
-        kzDebug("GIS erro: " + response.error);
         console.error(response);
         toast("Não foi possível entrar. Tenta novamente.");
         return;
       }
-      kzDebug("GIS access_token recebido, a trocar com o Firebase...");
       const credential = firebase.auth.GoogleAuthProvider.credential(null, response.access_token);
       auth.signInWithCredential(credential)
         .then(result => {
           KZ_USER = result.user;
-          kzDebug("signInWithCredential OK: " + result.user.email);
-          toast("Sessão iniciada: " + result.user.email);
+          limparDadosSeContaDiferente(result.user);
           if (kzLoginCallback) { const cb = kzLoginCallback; kzLoginCallback = null; cb(); }
         })
         .catch(err => {
-          kzDebug("signInWithCredential ERRO: " + (err.code || err.message));
           console.error(err);
           toast("Erro ao entrar: " + (err.message || err.code));
         });
