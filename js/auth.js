@@ -143,3 +143,16 @@ function initAccountButton() {
 }
 
 document.addEventListener("DOMContentLoaded", initAccountButton);
+
+/* Processa o regresso do login por redireccionamento (telemóvel) e mostra
+   qualquer erro diretamente no ecrã, já que no telemóvel não é fácil abrir
+   a consola do navegador para ver o que correu mal. */
+auth.getRedirectResult().then(result => {
+  if (result && result.user) {
+    console.log("Login por redireccionamento concluído:", result.user.email);
+    toast("Sessão iniciada: " + result.user.email);
+  }
+}).catch(err => {
+  console.error("Erro no login por redireccionamento:", err);
+  toast("Erro no login: " + (err.code || err.message || "desconhecido"));
+});
