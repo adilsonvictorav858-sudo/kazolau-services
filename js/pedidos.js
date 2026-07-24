@@ -44,7 +44,9 @@ async function criarPedido({ tipo, itens, total, resumo, telefone }) {
 function formatarData(timestamp) {
   if (!timestamp) return "";
   const d = timestamp.toDate ? timestamp.toDate() : new Date(timestamp);
-  return d.toLocaleDateString("pt-PT", { day: "2-digit", month: "short", year: "numeric" });
+  const data = d.toLocaleDateString("pt-PT", { day: "2-digit", month: "short", year: "numeric" });
+  const hora = d.toLocaleTimeString("pt-PT", { hour: "2-digit", minute: "2-digit" });
+  return `${data}, ${hora}`;
 }
 
 function pedidosOcultos() {
