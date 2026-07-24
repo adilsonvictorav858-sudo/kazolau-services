@@ -1,17 +1,19 @@
 /* ============================================================
    KAZOLAU SERVICES — auth.js
-   Login com Google (Firebase Auth). Atualiza o botão de conta no
-   cabeçalho em todas as páginas e mantém o utilizador disponível
-   globalmente em KZ_USER.
+   Login com Google, usando o SDK "Google Identity Services" (GIS)
+   diretamente, em vez do signInWithPopup/signInWithRedirect do Firebase.
+
+   Porquê: desde 2024, os navegadores (Chrome, Firefox, Safari) bloqueiam
+   por defeito comunicação entre domínios diferentes durante o login
+   (kazolau.site ↔ kazolau-services.firebaseapp.com), o que faz o método
+   antigo falhar silenciosamente em muitos telemóveis. O GIS evita esse
+   problema por completo — o Firebase só recebe o resultado já pronto.
    ============================================================ */
 
 let KZ_USER = null;
-let kzLoginEmAndamento = false;
+let googleTokenClient = null;
+let kzLoginCallback = null;
 
-/* ---------- PAINEL DE DIAGNÓSTICO TEMPORÁRIO ----------
-   Mostra informação técnica fixa no topo do ecrã, para conseguirmos ver
-   o que se passa no login em telemóveis sem precisar de ferramentas de
-   programador. Depois de resolvido o problema, isto é removido. */
 function kzDebug(texto) {
   let el = document.getElementById("kz-debug-panel");
   if (!el) {
@@ -23,35 +25,41 @@ function kzDebug(texto) {
   const hora = new Date().toLocaleTimeString("pt-PT");
   el.textContent += `[${hora}] ${texto}\n`;
 }
-kzDebug("Página carregada: " + location.pathname);
-kzDebug("User agent: " + navigator.userAgent);
 
-function isMobileDevice() {
-  const resultado = /Android|iPhone|iPad|iPod|Mobile|webOS/i.test(navigator.userAgent);
-  return resultado;
+function obterTokenClient() {
+  if (googleTokenClient) return googleTokenClient;
+  googleTokenClient = google.accounts.oauth2.initTokenClient({
+    client_id: GOOGLE_CLIENT_ID,
+    scope: "openid email profile",
+    callback: (response) => {
+      if (response.error) {
+        kzDebug("GIS erro: " + response.error);
+        console.error(response);
+        toast("Não foi possível entrar. Tenta novamente.");
+        return;
+      }
+      kzDebug("GIS access_token recebido, a trocar com o Firebase...");
+      const credential = firebase.auth.GoogleAuthProvider.credential(null, response.access_token);
+      auth.signInWithCredential(credential)
+        .then(result => {
+          KZ_USER = result.user;
+          kzDebug("signInWithCredential OK: " + result.user.email);
+          toast("Sessão iniciada: " + result.user.email);
+          if (kzLoginCallback) { const cb = kzLoginCallback; kzLoginCallback = null; cb(); }
+        })
+        .catch(err => {
+          kzDebug("signInWithCredential ERRO: " + (err.code || err.message));
+          console.error(err);
+          toast("Erro ao entrar: " + (err.message || err.code));
+        });
+    },
+  });
+  return googleTokenClient;
 }
-kzDebug("isMobileDevice(): " + isMobileDevice());
 
 function loginGoogle() {
-  if (kzLoginEmAndamento) return;
-  kzLoginEmAndamento = true;
-  kzDebug("loginGoogle() chamado — a usar popup (teste)");
-  const provider = new firebase.auth.GoogleAuthProvider();
-
-  auth.signInWithPopup(provider)
-    .then(result => {
-      kzDebug("signInWithPopup OK: " + (result && result.user ? result.user.email : "sem utilizador"));
-    })
-    .catch(err => {
-      kzDebug("ERRO signInWithPopup: " + (err.code || err.message));
-      console.error(err);
-      if (err.code === "auth/popup-blocked") {
-        toast("O navegador bloqueou a janela de login. Permite popups para este site e tenta novamente.");
-      } else if (err.code !== "auth/popup-closed-by-user" && err.code !== "auth/cancelled-popup-request") {
-        toast("Não foi possível entrar. Tenta novamente.");
-      }
-    })
-    .finally(() => { kzLoginEmAndamento = false; });
+  kzLoginCallback = null;
+  obterTokenClient().requestAccessToken();
 }
 
 function logoutGoogle() {
@@ -64,32 +72,16 @@ function isAdmin(user) {
 
 /* Garante que há sessão iniciada antes de continuar uma ação (comprar,
    negociar, solicitar serviço, finalizar carrinho). */
-function exigirLogin(callback, pendingAction) {
+function exigirLogin(callback) {
   if (KZ_USER) { callback(); return; }
-
-  kzDebug("exigirLogin: sem sessão, a usar popup (teste)");
+  kzLoginCallback = callback;
   toast("Inicia sessão para continuares");
-  const provider = new firebase.auth.GoogleAuthProvider();
-  auth.signInWithPopup(provider)
-    .then(result => {
-      kzDebug("exigirLogin popup OK: " + (result && result.user ? result.user.email : "sem utilizador"));
-      if (result && result.user) { KZ_USER = result.user; callback(); }
-    })
-    .catch(err => {
-      kzDebug("ERRO exigirLogin popup: " + (err.code || err.message));
-      console.error(err);
-      if (err.code === "auth/popup-blocked") {
-        toast("O navegador bloqueou a janela de login. Permite popups para este site.");
-      } else if (err.code !== "auth/popup-closed-by-user" && err.code !== "auth/cancelled-popup-request") {
-        toast("Não foi possível entrar. Tenta novamente.");
-      }
-    });
+  obterTokenClient().requestAccessToken();
 }
 
 function initAccountButton() {
   auth.onAuthStateChanged(user => {
     KZ_USER = user;
-    kzDebug("onAuthStateChanged: " + (user ? "logado como " + user.email : "sem sessão"));
     document.dispatchEvent(new CustomEvent("kz-auth-changed", { detail: { user } }));
 
     const btn = document.getElementById("account-btn");
@@ -119,16 +111,3 @@ function initAccountButton() {
 }
 
 document.addEventListener("DOMContentLoaded", initAccountButton);
-
-kzDebug("A chamar getRedirectResult()...");
-auth.getRedirectResult().then(result => {
-  kzDebug("getRedirectResult OK — utilizador: " + (result && result.user ? result.user.email : "NENHUM (result vazio)"));
-  if (result && result.user) {
-    console.log("Login por redireccionamento concluído:", result.user.email);
-    toast("Sessão iniciada: " + result.user.email);
-  }
-}).catch(err => {
-  kzDebug("getRedirectResult ERRO: " + (err.code || err.message || JSON.stringify(err)));
-  console.error("Erro no login por redireccionamento:", err);
-  toast("Erro no login: " + (err.code || err.message || "desconhecido"));
-});
