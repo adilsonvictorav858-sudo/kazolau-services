@@ -14,9 +14,9 @@
       {"cor": "Preto", "tamanho": "M", "preco": 20000},
       {"cor": "Preto", "tamanho": "L", "preco": 20000},
       {"cor": "Preto", "tamanho": "XL", "preco": 20000},
-      {"cor": "Branco", "tamanho": "M", "preco": 20000},
-      {"cor": "Branco", "tamanho": "L", "preco": 20000},
-      {"cor": "Branco", "tamanho": "XL", "preco": 20000},
+      {"cor": "Bege", "tamanho": "M", "preco": 20000},
+      {"cor": "Bege", "tamanho": "L", "preco": 20000},
+      {"cor": "Bege", "tamanho": "XL", "preco": 20000},
       {"cor": "Amarelo", "tamanho": "M", "preco": 20000},
       {"cor": "Amarelo", "tamanho": "L", "preco": 20000},
       {"cor": "Amarelo", "tamanho": "XL", "preco": 20000}
