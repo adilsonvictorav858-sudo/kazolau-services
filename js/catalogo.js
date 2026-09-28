@@ -3,13 +3,18 @@
    Lê produtos.json / servicos.json e gera o HTML automaticamente.
    Nunca escrever produtos/serviços manualmente numa página.
    ============================================================ */
+/* Interruptor: true = esconde os telefones em todo o site. Para voltar a mostrar, muda para false. */
+const ESCONDER_TELEFONES = true;
+function semTelefones(lista) {
+  return ESCONDER_TELEFONES ? lista.filter(p => p.categoria !== "telefones") : lista;
+}
 
 const CATEGORIAS = [
   { id: "digitais", nome: "Serviços Digitais", desc: "CV, Traduções, PDFs e muito mais", icone: "🗂️", cor: "var(--blue)", link: "servicos.html#digitais" },
   { id: "vistos", nome: "Vistos e Agendamentos", desc: "Vistos, Agendamentos e Consultoria", icone: "🌍", cor: "var(--green)", link: "vistos.html" },
   { id: "websites", nome: "Desenvolvimento Web", desc: "Websites, Sistemas e Aplicações", icone: "💻", cor: "var(--purple)", link: "servicos.html#websites" },
   { id: "design", nome: "Design Gráfico", desc: "Flyers, Logótipos, Cartões e mais", icone: "🎨", cor: "var(--gold)", link: "servicos.html#design" },
-  { id: "loja", nome: "Loja Online", desc: "Telefones, Roupas, Ténis e Acessórios", icone: "🛍️", cor: "var(--orange)", link: "loja.html" },
+  { id: "loja", nome: "Loja Online", desc: "Roupas, Ténis, Sandálias e Acessórios", icone: "🛍️", cor: "var(--orange)", link: "loja.html" },
   { id: "entregas", nome: "Entregas", desc: "Entregas Nacionais e Internacionais", icone: "🚚", cor: "#2fa7d6", link: "servicos.html#entregas" },
 ];
 
@@ -63,7 +68,7 @@ async function carregarTodosProdutos() {
     carregarJSON("produtos.json"),
     carregarProdutosExtra(),
   ]);
-  return [...base, ...extra];
+  return semTelefones([...base, ...extra]);
 }
 
 /* ---------- Preço a partir das combinações ---------- */
