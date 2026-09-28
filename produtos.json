@@ -7,7 +7,7 @@
     "descricao": "Peça de roupa confortável e moderna, disponível em várias cores e tamanhos.",
     "imagens": ["imagens/ves.jpeg", "imagens/v2.jpeg"],
     "atributos": [
-      {"nome": "cor", "rotulo": "Cor", "opcoes": ["Preto", "Branco", "Amarelo"]},
+      {"nome": "cor", "rotulo": "Cor", "opcoes": ["Preto", "Bege", "Amarelo"]},
       {"nome": "tamanho", "rotulo": "Tamanho", "opcoes": ["M", "L", "XL"]}
     ],
     "combinacoes": [
