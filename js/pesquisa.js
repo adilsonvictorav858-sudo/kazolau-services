@@ -9,10 +9,11 @@ async function initPesquisaHero() {
   const btn = document.getElementById("hero-search-btn");
   if (!input || !panel) return;
 
-  const [produtos, servicos] = await Promise.all([
+  const [produtosTodos, servicos] = await Promise.all([
     carregarJSON("produtos.json"),
     carregarJSON("servicos.json"),
   ]);
+  const produtos = semTelefones(produtosTodos);
 
   function buscar(termo) {
     termo = termo.trim().toLowerCase();
