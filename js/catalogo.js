@@ -3,7 +3,9 @@
    Lê produtos.json / servicos.json e gera o HTML automaticamente.
    Nunca escrever produtos/serviços manualmente numa página.
    ============================================================ */
-/* Interruptor: true = esconde os telefones em todo o site. Para voltar a mostrar, muda para false. */
+
+/* Interruptor: true = esconde os telefones em todo o site.
+   Para voltar a mostrar os telefones, muda para false. */
 const ESCONDER_TELEFONES = true;
 function semTelefones(lista) {
   return ESCONDER_TELEFONES ? lista.filter(p => p.categoria !== "telefones") : lista;
