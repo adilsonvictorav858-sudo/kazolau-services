@@ -3,6 +3,8 @@
    produto.html?id=... carrega tudo automaticamente do produtos.json
    Preço varia conforme a combinação de atributos escolhida (cor,
    armazenamento, tamanho, etc.) — tal como definido em "combinacoes".
+   NOVO: ao escolher a cor, a foto principal muda para a foto dessa cor
+   (campo "imagens_por_cor" no produtos.json).
    ============================================================ */
 
 async function initProduto() {
@@ -25,6 +27,15 @@ async function initProduto() {
   const selecao = {};
   atributos.forEach(a => { selecao[a.nome] = a.opcoes[0]; });
 
+  // ---- NOVO: foto que está a ser mostrada neste momento ----
+  // Se o produto tem foto para a cor escolhida, usa essa; senão usa a primeira.
+  function fotoDaCor() {
+    const porCor = produto.imagens_por_cor;
+    if (porCor && selecao.cor && porCor[selecao.cor]) return porCor[selecao.cor];
+    return produto.imagens?.[0] || "";
+  }
+  let imagemAtual = fotoDaCor();
+
   function comboAtual() {
     return (produto.combinacoes || []).find(c =>
       atributos.every(a => c[a.nome] === selecao[a.nome])
@@ -42,8 +53,8 @@ async function initProduto() {
       <div class="breadcrumbs"><a href="index.html">Início</a> / <a href="loja.html?categoria=${produto.categoria}">${produto.categoria}</a> / ${produto.nome}</div>
       <div class="product-view">
         <div>
-          <div class="gallery-main"><img id="gm-img" src="${produto.imagens?.[0] || ''}" alt="${produto.nome}"></div>
-          ${produto.imagens?.length > 1 ? `<div class="gallery-thumbs">${produto.imagens.map((img, i) => `<img src="${img}" class="${i === 0 ? 'active' : ''}" onclick="document.getElementById('gm-img').src='${img}'; document.querySelectorAll('.gallery-thumbs img').forEach(t=>t.classList.remove('active')); this.classList.add('active')">`).join("")}</div>` : ""}
+          <div class="gallery-main"><img id="gm-img" src="${imagemAtual}" alt="${produto.nome}"></div>
+          ${produto.imagens?.length > 1 ? `<div class="gallery-thumbs">${produto.imagens.map(img => `<img src="${img}" data-src="${img}" class="${img === imagemAtual ? 'active' : ''}">`).join("")}</div>` : ""}
         </div>
         <div class="product-info">
           <h1>${produto.nome}</h1>
@@ -75,16 +86,31 @@ async function initProduto() {
       </div>
     `;
 
+    // Clique nos botões de opção (cor, tamanho, ...)
     document.querySelectorAll(".option-pill").forEach(pill => {
       pill.addEventListener("click", () => {
         selecao[pill.dataset.tipo] = pill.dataset.valor;
+        // NOVO: se mudou a cor, troca a foto para a dessa cor
+        if (pill.dataset.tipo === "cor") imagemAtual = fotoDaCor();
         render();
+      });
+    });
+
+    // Clique nas miniaturas: muda a foto principal e lembra a escolha
+    document.querySelectorAll(".gallery-thumbs img").forEach(th => {
+      th.addEventListener("click", () => {
+        imagemAtual = th.dataset.src;
+        document.getElementById("gm-img").src = imagemAtual;
+        document.querySelectorAll(".gallery-thumbs img").forEach(t => t.classList.remove("active"));
+        th.classList.add("active");
       });
     });
 
     const comboFinal = comboAtual();
     if (comboFinal) {
-      const produtoComPrecoObj = { id: produto.id, nome: produto.nome, imagens: produto.imagens, preco_final: comboFinal.preco };
+      // A foto da cor escolhida vai primeiro, para aparecer certa no carrinho
+      const imagensCarrinho = [imagemAtual, ...(produto.imagens || []).filter(i => i !== imagemAtual)];
+      const produtoComPrecoObj = { id: produto.id, nome: produto.nome, imagens: imagensCarrinho, preco_final: comboFinal.preco };
       document.getElementById("btn-comprar").addEventListener("click", () => comprarAgora(produtoComPrecoObj, selecao));
       document.getElementById("btn-negociar").addEventListener("click", () => abrirNegociar(produtoComPrecoObj));
       document.getElementById("btn-add-carrinho").addEventListener("click", () => Carrinho.adicionar(produtoComPrecoObj, selecao));
