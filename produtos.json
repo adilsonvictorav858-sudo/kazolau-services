@@ -5,7 +5,12 @@
     "nome": "Conjunto Feminino (Top + Calça)",
     "marca": "",
     "descricao": "Peça de roupa confortável e moderna, disponível em várias cores e tamanhos.",
-    "imagens": ["imagens/ves.jpeg", "imagens/v2.jpeg"],
+    "imagens": ["imagens/ves.jpeg", "imagens/v2.jpeg", "imagens/amarelo.jpeg"],
+"imagens_por_cor": {
+  "Preto": "imagens/ves.jpeg",
+  "Bege": "imagens/v2.jpeg",
+  "Amarelo": "imagens/amarelo.jpeg"
+},
     "atributos": [
       {"nome": "cor", "rotulo": "Cor", "opcoes": ["Preto", "Bege", "Amarelo"]},
       {"nome": "tamanho", "rotulo": "Tamanho", "opcoes": ["M", "L", "XL"]}
